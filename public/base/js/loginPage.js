@@ -12,6 +12,8 @@ var appLogin = new Vue({
     {
         loginAtc : function()
         {
+            document.querySelector("#btnMasuk").innerHTML = "<i class='zmdi zmdi-settings zmdi-hc-spin'></i> Login process ...";
+            tidur_bentar(1500);
             let username = document.querySelector("#txtUsername").value;
             let password = document.querySelector("#txtPassword").value;
             let ds = {'username':username, 'password':password}
@@ -53,4 +55,8 @@ function pesanUmumApp(icon, title, text)
     title : title,
     text : text
   });
+}
+
+function tidur_bentar(ms){
+    return new Promise(resolve => { setTimeout(resolve, ms) });
 }

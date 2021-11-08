@@ -1,13 +1,13 @@
 // route 
 var r_beranda = server + "app/beranda";
 var r_member = server + "app/member";
-var r_test_bearer = "http://localhost/Bengkel-Caca-Website/public/testing-api/get-kategori";
-var rSupplier = server + "/app/supplier";
+var rSupplier = server + "app/supplier";
+
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
     data : {
-
+        username : 'Admin'
     },
     methods : {
         dashboarc_atc : function()

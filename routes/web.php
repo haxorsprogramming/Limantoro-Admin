@@ -11,5 +11,6 @@ Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/app', [C_Page::class, 'appPage']);
 Route::get('/app/beranda', [C_Page::class, 'berandaPage']);
 Route::get('/app/supplier', [C_Supplier::class, 'supplierPage']);
+Route::get('/app/supplier/datatable', [C_Supplier::class, 'jsonDatatable']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
