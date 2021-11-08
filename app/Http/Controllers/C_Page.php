@@ -12,6 +12,6 @@ class C_Page extends Controller
     }
     public function appPage()
     {
-        echo "Apps";
+        return view('app.main');
     }
 }
