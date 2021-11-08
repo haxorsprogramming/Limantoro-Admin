@@ -10,4 +10,8 @@ class C_Page extends Controller
     {
         return view('login.loginPage');
     }
+    public function appPage()
+    {
+        echo "Apps";
+    }
 }

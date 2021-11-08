@@ -1,5 +1,6 @@
 // route 
 var rLoginProses = server + "/login/proses";
+var rDashboard = server + "/app";
 // vue object 
 var appLogin = new Vue({
     el : '#appLogin',
@@ -16,7 +17,13 @@ var appLogin = new Vue({
             let ds = {'username':username, 'password':password}
             axios.post(rLoginProses, ds).then(function(res){
                 let dr = res.data;
-                console.log(dr);
+                if(dr.status === 'no_user'){
+                    pesanUmumApp('warning', 'No user!!!', 'Tidak ada user terdaftar!!!');
+                }else if(dr.status === 'wrong_password'){
+                    pesanUmumApp('warning', 'Auth fail!!!', 'Username / password salah!!!');
+                }else if(dr.status === 'success'){
+                    window.location.assign(rDashboard);
+                }
             });
         }
     }
@@ -38,3 +45,12 @@ fillPassword.addEventListener("keyup", function (event) {
         document.getElementById("btnMasuk").click();
     }
 });
+
+function pesanUmumApp(icon, title, text)
+{
+  Swal.fire({
+    icon : icon,
+    title : title,
+    text : text
+  });
+}

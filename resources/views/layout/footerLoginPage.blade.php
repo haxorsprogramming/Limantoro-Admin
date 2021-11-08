@@ -22,9 +22,9 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="{{ asset('style/') }}/compass/bundles/libscripts.bundle.js"></script>
 <script src="{{ asset('style/') }}/compass/bundles/vendorscripts.bundle.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- Lib Scripts Plugin Js -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- Javascript custom  -->
 <script>
 const server = "{{ url('') }}";
