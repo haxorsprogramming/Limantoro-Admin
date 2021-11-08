@@ -14,5 +14,7 @@ class M_User extends Model
         'birth_date','address','gender','role_id','type',
         'password','is_active','can_login',
     ];
+
+    
     
 }

@@ -14,4 +14,8 @@ class C_Page extends Controller
     {
         return view('app.main');
     }
+    public function berandaPage()
+    {
+        return view('app.berandaPage');
+    }
 }

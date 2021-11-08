@@ -2,6 +2,7 @@
 var r_beranda = server + "app/beranda";
 var r_member = server + "app/member";
 var r_test_bearer = "http://localhost/Bengkel-Caca-Website/public/testing-api/get-kategori";
+var rSupplier = server + "/app/supplier";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -20,6 +21,10 @@ var div_menu = new Vue({
         statistik_atc : function()
         {
             
+        },
+        supplierAtc : function()
+        {
+            load_page(rSupplier, 'Supplier');
         }
     }
 });
