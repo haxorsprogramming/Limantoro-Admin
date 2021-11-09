@@ -52,8 +52,16 @@ var appSupplier = new Vue({
             var rLoadDataSupplier = server + "app/supplier/"+kdSupplier+"/edit/data";
             axios.get(rLoadDataSupplier).then(function(res){
                 let ds = res.data;
-                console.log(ds);
+                let supplier = ds.dataSupplier;
+                document.querySelector("#txtKodeTokoEdit").value = supplier.code;
+                document.querySelector("#txtNamaTokoEdit").value = supplier.name;
+                document.querySelector("#txtPhoneNumberEdit").value = supplier.phone_number;
+                document.querySelector("#txtContactPersonEdit").value = supplier.contact_person;
+                document.querySelector("#txtNpwpEdit").value = supplier.code;
             });
+            $("#dSupplier").hide();
+            $("#dFormEditSupplier").show();
+            document.querySelector("#txtNamaTokoEdit").focus();
         }
     }
 });

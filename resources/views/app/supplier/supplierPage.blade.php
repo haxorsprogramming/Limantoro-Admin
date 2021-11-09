@@ -27,7 +27,9 @@
                             <td>{{ $supplier -> contact_person }}</td>
                             <td>{{ $supplier -> phone_number }}</td>
                             <td>
-                                <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="editAtc('{{ $supplier -> code }}')"><i class="material-icons">edit_note</i></a>
+                                <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="editAtc('{{ $supplier -> code }}')">
+                                    <i class="material-icons">edit_note</i>
+                                </a>
                                 <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!"><i class="material-icons">delete</i></a>
                             </td>
                         </tr>
@@ -40,6 +42,9 @@
         <div class="card" id="dFormTambahSupplier" style="display: none;">
             <div class="card-content">
                 <span class="card-title">Tambah Supplier</span>
+                <div class="row">
+                <a class="btn-floating waves-effect waves-light" @click="kembaliAtc()"><i class="material-icons">arrow_back</i></a>
+                </div>
                 <div class="row">
                     <div class="col s6">
                         <div class="input-field col s12">
@@ -65,9 +70,6 @@
                         <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahSupplierAtc()">
                             <i class="material-icons left">file_download_done</i> @{{prosesBtnText}}
                         </a>
-                        <a href="#!" class="btn deep-orange lighten-1" @click="kembaliAtc()">
-                            <i class="material-icons left">keyboard_backspace</i> Kembali
-                        </a>
                     </div>
                     <div class="col s6">
                         <div class="input-field col s12">
@@ -83,9 +85,12 @@
             <div class="card-content">
                 <span class="card-title">Edit Supplier</span>
                 <div class="row">
+                <a class="btn-floating waves-effect waves-light" @click="kembaliAtc()"><i class="material-icons">arrow_back</i></a>
+                </div>
+                <div class="row">
                     <div class="col s6">
                         <div class="input-field col s12">
-                            <input placeholder="Kode Toko" id="txtKodeTokoEdit" type="text" class="validate">
+                            <input placeholder="Kode Toko" id="txtKodeTokoEdit" type="text" disabled class="validate">
                             <label for="txtKodeTokoEdit" class="active">Kode Toko</label>
                         </div>
                         <div class="input-field col s12">
@@ -104,11 +109,11 @@
                             <input placeholder="NPWP" id="txtNpwpEdit" type="text" class="validate">
                             <label for="txtNpwpEdit" class="active">NPWP</label>
                         </div>
-                        <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahSupplierAtc()">
+                        <a href="#!" class="btn" id="btnProsesEdit">
                             <i class="material-icons left">file_download_done</i> @{{updateBtnText}}
                         </a>
-                        <a href="#!" class="btn deep-orange lighten-1" @click="kembaliAtc()">
-                            <i class="material-icons left">keyboard_backspace</i> Kembali
+                        <a href="#!" class="btn deep-orange lighten-1" id="btnProsesHapus">
+                            <i class="material-icons left">delete</i> Hapus Supplier
                         </a>
                     </div>
                     <div class="col s6">
