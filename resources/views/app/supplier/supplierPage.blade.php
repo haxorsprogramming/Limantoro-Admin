@@ -109,7 +109,7 @@
                             <input placeholder="NPWP" id="txtNpwpEdit" type="text" class="validate">
                             <label for="txtNpwpEdit" class="active">NPWP</label>
                         </div>
-                        <a href="#!" class="btn" id="btnProsesEdit">
+                        <a href="#!" class="btn" id="btnProsesEdit" @click="prosesEditSupplierAtc()">
                             <i class="material-icons left">file_download_done</i> @{{updateBtnText}}
                         </a>
                         <a href="#!" class="btn deep-orange lighten-1" id="btnProsesHapus">

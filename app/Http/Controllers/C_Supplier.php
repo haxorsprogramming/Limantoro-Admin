@@ -41,4 +41,9 @@ class C_Supplier extends Controller
         $dr = ['dataSupplier' => $dataSupplier];
         return \Response::json($dr);
     }
+    public function prosesUpdateSupplier(Request $request)
+    {
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
+    }
 }

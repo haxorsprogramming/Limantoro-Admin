@@ -1,13 +1,16 @@
 // route 
 var rDataSupplier = server + "app/supplier/datatable";
 var rProsesTambahSupplier = server + "app/supplier/tambah/proses";
+var rProsesUpdateSupplier = server + "app/supplier/edit/proses";
 // vue object 
 var appSupplier = new Vue({
     el : '#appSupplier',
     data : {
         prosesBtnText : "Tambah Supplier",
         statusProsesTambah : false,
-        updateBtnText : "Update Supplier"
+        updateBtnText : "Update Supplier",
+        statusProsesUpdate :  false,
+        kdSupplierSelected : ''
     },
     methods : {
         tambahSupplierAtc : function()
@@ -58,10 +61,32 @@ var appSupplier = new Vue({
                 document.querySelector("#txtPhoneNumberEdit").value = supplier.phone_number;
                 document.querySelector("#txtContactPersonEdit").value = supplier.contact_person;
                 document.querySelector("#txtNpwpEdit").value = supplier.code;
+                document.querySelector("#txtAlamatEdit").value = supplier.address;
             });
+            appSupplier.kdSupplierSelected = kdSupplier;
             $("#dSupplier").hide();
             $("#dFormEditSupplier").show();
             document.querySelector("#txtNamaTokoEdit").focus();
+        },
+        prosesEditSupplierAtc : function()
+        {
+            if(appSupplier.statusProsesUpdate === false){
+                let namaToko = document.querySelector("#txtNamaTokoEdit").value;
+                let phoneNumber = document.querySelector("#txtPhoneNumberEdit").value;
+                let contactPerson = document.querySelector("#txtContactPersonEdit").value;
+                let npwp = document.querySelector("#txtNpwpEdit").value;
+                let alamat = document.querySelector("#txtAlamatEdit").value;
+                if(namaToko === '' || phoneNumber === '' || contactPerson === '' || npwp === '' || alamat === ''){
+                    pesanUmumApp('warning', 'Fill field !!!', 'Harap isi seluruh field !!!');
+                }else{
+                    appSupplier.updateBtnText = "Memproses ...";
+                    appSupplier.statusProsesUpdate = true;
+                    dimFormEdit();
+                    axios.post(rProsesUpdateSupplier).then(function(res){
+                        console.log(res.data);
+                    });
+                }
+            }
         }
     }
 });
@@ -76,4 +101,13 @@ function dimForm()
     document.querySelector("#txtContactPerson").setAttribute("disabled", "disabled");
     document.querySelector("#txtNpwp").setAttribute("disabled", "disabled");
     document.querySelector("#txtAlamat").setAttribute("disabled", "disabled");
+}
+
+function dimFormEdit()
+{
+    document.querySelector("#txtNamaTokoEdit").setAttribute("disabled", "disabled");
+    document.querySelector("#txtPhoneNumberEdit").setAttribute("disabled", "disabled");
+    document.querySelector("#txtContactPersonEdit").setAttribute("disabled", "disabled");
+    document.querySelector("#txtNpwpEdit").setAttribute("disabled", "disabled");
+    document.querySelector("#txtAlamatEdit").setAttribute("disabled", "disabled");
 }
