@@ -11,10 +11,12 @@ class C_Supplier extends Controller
 {
     public function supplierPage()
     {
-        return view('app.supplier.supplierPage');
+        $dataSupplier = M_Supplier::all();
+        $dr = ['dataSupplier' => $dataSupplier];
+        return view('app.supplier.supplierPage', $dr);
     }
     public function jsonDatatable()
     {
-        return Datatables::of(M_Supplier::all())->make(true);
+        return Datatables::of(M_Supplier::all()) -> make(true);
     }
 }

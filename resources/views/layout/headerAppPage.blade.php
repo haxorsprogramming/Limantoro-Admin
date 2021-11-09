@@ -14,7 +14,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="{{ asset('/style/alpha') }}/plugins/materialize/css/materialize.min.css" />
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/metrojs/MetroJs.min.css" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet">
     <link href="{{ asset('/base') }}/css/nprogress.css" rel="stylesheet">
