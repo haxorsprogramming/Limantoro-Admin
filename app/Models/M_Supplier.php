@@ -12,7 +12,12 @@ class M_Supplier extends Model
     protected $table = 'suppliers';
 
     protected $fillable = [
-        'code','name', 'address', 'city', 'contact_person','phone_number','npwp'
-        ,'admin_code'
+        'code','name',
+        'address',
+        'city',
+        'contact_person',
+        'phone_number',
+        'npwp',
+        'admin_code'
     ];
 }

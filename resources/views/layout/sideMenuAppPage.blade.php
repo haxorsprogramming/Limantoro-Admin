@@ -47,7 +47,7 @@
                 </div>
             </li>
             <li class="no-padding"><a class="waves-effect waves-grey" href="javascript:void(0)"><i class="material-icons">settings</i>Setting</a></li>
-            <li class="no-padding"><a class="waves-effect waves-grey" href="javascript:void(0)"><i class="material-icons">logout</i>Log Out</a></li>
+            <li class="no-padding"><a class="waves-effect waves-grey" href="{{ url('auth/logout') }}"><i class="material-icons">logout</i>Log Out</a></li>
         </ul>
         <div class="footer">
             <p class="copyright">Limantoro © </p>

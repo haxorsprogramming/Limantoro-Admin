@@ -219,6 +219,4 @@
 <main class="mn-inner inner-active-sidebar" id="div_utama">
 
 </main>
-
-
 @include('layout.footerAppPage')

@@ -7,6 +7,7 @@ use App\Http\Controllers\C_Auth;
 use App\Http\Controllers\C_Supplier;
 
 Route::get('/', [C_Page::class, 'loginPage']);
+Route::get('/auth/logout', [C_Auth::class, 'logout']);
 // Route::post('')
 Route::get('/app', [C_Page::class, 'appPage']);
 Route::get('/app/beranda', [C_Page::class, 'berandaPage']);

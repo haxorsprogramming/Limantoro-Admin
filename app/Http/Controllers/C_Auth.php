@@ -11,15 +11,28 @@ class C_Auth extends Controller
 {
     public function loginProses(Request $request)
     {
+        /**
+         * Get post variable
+         */
         $username = $request -> username;
         $usernameCaps = Str::upper($username);
-        // cek total user 
+        /**
+         * Check total user
+         */
         $totalUserDb = M_User::where('code', $usernameCaps) -> count();
+        /**
+         * Check & give result if user total < 1
+         */
         if($totalUserDb > 0){
-            // cek user & password 
+            /**
+             * Get password from database with model
+             */
             $dataUserDb = M_User::where('code', $usernameCaps) -> first();
             $passwordUserDb = $dataUserDb -> password;
             $passwordInput = $request -> password;
+            /**
+             * Get password verify with native php
+             */
             $cek_password = password_verify($passwordInput, $passwordUserDb);
             if($cek_password == true){
                 /**
@@ -38,5 +51,10 @@ class C_Auth extends Controller
         }
         
         return \Response::json($dr);
+    }
+
+    public function logout()
+    {
+        return redirect('/');
     }
 }
