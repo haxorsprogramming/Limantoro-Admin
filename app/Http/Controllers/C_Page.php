@@ -18,8 +18,9 @@ class C_Page extends Controller
     }
     public function berandaPage()
     {
-        $dataProject = M_Project::all();
-        $dr = ['dataProject' => $dataProject];
+        $dataProject = M_Project::take(7) -> get();
+        $totalProject = M_Project::count();
+        $dr = ['dataProject' => $dataProject, 'totalProject' => $totalProject];
         return view('app.berandaPage', $dr);
     }
 }

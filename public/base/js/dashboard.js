@@ -61,3 +61,12 @@ async function load_page(page, page_title)
 function tidur_bentar(ms){
     return new Promise(resolve => { setTimeout(resolve, ms) });
 }
+
+function pesanUmumApp(icon, title, text)
+{
+  Swal.fire({
+    icon : icon,
+    title : title,
+    text : text
+  });
+}

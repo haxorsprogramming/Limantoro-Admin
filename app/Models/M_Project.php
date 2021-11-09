@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class M_Project extends Model
 {
     protected $table = "projects";
-    protected $primaryKey = "code";
 
     protected $fillable = [
         'code',

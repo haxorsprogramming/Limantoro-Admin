@@ -28,7 +28,7 @@
 <script src="{{ asset('/style/alpha') }}/js/alpha.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="{{ asset('/style/alpha') }}/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
     const server = "{{ url('/') }}/";
     

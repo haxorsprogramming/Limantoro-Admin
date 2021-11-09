@@ -35,4 +35,10 @@ class C_Supplier extends Controller
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }
+    public function editDataSupplier(Request $request, $codeSupplier)
+    {
+        $dataSupplier = M_Supplier::where('code', $codeSupplier) -> first();
+        $dr = ['dataSupplier' => $dataSupplier];
+        return \Response::json($dr);
+    }
 }

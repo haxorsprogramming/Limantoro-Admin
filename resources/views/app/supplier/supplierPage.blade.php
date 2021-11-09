@@ -11,27 +11,32 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Contact Person</th>
                             <th>Phone Number</th>
-                            <th>Aksi</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($dataSupplier as $supplier)
                         <tr>
                             <td>{{ $loop -> iteration }}</td>
-                            <td>{{ $supplier -> name }}</td>
+                            <td>{{ $supplier -> code }}</td>
                             <td>{{ $supplier -> address }}</td>
+                            <td>{{ $supplier -> contact_person }}</td>
                             <td>{{ $supplier -> phone_number }}</td>
-                            <td><a href="#!" class="btn">Edit</a></td>
+                            <td>
+                                <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="editAtc('{{ $supplier -> code }}')"><i class="material-icons">edit_note</i></a>
+                                <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!"><i class="material-icons">delete</i></a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        <!-- form tambah member -->
+        <!-- form tambah supplier -->
         <div class="card" id="dFormTambahSupplier" style="display: none;">
             <div class="card-content">
                 <span class="card-title">Tambah Supplier</span>
@@ -60,10 +65,55 @@
                         <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahSupplierAtc()">
                             <i class="material-icons left">file_download_done</i> @{{prosesBtnText}}
                         </a>
+                        <a href="#!" class="btn deep-orange lighten-1" @click="kembaliAtc()">
+                            <i class="material-icons left">keyboard_backspace</i> Kembali
+                        </a>
                     </div>
                     <div class="col s6">
                         <div class="input-field col s12">
                             <textarea placeholder="Alamat" class="materialize-textarea" id="txtAlamat"></textarea>
+                            <label for="txtAlamat" class="active">Alamat</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- form edit supplier -->
+        <div class="card" id="dFormEditSupplier" style="display: none;">
+            <div class="card-content">
+                <span class="card-title">Edit Supplier</span>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <input placeholder="Kode Toko" id="txtKodeTokoEdit" type="text" class="validate">
+                            <label for="txtKodeTokoEdit" class="active">Kode Toko</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Nama Toko" id="txtNamaTokoEdit" type="text" class="validate">
+                            <label for="txtNamaTokoEdit" class="active">Nama Toko</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Phone Number" id="txtPhoneNumberEdit" type="text" class="validate">
+                            <label for="txtPhoneNumberEdit" class="active">Phone Number</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Contact Person" id="txtContactPersonEdit" type="text" class="validate">
+                            <label for="txtContactPersonEdit" class="active">Contact Person</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="NPWP" id="txtNpwpEdit" type="text" class="validate">
+                            <label for="txtNpwpEdit" class="active">NPWP</label>
+                        </div>
+                        <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahSupplierAtc()">
+                            <i class="material-icons left">file_download_done</i> @{{updateBtnText}}
+                        </a>
+                        <a href="#!" class="btn deep-orange lighten-1" @click="kembaliAtc()">
+                            <i class="material-icons left">keyboard_backspace</i> Kembali
+                        </a>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <textarea placeholder="Alamat" class="materialize-textarea" id="txtAlamatEdit"></textarea>
                             <label for="txtAlamat" class="active">Alamat</label>
                         </div>
                     </div>
