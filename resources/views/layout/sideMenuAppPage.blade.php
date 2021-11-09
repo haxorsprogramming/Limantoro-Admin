@@ -32,7 +32,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="javascript:void(0)">Permintaan Pembelian</a></li> 
-                        <li><a href="javascript:void(0)">Persetujuan Permintaan Pembelian</a></li>
+                        <li><a href="javascript:void(0)">Persetujuan Pembelian</a></li>
                         <li><a href="javascript:void(0)">Pemesanan Pembelian</a></li>
                     </ul>
                 </div>

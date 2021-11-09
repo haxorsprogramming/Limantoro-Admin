@@ -23,8 +23,8 @@
                             <td>{{ $loop -> iteration }}</td>
                             <td>{{ $supplier -> name }}</td>
                             <td>{{ $supplier -> address }}</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $supplier -> phone_number }}</td>
+                            <td><a href="#!" class="btn">Edit</a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -36,19 +36,37 @@
             <div class="card-content">
                 <span class="card-title">Tambah Supplier</span>
                 <div class="row">
-                    <form class="col s6">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input placeholder="Username" id="txt_username" type="text" class="validate">
-                                <label for="txt_username" class="active">Kode Toko</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input placeholder="Nama" id="txt_nama_member" type="text" class="validate">
-                                <label for="txt_nama_member" class="active">Nama Member</label>
-                            </div>                            
-                            <a href="#!" class="btn" @click="simpan_member_atc()">Tambah Supplier</a>                            
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <input placeholder="Kode Toko" id="txtKodeToko" type="text" class="validate">
+                            <label for="txtKodeToko" class="active">Kode Toko</label>
                         </div>
-                    </form>
+                        <div class="input-field col s12">
+                            <input placeholder="Nama Toko" id="txtNamaToko" type="text" class="validate">
+                            <label for="txtNamaToko" class="active">Nama Toko</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Phone Number" id="txtPhoneNumber" type="text" class="validate">
+                            <label for="txtPhoneNumber" class="active">Phone Number</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="Contact Person" id="txtContactPerson" type="text" class="validate">
+                            <label for="txtContactPerson" class="active">Contact Person</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="NPWP" id="txtNpwp" type="text" class="validate">
+                            <label for="txtNpwp" class="active">NPWP</label>
+                        </div>
+                        <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahSupplierAtc()">
+                            <i class="material-icons left">file_download_done</i> @{{prosesBtnText}}
+                        </a>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <textarea placeholder="Alamat" class="materialize-textarea" id="txtAlamat"></textarea>
+                            <label for="txtAlamat" class="active">Alamat</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

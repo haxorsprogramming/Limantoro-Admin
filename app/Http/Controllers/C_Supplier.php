@@ -19,4 +19,20 @@ class C_Supplier extends Controller
     {
         return Datatables::of(M_Supplier::all()) -> make(true);
     }
+    public function prosesTambahSupplier(Request $request)
+    {
+        // {'kdToko':kdToko, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
+        $supplier = new M_Supplier();
+        $supplier -> code = $request -> kdToko;
+        $supplier -> name = $request -> namaToko;
+        $supplier -> address = $request -> alamat;
+        $supplier -> city = "Medan";
+        $supplier -> contact_person = $request -> contactPerson;
+        $supplier -> npwp = $request -> npwp;
+        $supplier -> phone_number = $request -> phoneNumber;
+        $supplier -> admin_code = "VICKY";
+        $supplier -> save();
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
+    }
 }

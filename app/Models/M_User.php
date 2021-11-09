@@ -15,6 +15,4 @@ class M_User extends Model
         'password','is_active','can_login',
     ];
 
-    
-    
 }
