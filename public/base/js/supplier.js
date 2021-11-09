@@ -5,7 +5,8 @@ var rProsesTambahSupplier = server + "app/supplier/tambah/proses";
 var appSupplier = new Vue({
     el : '#appSupplier',
     data : {
-        prosesBtnText : "Tambah Supplier"
+        prosesBtnText : "Tambah Supplier",
+        statusProsesTambah : false
     },
     methods : {
         tambahSupplierAtc : function()
@@ -14,22 +15,28 @@ var appSupplier = new Vue({
             $("#dFormTambahSupplier").show();
             document.querySelector("#txtKodeToko").focus();
         },
-        prosesTambahSupplierAtc : function()
+        prosesTambahSupplierAtc : async function()
         {
-            let kdToko = document.querySelector("#txtKodeToko").value;
-            let namaToko = document.querySelector("#txtNamaToko").value;
-            let phoneNumber = document.querySelector("#txtPhoneNumber").value;
-            let contactPerson = document.querySelector("#txtContactPerson").value;
-            let npwp = document.querySelector("#txtNpwp").value;
-            let alamat = document.querySelector("#txtAlamat").value;
-            let ds = {'kdToko':kdToko, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
-            document.querySelector("#btnProsesTambah").innerHTML = ""
-            dimForm();
-            tidur_bentar(4000);
-            // axios.post(rProsesTambahSupplier, ds).then(function(res){
-            //     let dr = res.data;
-            //     console.log(dr);
-            // });
+            if(appSupplier.statusProsesTambah === false){
+                let kdToko = document.querySelector("#txtKodeToko").value;
+                let namaToko = document.querySelector("#txtNamaToko").value;
+                let phoneNumber = document.querySelector("#txtPhoneNumber").value;
+                let contactPerson = document.querySelector("#txtContactPerson").value;
+                let npwp = document.querySelector("#txtNpwp").value;
+                let alamat = document.querySelector("#txtAlamat").value;
+                let ds = {'kdToko':kdToko, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
+                appSupplier.prosesBtnText = "Memproses ...";
+                appSupplier.statusProsesTambah = true;
+                document.querySelector("#btnProsesTambah").setAttribute("disabled", "disabled");
+                dimForm();
+                axios.post(rProsesTambahSupplier, ds).then(function(res){
+                    let dr = res.data;
+                    console.log(dr);
+                });
+                await tidur_bentar(2000);
+                pesan_toast("Supplier baru berhasil di tambahkan ...");
+                load_page(rSupplier, 'Supplier');
+            }
         }
     }
 });
