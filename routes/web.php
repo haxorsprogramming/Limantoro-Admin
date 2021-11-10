@@ -17,5 +17,6 @@ Route::get('/app/supplier/datatable', [C_Supplier::class, 'jsonDatatable']);
 Route::post('/app/supplier/tambah/proses', [C_Supplier::class, 'prosesTambahSupplier']);
 Route::get('/app/supplier/{codeSupplier}/edit/data', [C_Supplier::class, 'editDataSupplier']);
 Route::post('/app/supplier/edit/proses', [C_Supplier::class, 'prosesUpdateSupplier']);
+Route::post('/app/supplier/delete/proses', [C_Supplier::class, 'prosesDeleteSupplier']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

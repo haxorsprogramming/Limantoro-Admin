@@ -43,6 +43,22 @@ class C_Supplier extends Controller
     }
     public function prosesUpdateSupplier(Request $request)
     {
+        // {'kdToko':kdSupplier, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
+        $kdSupplier = $request -> kdToko;
+        M_Supplier::where('code', $kdSupplier) -> update([
+            'name' => $request -> namaToko,
+            'address' => $request -> alamat,
+            'contact_person' => $request -> contactPerson,
+            'phone_number' => $request -> phoneNumber,
+            'npwp' => $request -> npwp
+        ]);
+        $dr = ['status' => $kdSupplier];
+        return \Response::json($dr);
+    }
+    public function prosesDeleteSupplier(Request $request)
+    {
+        $kdSupplier = $request -> kdSupplier;
+        M_Supplier::where('code', $kdSupplier) -> delete();
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }

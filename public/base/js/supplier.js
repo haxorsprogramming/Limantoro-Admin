@@ -2,6 +2,7 @@
 var rDataSupplier = server + "app/supplier/datatable";
 var rProsesTambahSupplier = server + "app/supplier/tambah/proses";
 var rProsesUpdateSupplier = server + "app/supplier/edit/proses";
+var rProsesDeleteSupplier = server + "app/supplier/delete/proses";
 // vue object 
 var appSupplier = new Vue({
     el : '#appSupplier',
@@ -37,8 +38,7 @@ var appSupplier = new Vue({
                     document.querySelector("#btnProsesTambah").setAttribute("disabled", "disabled");
                     dimForm();
                     axios.post(rProsesTambahSupplier, ds).then(function(res){
-                        let dr = res.data;
-                        console.log(dr);
+
                     });
                     await tidur_bentar(2000);
                     pesan_toast("Supplier baru berhasil di tambahkan ...");
@@ -68,8 +68,9 @@ var appSupplier = new Vue({
             $("#dFormEditSupplier").show();
             document.querySelector("#txtNamaTokoEdit").focus();
         },
-        prosesEditSupplierAtc : function()
+        prosesEditSupplierAtc : async function()
         {
+            let kdSupplier = appSupplier.kdSupplierSelected;
             if(appSupplier.statusProsesUpdate === false){
                 let namaToko = document.querySelector("#txtNamaTokoEdit").value;
                 let phoneNumber = document.querySelector("#txtPhoneNumberEdit").value;
@@ -79,14 +80,61 @@ var appSupplier = new Vue({
                 if(namaToko === '' || phoneNumber === '' || contactPerson === '' || npwp === '' || alamat === ''){
                     pesanUmumApp('warning', 'Fill field !!!', 'Harap isi seluruh field !!!');
                 }else{
+                    let ds = {'kdToko':kdSupplier, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
                     appSupplier.updateBtnText = "Memproses ...";
                     appSupplier.statusProsesUpdate = true;
                     dimFormEdit();
-                    axios.post(rProsesUpdateSupplier).then(function(res){
-                        console.log(res.data);
+                    axios.post(rProsesUpdateSupplier, ds).then(function(res){
+
                     });
+                    await tidur_bentar(2000);
+                    pesan_toast("Supplier berhasil di update ...");
+                    load_page(rSupplier, 'Supplier');
                 }
             }
+        },
+        deleteAtc : function(kdSupplier)
+        {
+            Swal.fire({
+                title: "Hapus supplier?",
+                text: "Yakin menghapus supplier ... ?",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak",
+              }).then((result) => {
+                if (result.value) {
+                    let ds = {'kdSupplier':kdSupplier}
+                    axios.post(rProsesDeleteSupplier, ds).then(function(res){
+                        pesan_toast("Supplier berhasil di hapus ...");
+                        load_page(rSupplier, 'Supplier');
+                    });
+                }
+              });
+        },
+        deleteFromEditAtc : function()
+        {
+            kdSupplier = appSupplier.kdSupplierSelected;
+            Swal.fire({
+                title: "Hapus supplier?",
+                text: "Yakin menghapus supplier ... ?",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak",
+              }).then((result) => {
+                if (result.value) {
+                    let ds = {'kdSupplier':kdSupplier}
+                    axios.post(rProsesDeleteSupplier, ds).then(function(res){
+                        pesan_toast("Supplier berhasil di hapus ...");
+                        load_page(rSupplier, 'Supplier');
+                    });
+                }
+              });
         }
     }
 });

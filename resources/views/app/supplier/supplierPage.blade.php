@@ -22,15 +22,17 @@
                         @foreach($dataSupplier as $supplier)
                         <tr>
                             <td>{{ $loop -> iteration }}</td>
-                            <td>{{ $supplier -> code }}</td>
+                            <td>{{ $supplier -> name }}</td>
                             <td>{{ $supplier -> address }}</td>
                             <td>{{ $supplier -> contact_person }}</td>
                             <td>{{ $supplier -> phone_number }}</td>
                             <td>
-                                <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="editAtc('{{ $supplier -> code }}')">
+                                <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $supplier -> code }}')">
                                     <i class="material-icons">edit_note</i>
                                 </a>
-                                <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!"><i class="material-icons">delete</i></a>
+                                <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $supplier -> code }}')">
+                                    <i class="material-icons">delete</i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -112,7 +114,7 @@
                         <a href="#!" class="btn" id="btnProsesEdit" @click="prosesEditSupplierAtc()">
                             <i class="material-icons left">file_download_done</i> @{{updateBtnText}}
                         </a>
-                        <a href="#!" class="btn deep-orange lighten-1" id="btnProsesHapus">
+                        <a href="#!" class="btn deep-orange lighten-1" id="btnProsesHapus" @click="deleteFromEditAtc()">
                             <i class="material-icons left">delete</i> Hapus Supplier
                         </a>
                     </div>
