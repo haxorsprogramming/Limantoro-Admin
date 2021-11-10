@@ -21,8 +21,8 @@
                     <ul>
                         <li><a href="javascript:void(0)">Cash</a></li>
                         <li><a href="javascript:void(0)" @click="supplierAtc()">Supplier</a></li> 
-                        <li><a href="javascript:void(0)">Pelanggan</a></li>
-                        <li><a href="javascript:void(0)">Material</a></li>
+                        <li><a href="javascript:void(0)" @click="customerAtc()">Customer</a></li>
+                        <li><a href="javascript:void(0)" @click="materialAtc()">Material</a></li>
                         <li><a href="javascript:void(0)">Karyawan</a></li>
                     </ul>
                 </div>

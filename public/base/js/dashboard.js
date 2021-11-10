@@ -2,7 +2,8 @@
 var r_beranda = server + "app/beranda";
 var r_member = server + "app/member";
 var rSupplier = server + "app/supplier";
-
+var rCustomer = server + "app/customer";
+var rMaterial = server + "app/material";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -25,6 +26,14 @@ var div_menu = new Vue({
         supplierAtc : function()
         {
             load_page(rSupplier, 'Supplier');
+        },
+        customerAtc : function()
+        {
+            load_page(rCustomer, 'Customer');
+        },
+        materialAtc : function()
+        {
+            load_page(rMaterial, 'Material');
         }
     }
 });

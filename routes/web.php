@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\C_Page;
 use App\Http\Controllers\C_Auth;
 use App\Http\Controllers\C_Supplier;
+use App\Http\Controllers\C_Customer;
+use App\Http\Controllers\C_Material;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -18,5 +20,9 @@ Route::post('/app/supplier/tambah/proses', [C_Supplier::class, 'prosesTambahSupp
 Route::get('/app/supplier/{codeSupplier}/edit/data', [C_Supplier::class, 'editDataSupplier']);
 Route::post('/app/supplier/edit/proses', [C_Supplier::class, 'prosesUpdateSupplier']);
 Route::post('/app/supplier/delete/proses', [C_Supplier::class, 'prosesDeleteSupplier']);
+// customer 
+Route::get('/app/customer', [C_Customer::class, 'customerPage']);
+// material 
+Route::get('app/material', [C_Material::class, 'materialPage']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
