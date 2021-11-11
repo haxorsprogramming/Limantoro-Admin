@@ -19,7 +19,7 @@
                 @foreach($dataMaterial as $material)
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
-                    <td>{{ $material -> name }}</td>
+                    <td>{{ ucfirst($material -> name) }}</td>
                     <td>{{ $material -> satuan }}</td>
                     <td>{{ $material -> jumlah }}</td>
                     <td>

@@ -37,12 +37,11 @@ var appSupplier = new Vue({
                     appSupplier.statusProsesTambah = true;
                     document.querySelector("#btnProsesTambah").setAttribute("disabled", "disabled");
                     dimForm();
-                    axios.post(rProsesTambahSupplier, ds).then(function(res){
-
-                    });
                     await tidur_bentar(2000);
-                    pesan_toast("Supplier baru berhasil di tambahkan ...");
-                    load_page(rSupplier, 'Supplier');
+                    axios.post(rProsesTambahSupplier, ds).then(function(res){
+                        pesan_toast("Supplier baru berhasil di tambahkan ...");
+                        load_page(rSupplier, 'Supplier');
+                    }); 
                 }
             }
         },
