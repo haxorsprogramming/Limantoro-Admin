@@ -1,10 +1,12 @@
 // route 
 var rProsesTambahMaterial = server + "app/material/tambah/proses";
+var rProsesUpdateMaterial = server + "app/material/edit/proses";
 // vue object 
 var appMaterial = new Vue({
     el : '#appMaterial',
     data : {
-        prosesBtnText : "Tambah material"
+        prosesBtnText : "Tambah material",
+        selectedKdMaterial : ''
     },
     methods : {
         tambahMaterialAtc : function()
@@ -42,10 +44,30 @@ var appMaterial = new Vue({
         },
         editAtc : function (kdMaterial)
         {
+            appMaterial.selectedKdMaterial = kdMaterial;
             var rLoadDataMaterial = "app/material/"+kdMaterial+"/edit/data";
             axios.get(rLoadDataMaterial).then(function(res){
                 let dr = res.data;
-                console.log(dr);
+                let dataMaterial = dr.dataMaterial;
+                $("#dMaterial").hide();
+                $("#dFormEditMaterial").show();
+                document.querySelector("#txtSatuanEdit").value = dataMaterial.satuan;
+                document.querySelector("#txtNamaMaterialEdit").value = dataMaterial.name;
+                document.querySelector("#txtKodeMaterialEdit").value = appMaterial.selectedKdMaterial;
+            });
+        },
+        prosesUpdateMaterialAtc : async function()
+        {
+            let kdMaterial = appMaterial.selectedKdMaterial;
+            let namaMaterial = document.querySelector("#txtNamaMaterialEdit").value;
+            let satuan = document.querySelector("#txtSatuanEdit").value;
+            let ds = {'kdMaterial':kdMaterial, 'namaMaterial':namaMaterial, 'satuan':satuan}
+            
+            dimFormEdit();
+            await tidur_bentar(2000);
+            axios.post(rProsesUpdateMaterial, ds).then(function(res){
+                pesan_toast("Data material berhasil di update ...");
+                load_page(rMaterial, 'Material');
             });
         }
     }
@@ -58,4 +80,10 @@ function dimForm()
     document.querySelector("#txtKodeMaterial").setAttribute("disabled", "disabled");
     document.querySelector("#txtNamaMaterial").setAttribute("disabled", "disabled");
     document.querySelector("#txtSatuan").setAttribute("disabled", "disabled");
+}
+
+function dimFormEdit()
+{
+    document.querySelector("#txtNamaMaterialEdit").setAttribute("disabled", "disabled");
+    document.querySelector("#txtSatuanEdit").setAttribute("disabled", "disabled");
 }

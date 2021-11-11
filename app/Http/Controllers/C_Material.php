@@ -33,4 +33,15 @@ class C_Material extends Controller
         $dr = ['dataMaterial' => $dataMaterial];
         return \Response::json($dr);
     }
+    public function prosesUpdateMaterial(Request $request)
+    {
+        // {'kdMaterial':kdMaterial, 'namaMaterial':namaMaterial, 'satuan':satuan}
+        $kdMaterial = $request -> kdMaterial;
+        M_Material::where('code', $kdMaterial) -> update([
+            'name' => $request -> namaMaterial,
+            'satuan' => $request -> satuan
+        ]);
+        $dr = ['dataMaterial' => 'halo'];
+        return \Response::json($dr);
+    }
 }

@@ -26,5 +26,6 @@ Route::get('/app/customer', [C_Customer::class, 'customerPage']);
 Route::get('app/material', [C_Material::class, 'materialPage']);
 Route::post('/app/material/tambah/proses', [C_Material::class, 'prosesTambahMaterial']);
 Route::get('/app/material/{codeMaterial}/edit/data', [C_Material::class, 'editDataMaterial']);
+Route::post('/app/material/edit/proses', [C_Material::class, 'prosesUpdateMaterial']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
