@@ -23,7 +23,7 @@
                         <li><a href="javascript:void(0)" @click="supplierAtc()">Supplier</a></li> 
                         <li><a href="javascript:void(0)" @click="customerAtc()">Customer</a></li>
                         <li><a href="javascript:void(0)" @click="materialAtc()">Material</a></li>
-                        <li><a href="javascript:void(0)">Karyawan</a></li>
+                        <li><a href="javascript:void(0)" @click="karyawanAtc()">Karyawan</a></li>
                     </ul>
                 </div>
             </li>
