@@ -55,7 +55,7 @@
                                 <th>Code</th>
                                 <th>Nama</th>
                                 <th>Jenis</th>
-                                <th>Aksi</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,9 +63,14 @@
                             <tr>
                                 <td>{{ $loop -> iteration }}</td>
                                 <td>{{ $project -> code }}</td>
-                                <td>{{ $project -> code }}</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td>{{ $project -> name }}</td>
+                                <td>{{ $project -> type }}</td>
+                                @if($project -> is_finished == 0)
+                                    <td>Belum selesai</td>
+                                @else
+                                    <td>Selesai</td>
+                                @endif
+                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>

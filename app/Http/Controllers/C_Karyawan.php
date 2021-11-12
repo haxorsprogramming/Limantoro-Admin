@@ -12,6 +12,6 @@ class C_Karyawan extends Controller
     {
         $dataKaryawan = M_Karyawan::all();
         $dr = ['dataKaryawan' => $dataKaryawan];
-        return view('app.karyawan.karyawanPage');   
+        return view('app.karyawan.karyawanPage', $dr);   
     }
 }
