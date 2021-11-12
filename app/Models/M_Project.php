@@ -10,11 +10,13 @@ class M_Project extends Model
     protected $table = "projects";
 
     protected $fillable = [
+        'admin_code',
         'code',
         'name',
         'type',
         'date',
+        'address',
         'is_finished',
-        'in_charge_id'
+        'in_charge_code'
     ];
 }

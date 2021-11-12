@@ -8,6 +8,7 @@ use App\Http\Controllers\C_Supplier;
 use App\Http\Controllers\C_Customer;
 use App\Http\Controllers\C_Material;
 use App\Http\Controllers\C_Karyawan;
+use App\Http\Controllers\C_Project;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -30,5 +31,7 @@ Route::get('/app/material/{codeMaterial}/edit/data', [C_Material::class, 'editDa
 Route::post('/app/material/edit/proses', [C_Material::class, 'prosesUpdateMaterial']);
 // karyawan 
 Route::get('/app/karyawan', [C_Karyawan::class, 'karyawanPage']);
+// project 
+Route::get('/app/project', [C_Project::class, 'projectPage']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

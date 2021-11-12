@@ -5,6 +5,7 @@ var rSupplier = server + "app/supplier";
 var rCustomer = server + "app/customer";
 var rMaterial = server + "app/material";
 var rKaryawan = server + "app/karyawan";
+var rProject = server + "app/project";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -39,6 +40,10 @@ var div_menu = new Vue({
         karyawanAtc : function()
         {
             load_page(rKaryawan, 'Karyawan');
+        },
+        projectAtc : function()
+        {
+            load_page(rProject, 'Project');
         }
     }
 });
