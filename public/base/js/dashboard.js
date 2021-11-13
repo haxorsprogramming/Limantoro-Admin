@@ -60,6 +60,7 @@ var footer_app = new Vue({
 // fungsi 
 NProgress.configure({ showSpinner: false });
 load_page(r_beranda, 'Dashboard');
+MicroModal.init();
 
 function pesan_toast(pesan)
 {

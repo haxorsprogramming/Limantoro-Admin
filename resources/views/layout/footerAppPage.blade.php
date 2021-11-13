@@ -5,7 +5,7 @@
         </div>
         <div class="footer-r white">&nbsp;</div>
         <div class="footer-grid-r white">
-            <a class="footer-text" href="javascript:void()">
+            <a class="footer-text" href="javascript:void(0)">
                 <span class="direction">Limantoro Agung Property (Project Management Apps)</span>
                 <div>
                     @{{page_title}}
@@ -32,6 +32,7 @@
 <script src="{{ asset('/style/alpha') }}/plugins/datatables/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
     const server = "{{ url('/') }}/";
     

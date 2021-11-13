@@ -68,6 +68,7 @@
                             <th>Jumlah Unit Terjual</th>
                             <th>Harga Jual</th>
                             <th>Marketing Fee (%)</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,6 +81,14 @@
                             <td>@{{ unit.unitTerjual }}</td>
                             <td>@{{ unit.hargaJual }}</td>
                             <td>@{{ unit.marketingFee }}</td>
+                            <td>
+                                <a class="btn" href="javascript:void(0)" @click="editUnitAtc(unit.namaUnit)">
+                                    <i class="material-icons">edit_note</i>
+                                </a>
+                                <a class="btn deep-orange lighten-1" href="javascript:void(0)" @click="editUnitAtc(unit.namaUnit)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

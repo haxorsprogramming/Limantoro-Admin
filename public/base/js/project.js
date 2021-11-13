@@ -1,5 +1,5 @@
 // route 
-
+var namaUnitData = [];
 // vue object 
 var appProject = new Vue({
     el : '#appProject',
@@ -61,21 +61,38 @@ var appProject = new Vue({
             let hargaJual = document.querySelector("#txtHargaJual").value;
             let marketingFee = document.querySelector("#txtMarketingFee").value;
 
-            appProject.dataUnit.push({
-                namaUnit : namaUnit,
-                ukuranTanah : ukuranTanah,
-                ukuranBangunan : ukuranBangunan,
-                jumlahUnit : jumlahUnit,
-                unitTerjual : unitTerjual,
-                hargaJual : hargaJual,
-                marketingFee : marketingFee
-            });
-            MicroModal.close('mdlUnit');
+            let cekNama = namaUnitData.includes(namaUnit);
+
+            if(cekNama === true){
+                pesanUmumApp('warning', 'Duplicate', 'Nama unit sudah ada !!!');
+            }else{
+                namaUnitData.push(namaUnit);
+                appProject.dataUnit.push({
+                    namaUnit : namaUnit,
+                    ukuranTanah : ukuranTanah,
+                    ukuranBangunan : ukuranBangunan,
+                    jumlahUnit : jumlahUnit,
+                    unitTerjual : unitTerjual,
+                    hargaJual : hargaJual,
+                    marketingFee : marketingFee
+                });
+                MicroModal.close('mdlUnit');
+            }
+        },
+        editUnitAtc : function(namaUnit)
+        {
+            console.log(namaUnit);
+        },
+        editUnitAtc : function(namaUnit)
+        {
+            let cekNama = namaUnitData.indexOf(namaUnit);
+            appProject.dataUnit.splice(cekNama, 1);
+            console.log(cekNama);
         }
     }
 });
 // function 
 $("#tblProject").dataTable();
-
+$("#txtHargaJual").mask('000.000.000.000.000', {reverse: true});
 $(".select2").select2();
-MicroModal.init();
+
