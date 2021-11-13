@@ -42,8 +42,8 @@
                 </div>
                 <div class="input-field col s12">
                     <select id="txtStatusProject" class="browser-default" style="margin-top:9px;">
-                        <option value="berjalan">Berjalan</option>
-                        <option value="selesai">Selesai</option>
+                        <option value="0">Berjalan</option>
+                        <option value="1">Selesai</option>
                     </select>
                     <label class="active">Status Project</label>
                 </div>
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col s12">
                 <div style="margin-bottom: 20px;">
-                    <a href="javascript:void(0)" class="btn" @click="tambahUnitAtc()">Tambah Unit</a>
+                    <a href="javascript:void(0)" class="btn" @click="tambahUnitAtc()"><i class="material-icons left">add_circle_outline</i> Tambah Unit</a>
                 </div>
                 <table id="tblUnit" class="bordered striped highlight">
                     <thead>
@@ -85,7 +85,7 @@
                                 <a class="btn" href="javascript:void(0)" @click="editUnitAtc(unit.namaUnit)">
                                     <i class="material-icons">edit_note</i>
                                 </a>
-                                <a class="btn deep-orange lighten-1" href="javascript:void(0)" @click="editUnitAtc(unit.namaUnit)">
+                                <a class="btn deep-orange lighten-1" href="javascript:void(0)" @click="deleteUnitAtc(unit.namaUnit)">
                                     <i class="material-icons">delete</i>
                                 </a>
                             </td>
@@ -94,6 +94,11 @@
                 </table>
             </div>
         </div>
+
+        <div class="row" style="text-align: center;margin-top:30px;">
+            <a href="javascript:void(0)" class="btn btn-large" @click="simpanProjectAtc()"><i class="material-icons left">file_download_done</i> Simpan Project</a>
+        </div>
+
     </div>
 </div>
 

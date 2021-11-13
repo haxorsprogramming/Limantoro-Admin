@@ -1,12 +1,15 @@
 // route 
 var namaUnitData = [];
+var rProsesProject = server + "app/project/tambah/proses";
 // vue object 
 var appProject = new Vue({
     el : '#appProject',
     data : {
-        prosesBtnText : "Tambah project",
+        prosesBtnText : 'Tambah project',
         kdProjectRowSelected : '',
-        dataUnit : []
+        dataUnit : [],
+        titleManageUnit : 'Tambah Unit',
+        statusManage : 'add'
     },
     methods : {
         tambahProjectAtc : function()
@@ -28,7 +31,7 @@ var appProject = new Vue({
         },
         kembaliAtc : function()
         {
-
+            load_page(rProject, 'Project');
         },
         showModalPenanggungJawabAtc : function()
         {
@@ -48,46 +51,81 @@ var appProject = new Vue({
         },
         tambahUnitAtc : function()
         {
+            appProject.titleManageUnit = "Tambah Unit";
+            appProject.statusManage = "add";
             MicroModal.show('mdlUnit');
             document.querySelector("#txtNamaUnit").focus();
         },
-        prosesTambahUnit : function()
+        prosesManageAtc : function()
         {
-            let namaUnit = document.querySelector("#txtNamaUnit").value;
-            let ukuranTanah = document.querySelector("#txtUkuranTanah").value;
-            let ukuranBangunan = document.querySelector("#txtUkuranBangunan").value;
-            let jumlahUnit = document.querySelector("#txtJumlahUnit").value;
-            let unitTerjual = document.querySelector("#txtUnitTerjual").value;
-            let hargaJual = document.querySelector("#txtHargaJual").value;
-            let marketingFee = document.querySelector("#txtMarketingFee").value;
+            if(appProject.statusManage === 'add'){
+                let namaUnit = document.querySelector("#txtNamaUnit").value;
+                let ukuranTanah = document.querySelector("#txtUkuranTanah").value;
+                let ukuranBangunan = document.querySelector("#txtUkuranBangunan").value;
+                let jumlahUnit = document.querySelector("#txtJumlahUnit").value;
+                let unitTerjual = document.querySelector("#txtUnitTerjual").value;
+                let hargaJual = document.querySelector("#txtHargaJual").value;
+                let marketingFee = document.querySelector("#txtMarketingFee").value;
 
-            let cekNama = namaUnitData.includes(namaUnit);
+                let cekNama = namaUnitData.includes(namaUnit);
 
-            if(cekNama === true){
-                pesanUmumApp('warning', 'Duplicate', 'Nama unit sudah ada !!!');
+                if(cekNama === true){
+                    pesan_toast("Nama unit sudah ada !!!");
+                }else{
+                    namaUnitData.push(namaUnit);
+                    appProject.dataUnit.push({
+                        namaUnit : namaUnit,
+                        ukuranTanah : ukuranTanah,
+                        ukuranBangunan : ukuranBangunan,
+                        jumlahUnit : jumlahUnit,
+                        unitTerjual : unitTerjual,
+                        hargaJual : hargaJual,
+                        marketingFee : marketingFee
+                    });
+                    pesan_toast("Unit "+namaUnit+" berhasil ditambahkan ...");
+                    MicroModal.close('mdlUnit');
+                }
             }else{
-                namaUnitData.push(namaUnit);
-                appProject.dataUnit.push({
-                    namaUnit : namaUnit,
-                    ukuranTanah : ukuranTanah,
-                    ukuranBangunan : ukuranBangunan,
-                    jumlahUnit : jumlahUnit,
-                    unitTerjual : unitTerjual,
-                    hargaJual : hargaJual,
-                    marketingFee : marketingFee
-                });
-                MicroModal.close('mdlUnit');
+                
             }
+            
         },
         editUnitAtc : function(namaUnit)
         {
-            console.log(namaUnit);
+            appProject.titleManageUnit = "Edit Unit"
+            appProject.statusManage = "edit";
+            let cekArrayNama = namaUnitData.indexOf(namaUnit);
+            let dataUnitDetails = appProject.dataUnit[cekArrayNama];
+            console.log(dataUnitDetails);   
+            document.querySelector("#txtNamaUnit").value = dataUnitDetails.namaUnit;
+            document.querySelector("#txtUkuranTanah").value = dataUnitDetails.ukuranTanah;
+            document.querySelector("#txtUkuranBangunan").value = dataUnitDetails.ukuranBangunan;
+            document.querySelector("#txtJumlahUnit").value = dataUnitDetails.jumlahUnit;
+            document.querySelector("#txtUnitTerjual").value = dataUnitDetails.unitTerjual;
+            document.querySelector("#txtHargaJual").value = dataUnitDetails.hargaJual;
+            document.querySelector("#txtMarketingFee").value = dataUnitDetails.marketingFee;
+            MicroModal.show('mdlUnit');
         },
-        editUnitAtc : function(namaUnit)
+        deleteUnitAtc : function(namaUnit)
         {
             let cekNama = namaUnitData.indexOf(namaUnit);
+            namaUnitData.splice(cekNama, 1);
             appProject.dataUnit.splice(cekNama, 1);
-            console.log(cekNama);
+            pesan_toast("Unit berhasil dihapus ...");
+        },
+        simpanProjectAtc : function()
+        {
+            let kdProject = document.querySelector("#txtKodeProject").value;
+            let namaProject = document.querySelector("#txtNamaProject").value;
+            let pj = document.querySelector("#txtPenanggungJawab").value;
+            let jenisProject = document.querySelector("#txtJenisProject").value;
+            let tanggalProject = document.querySelector("#txtTanggalProject").value;
+            let statusProject = document.querySelector("#txtStatusProject").value;
+            let ds = {'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj, 'jenisProject':jenisProject, 'tanggalProject':tanggalProject, 'statusProject':statusProject}
+            axios.post(rProsesProject, ds).then(function(res){
+                let obj = res.data;
+                console.log(obj);
+            });
         }
     }
 });

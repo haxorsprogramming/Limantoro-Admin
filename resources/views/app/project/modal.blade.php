@@ -1,6 +1,6 @@
 <!-- div modal penanggung jawab  -->
 <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__overlay" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
             <header class="modal__header">
                 <h2 class="modal__title" id="modal-1-title">
@@ -41,11 +41,11 @@
 <!-- div modal tambah unit  -->
 
 <div class="modal micromodal-slide" id="mdlUnit" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1">
+    <div class="modal__overlay">
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
             <header class="modal__header">
                 <h2 class="modal__title" id="modal-1-title">
-                    Tambah unit
+                    @{{ titleManageUnit }}
                 </h2>
                 <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
@@ -89,8 +89,8 @@
                 </table>
             </main>
             <footer class="modal__footer">
-                <a href="#!" class="btn" @click="prosesTambahUnit()">Tambah</a>
-                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Tutup</button>
+                <a href="#!" class="btn" @click="prosesManageAtc()">Proses</a>
+                <a href="#!" class="btn" data-micromodal-close aria-label="Close this dialog window">Tutup</a>
             </footer>
         </div>
     </div>

@@ -33,5 +33,6 @@ Route::post('/app/material/edit/proses', [C_Material::class, 'prosesUpdateMateri
 Route::get('/app/karyawan', [C_Karyawan::class, 'karyawanPage']);
 // project 
 Route::get('/app/project', [C_Project::class, 'projectPage']);
+ROute::post('/app/project/tambah/proses', [C_Project::class, 'prosesTambahProject']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
