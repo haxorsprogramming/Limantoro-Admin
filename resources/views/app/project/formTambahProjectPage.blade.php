@@ -1,4 +1,4 @@
-<!-- form tambah Material -->
+<!-- form tambah project -->
 <div class="card" id="dFormTambahProject" style="display: none;">
     <div class="card-content">
         <span class="card-title">Tambah Project</span>
@@ -9,23 +9,29 @@
             <!-- div col 1 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input placeholder="Kode Material" id="txtKodeProject" type="text" class="validate">
+                    <input placeholder="Kode Project" id="txtKodeProject" type="text" class="validate">
                     <label for="txtKodeProject" class="active">Kode Project</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="Nama Material" id="txtNamaMaterial" type="text" class="validate">
-                    <label for="txtNamaMaterial" class="active">Nama Project</label>
+                    <input placeholder="Nama Project" id="txtNamaProject" type="text" class="validate">
+                    <label for="txtNamaProject" class="active">Nama Project</label>
                 </div>
-
-                <a href="#!" class="btn" id="btnProsesTambah" @click="prosesTambahProjectAtc()">
-                    <i class="material-icons left">file_download_done</i> @{{prosesBtnText}}
-                </a>
             </div>
             <!-- div col 2 -->
             <div class="col s4">
                 <div class="input-field col s12">
                     <input placeholder="Penanggung Jawab" @click="showModalPenanggungJawabAtc()" id="txtPenanggungJawab" readonly type="text">
                     <label for="txtPenanggungJawab" class="active">Penanggung Jawab</label>
+                </div>
+                <div class="input-field col s12">
+                    <select id="txtJenisProject" class="browser-default" style="margin-top:9px;">
+                        <option value="rumah">Rumah</option>
+                        <option value="toko">Toko</option>
+                        <option value="komplek">Komplek</option>
+                        <option value="sekolah">Sekolah</option>
+                        <option value="kantor">Kantor</option>
+                    </select>
+                    <label class="active">Jenis Project</label>
                 </div>
             </div>
             <!-- div col 3 -->
@@ -34,48 +40,52 @@
                     <input id="txtTanggalProject" type="date" class="validate">
                     <label for="txtTanggalProject" class="active">Tanggal Project</label>
                 </div>
-
+                <div class="input-field col s12">
+                    <select id="txtStatusProject" class="browser-default" style="margin-top:9px;">
+                        <option value="berjalan">Berjalan</option>
+                        <option value="selesai">Selesai</option>
+                    </select>
+                    <label class="active">Status Project</label>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- data unit  -->
+        <span class="card-title">Data Unit</span>
+        <div class="row">
+            <div class="col s12">
+                <div style="margin-bottom: 20px;">
+                    <a href="javascript:void(0)" class="btn" @click="tambahUnitAtc()">Tambah Unit</a>
+                </div>
+                <table id="tblUnit" class="bordered striped highlight">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Ukuran Tanah</th>
+                            <th>Ukuran Bangunan</th>
+                            <th>Jumlah Unit</th>
+                            <th>Jumlah Unit Terjual</th>
+                            <th>Harga Jual</th>
+                            <th>Marketing Fee (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="unit in dataUnit">
+                            <td>1</td>
+                            <td>@{{ unit.namaUnit }}</td>
+                            <td>@{{ unit.ukuranTanah }}</td>
+                            <td>@{{ unit.ukuranBangunan }}</td>
+                            <td>@{{ unit.jumlahUnit }}</td>
+                            <td>@{{ unit.unitTerjual }}</td>
+                            <td>@{{ unit.hargaJual }}</td>
+                            <td>@{{ unit.marketingFee }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
-<!-- div modal penanggung jawab  -->
-<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-            <header class="modal__header">
-                <h2 class="modal__title" id="modal-1-title">
-                    Pilih penanggung jawab
-                </h2>
-                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-            </header>
-            <main class="modal__content" id="modal-1-content">
-               <table class="table table-hover">
-                   <thead>
-                       <tr>
-                           <th>Code</th>
-                           <th>Nama</th>
-                           <th>Title</th>
-                           <th>Alamat</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       @foreach($dataPenanggungJawab as $pj)
-                            <tr @click="selectRowPj('{{ $pj -> code }}')" id="rwPj{{ $pj -> code }}" class="rwPj">
-                                <td>{{ $pj -> code }}</td>
-                                <td>{{ $pj -> name }}</td>
-                                <td>Manajer Lapangan</td>
-                                <td>{{ $pj -> address }}</td>
-                            </tr>
-                       @endforeach
-                   </tbody>
-               </table>
-            </main>
-            <footer class="modal__footer">
-                <button class="modal__btn modal__btn-primary" @click="pilihPjAtc()">Pilih</button>
-                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Tutup</button>
-            </footer>
-        </div>
-    </div>
-</div>
+@include('app.project.modal')
