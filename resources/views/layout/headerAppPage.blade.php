@@ -18,7 +18,9 @@
     <link href="{{ asset('/style/alpha') }}/plugins/metrojs/MetroJs.min.css" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet">
     <link href="{{ asset('/base') }}/css/nprogress.css" rel="stylesheet">
+    <link href="{{ asset('/base') }}/css/micromodal.css" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="{{ asset('/style/alpha') }}/plugins/select2/css/select2.css" rel="stylesheet">
     <!-- Theme Styles -->
     <link href="{{ asset('/style/alpha') }}/css/alpha.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/style/alpha') }}/css/custom.css" rel="stylesheet" type="text/css" />
