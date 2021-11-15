@@ -58,7 +58,6 @@ var appProject = new Vue({
                 appProject.statusManage = "add";
                 MicroModal.show('mdlUnit');
                 document.querySelector("#txtNamaUnit").focus();
-                appProject.stateBtnTambahUnit = true;
             }
         },
         prosesManageAtc : function()
@@ -117,7 +116,7 @@ var appProject = new Vue({
             appProject.dataUnit.splice(cekNama, 1);
             pesan_toast("Unit berhasil dihapus ...");
         },
-        simpanProjectAtc : function()
+        simpanProjectAtc : async function()
         {
             let kdProject = document.querySelector("#txtKodeProject").value;
             let namaProject = document.querySelector("#txtNamaProject").value;
@@ -128,10 +127,11 @@ var appProject = new Vue({
             let ds = {'dataUnit':appProject.dataUnit, 'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj, 'jenisProject':jenisProject, 'tanggalProject':tanggalProject, 'statusProject':statusProject}
             appProject.simpanProjectBtnText = "Memproses ...";
             dimForm();
-            // axios.post(rProsesProject, ds).then(function(res){
-            //     let obj = res.data;
-            //     console.log(obj);
-            // });
+            await tidur_bentar(2000);
+            axios.post(rProsesProject, ds).then(function(res){
+                pesan_toast("Project berhasil ditambahkan ...");
+                load_page(rProject, 'Project');
+            });
         }
     }
 });

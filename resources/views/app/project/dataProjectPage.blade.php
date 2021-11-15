@@ -22,11 +22,15 @@
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ ucfirst($project -> name) }}</td>
                     <td>{{ $project -> type }}</td>
-                    <td>{{ $project -> is_finished }}</td>
                     <td>{{ $project -> address }}</td>
+                    @if($project -> is_finished === 0)
+                    <td>Berjalan</td>
+                    @else
+                    <td>Selesai</td>
+                    @endif
                     <td>
                         <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $project -> code }}')">
-                            <i class="material-icons">edit_note</i>
+                            <i class="material-icons">fact_check</i>
                         </a>
                         <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $project -> code }}')">
                             <i class="material-icons">delete</i>

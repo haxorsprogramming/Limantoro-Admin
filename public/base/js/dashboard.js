@@ -61,6 +61,7 @@ var footer_app = new Vue({
 NProgress.configure({ showSpinner: false });
 load_page(r_beranda, 'Dashboard');
 MicroModal.init();
+$('.tooltipped').tooltip();
 
 function pesan_toast(pesan)
 {
