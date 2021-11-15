@@ -25,6 +25,7 @@
 <script src="{{ asset('/style/alpha') }}/plugins/materialize/js/materialize.min.js"></script>
 <script src="{{ asset('/style/alpha') }}/plugins/material-preloader/js/materialPreloader.min.js"></script>
 <script src="{{ asset('/style/alpha') }}/plugins/jquery-blockui/jquery.blockui.js"></script>
+<script src="{{ asset('/style/alpha') }}/plugins/google-code-prettify/prettify.js"></script>
 <script src="{{ asset('/style/alpha') }}/plugins/select2/js/select2.min.js"></script>
 <script src="{{ asset('/style/alpha') }}/js/alpha.min.js"></script>
 
@@ -33,9 +34,12 @@
 <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
 <script>
     const server = "{{ url('/') }}/";
-    
 </script>
 <script src="{{ asset('/') }}base/js/dashboard.js"></script>
 

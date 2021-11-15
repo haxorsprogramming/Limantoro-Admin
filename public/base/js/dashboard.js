@@ -58,10 +58,13 @@ var footer_app = new Vue({
     }
 })
 // fungsi 
-NProgress.configure({ showSpinner: false });
-load_page(r_beranda, 'Dashboard');
-MicroModal.init();
-$('.tooltipped').tooltip();
+document.addEventListener('DOMContentLoaded', function() {
+    NProgress.configure({ showSpinner: false });
+    load_page(r_beranda, 'Dashboard');
+    MicroModal.init();
+    $('.tooltipped').tooltip();
+    $('.dropdown-trigger').dropdown();
+  });
 
 function pesan_toast(pesan)
 {
@@ -90,4 +93,9 @@ function pesanUmumApp(icon, title, text)
     title : title,
     text : text
   });
+}
+
+function tip(element, isi)
+{
+    tippy(element, {content: isi});
 }

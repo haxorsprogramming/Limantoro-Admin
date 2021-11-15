@@ -15,15 +15,11 @@ class C_Project extends Controller
     {
         $dataProject = M_Project::all();
         $dataPenanggungJawab = M_Karyawan::where('role_id', 3) -> get();
-        // dd($dataPenanggungJawab);
         $dr = ['dataProject' => $dataProject, 'dataPenanggungJawab' => $dataPenanggungJawab];
         return view('app.project.projectPage', $dr);
     }
     public function prosesTambahProject(Request $request)
     {
-        // {'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj,
-            //  'jenisProject':jenisProject, 'tanggalProject':tanggalProject,
-            //  'statusProject':statusProject}
         $project = new M_Project();
         $project -> admin_code = "VICKY";
         $project -> code = $request -> kdProject;
@@ -38,13 +34,6 @@ class C_Project extends Controller
         $dataUnit = $request -> dataUnit;
         $ordinal = 1;
         $orUnit = 0;
-        // namaUnit : namaUnit,
-        //                 ukuranTanah : ukuranTanah,
-        //                 ukuranBangunan : ukuranBangunan,
-        //                 jumlahUnit : jumlahUnit,
-        //                 unitTerjual : unitTerjual,
-        //                 hargaJual : hargaJual,
-        //                 marketingFee : marketingFee
         foreach($dataUnit as $unit){
             $sellingPrice = Str::replace(".", "", $dataUnit[$orUnit]['hargaJual']);
             $unit = new M_Unit();
@@ -64,5 +53,9 @@ class C_Project extends Controller
         }
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
+    }
+    public function detailProject()
+    {
+
     }
 }

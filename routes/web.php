@@ -34,6 +34,6 @@ Route::get('/app/karyawan', [C_Karyawan::class, 'karyawanPage']);
 // project 
 Route::get('/app/project', [C_Project::class, 'projectPage']);
 Route::post('/app/project/tambah/proses', [C_Project::class, 'prosesTambahProject']);
-
+Route::get('/app/project/{kdProject}/detail', [C_Project::class, 'detailProject']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

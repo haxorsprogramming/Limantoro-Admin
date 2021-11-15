@@ -19,9 +19,9 @@ var appProject = new Vue({
             $("#dProject").hide();
             $("#dFormTambahProject").show();
         },
-        editAtc : function()
+        detailAtc : function(kdProject)
         {
-
+            console.log(kdProject);
         },
         deleteAtc : function()
         {
@@ -135,10 +135,12 @@ var appProject = new Vue({
         }
     }
 });
-// function 
+// function inisialisasi
 $("#tblProject").dataTable();
 $("#txtHargaJual").mask('000.000.000.000.000', {reverse: true});
 $(".select2").select2();
+tip('.btnDetail', 'Detail');
+tip('.btnHapus', 'Hapus');
 
 function dimForm()
 {
@@ -149,5 +151,4 @@ function dimForm()
     document.querySelector("#txtJenisProject").setAttribute("disabled", "disabled");
     document.querySelector("#txtTanggalProject").setAttribute("disabled", "disabled");
     document.querySelector("#txtStatusProject").setAttribute("disabled", "disabled");
-
 }
