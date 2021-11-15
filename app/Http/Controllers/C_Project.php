@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\M_Project;
 use App\Models\M_Karyawan;
@@ -45,6 +46,7 @@ class C_Project extends Controller
         //                 hargaJual : hargaJual,
         //                 marketingFee : marketingFee
         foreach($dataUnit as $unit){
+            $sellingPrice = Str::replace(".", "", $dataUnit[$orUnit]['hargaJual']);
             $unit = new M_Unit();
             $unit -> ordinal = $ordinal;
             $unit -> name = $dataUnit[$orUnit]['namaUnit'];
@@ -52,7 +54,7 @@ class C_Project extends Controller
             $unit -> building_size = $dataUnit[$orUnit]['ukuranTanah'];
             $unit -> builded = $dataUnit[$orUnit]['jumlahUnit'];
             $unit -> sold = $dataUnit[$orUnit]['unitTerjual'];
-            $unit -> selling_price = $dataUnit[$orUnit]['hargaJual'];
+            $unit -> selling_price = $sellingPrice;
             $unit -> marketing_fee = $dataUnit[$orUnit]['marketingFee'];
             $unit -> project_code = $request -> kdProject;
             $unit -> admin_code = 'VICKY';

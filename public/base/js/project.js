@@ -9,7 +9,9 @@ var appProject = new Vue({
         kdProjectRowSelected : '',
         dataUnit : [],
         titleManageUnit : 'Tambah Unit',
-        statusManage : 'add'
+        statusManage : 'add',
+        simpanProjectBtnText : 'Simpan Project',
+        stateBtnTambahUnit : false
     },
     methods : {
         tambahProjectAtc : function()
@@ -51,10 +53,13 @@ var appProject = new Vue({
         },
         tambahUnitAtc : function()
         {
-            appProject.titleManageUnit = "Tambah Unit";
-            appProject.statusManage = "add";
-            MicroModal.show('mdlUnit');
-            document.querySelector("#txtNamaUnit").focus();
+            if(appProject.stateBtnTambahUnit === false){
+                appProject.titleManageUnit = "Tambah Unit";
+                appProject.statusManage = "add";
+                MicroModal.show('mdlUnit');
+                document.querySelector("#txtNamaUnit").focus();
+                appProject.stateBtnTambahUnit = true;
+            }
         },
         prosesManageAtc : function()
         {
@@ -121,11 +126,12 @@ var appProject = new Vue({
             let tanggalProject = document.querySelector("#txtTanggalProject").value;
             let statusProject = document.querySelector("#txtStatusProject").value;
             let ds = {'dataUnit':appProject.dataUnit, 'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj, 'jenisProject':jenisProject, 'tanggalProject':tanggalProject, 'statusProject':statusProject}
-            // console.log(appProject.dataUnit);
-            axios.post(rProsesProject, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
-            });
+            appProject.simpanProjectBtnText = "Memproses ...";
+            dimForm();
+            // axios.post(rProsesProject, ds).then(function(res){
+            //     let obj = res.data;
+            //     console.log(obj);
+            // });
         }
     }
 });
@@ -134,3 +140,14 @@ $("#tblProject").dataTable();
 $("#txtHargaJual").mask('000.000.000.000.000', {reverse: true});
 $(".select2").select2();
 
+function dimForm()
+{
+    document.querySelector("#btnTambahUnit").setAttribute("disabled","disabled");
+    document.querySelector("#btnSimpanProject").setAttribute("disabled", "disabled");
+    document.querySelector("#txtKodeProject").setAttribute("disabled", "disabled");
+    document.querySelector("#txtNamaProject").setAttribute("disabled", "disabled");
+    document.querySelector("#txtJenisProject").setAttribute("disabled", "disabled");
+    document.querySelector("#txtTanggalProject").setAttribute("disabled", "disabled");
+    document.querySelector("#txtStatusProject").setAttribute("disabled", "disabled");
+
+}

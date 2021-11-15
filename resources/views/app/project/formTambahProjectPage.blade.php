@@ -55,7 +55,9 @@
         <div class="row">
             <div class="col s12">
                 <div style="margin-bottom: 20px;">
-                    <a href="javascript:void(0)" class="btn" @click="tambahUnitAtc()"><i class="material-icons left">add_circle_outline</i> Tambah Unit</a>
+                    <a href="javascript:void(0)" class="btn" @click="tambahUnitAtc()" :disabled="stateBtnTambahUnit" id="btnTambahUnit">
+                        <i class="material-icons left">add_circle_outline</i> Tambah Unit
+                    </a>
                 </div>
                 <table id="tblUnit" class="bordered striped highlight">
                     <thead>
@@ -96,7 +98,9 @@
         </div>
 
         <div class="row" style="text-align: center;margin-top:30px;">
-            <a href="javascript:void(0)" class="btn btn-large" @click="simpanProjectAtc()"><i class="material-icons left">file_download_done</i> Simpan Project</a>
+            <a href="javascript:void(0)" class="btn btn-large" @click="simpanProjectAtc()" id="btnSimpanProject">
+                <i class="material-icons left">file_download_done</i> @{{ simpanProjectBtnText }}
+            </a>
         </div>
 
     </div>
