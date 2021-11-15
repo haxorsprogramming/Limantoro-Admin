@@ -12,6 +12,7 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Address</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ ucfirst($project -> name) }}</td>
                     <td>{{ $project -> type }}</td>
+                    <td>{{ $project -> is_finished }}</td>
                     <td>{{ $project -> address }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $project -> code }}')">

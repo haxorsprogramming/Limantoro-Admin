@@ -121,11 +121,12 @@ var appProject = new Vue({
             let jenisProject = document.querySelector("#txtJenisProject").value;
             let tanggalProject = document.querySelector("#txtTanggalProject").value;
             let statusProject = document.querySelector("#txtStatusProject").value;
-            let ds = {'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj, 'jenisProject':jenisProject, 'tanggalProject':tanggalProject, 'statusProject':statusProject}
-            axios.post(rProsesProject, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
-            });
+            let ds = {'dataUnit':appProject.dataUnit, 'kdProject':kdProject, 'namaProject':namaProject, 'pj':pj, 'jenisProject':jenisProject, 'tanggalProject':tanggalProject, 'statusProject':statusProject}
+            console.log(appProject.dataUnit);
+            // axios.post(rProsesProject, ds).then(function(res){
+            //     let obj = res.data;
+            //     console.log(obj);
+            // });
         }
     }
 });

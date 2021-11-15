@@ -32,6 +32,9 @@ class C_Project extends Controller
         $project -> is_finished = $request -> statusProject;
         $project -> in_charge_code = $request -> pj;
         $project -> save();
+
+        $dataUnit = $request -> dataUnit;
+
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }
