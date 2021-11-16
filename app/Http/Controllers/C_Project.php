@@ -54,8 +54,10 @@ class C_Project extends Controller
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }
-    public function detailProject()
+    public function detailProject(Request $request, $kdProject)
     {
-
+        $dataProject = M_Project::where('code', $kdProject) -> first();
+        $dr = ['dataProject' => $dataProject];
+        return view('app.project.details.detailsProjectPage', $dr);
     }
 }

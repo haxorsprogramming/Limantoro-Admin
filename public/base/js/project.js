@@ -1,6 +1,7 @@
 // route 
 var namaUnitData = [];
 var rProsesProject = server + "app/project/tambah/proses";
+
 // vue object 
 var appProject = new Vue({
     el : '#appProject',
@@ -21,7 +22,8 @@ var appProject = new Vue({
         },
         detailAtc : function(kdProject)
         {
-            console.log(kdProject);
+            var rDetailProject = server + "app/project/"+kdProject+"/detail";
+            load_page(rDetailProject, 'Detail Project');
         },
         deleteAtc : function()
         {
