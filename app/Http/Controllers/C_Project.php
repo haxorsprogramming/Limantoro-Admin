@@ -60,4 +60,16 @@ class C_Project extends Controller
         $dr = ['dataProject' => $dataProject];
         return view('app.project.details.detailsProjectPage', $dr);
     }
+    public function dataUnitSection(Request $request, $kdProject)
+    {
+        echo "Data unit ".$kdProject;
+    }
+    public function materialDariStock(Request $request, $kdProject)
+    {
+        echo "Material dari stock ".$kdProject;
+    }
+    public function materialTersisa(Request $request, $kdProject)
+    {
+        echo "material tersisa ".$kdProject;
+    }
 }

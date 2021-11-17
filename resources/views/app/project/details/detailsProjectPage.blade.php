@@ -6,6 +6,7 @@
                 <div class="input-field">
                     <label for="txtKodeProject" class="active">Kode Project</label>
                     <input placeholder="Kode Project" id="txtKodeProject" disabled type="text" class="validate" value="{{ $dataProject -> code }}">
+                    <input type="hidden" value="{{ $dataProject -> code }}" id="txtHidKdProject">
                 </div>
                 <div class="input-field">
                     <label for="txtNamaProject" class="active">Nama Project</label>
@@ -19,7 +20,7 @@
                 </div>
                 <div class="input-field">
                     <label for="txtJenisProject" class="active">Jenis Project</label>
-                    
+
                 </div>
             </div>
             <div class="col s12 m4 l4">
@@ -36,14 +37,20 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center;">
+        <div style="text-align: center;margin-bottom:20px;">
             <a href="#!" class="btn btn-large"><i class="material-icons left">edit_note</i> Edit project</a>
-            <a href="#!" class="btn btn-large"><i class="material-icons left">table_view</i> Data unit</a>
-            <a href="#!" class="btn btn-large"><i class="material-icons left">grading</i> Material dari stock</a>
-            <a href="#!" class="btn btn-large"><i class="material-icons left">opacity</i> Material tersisa</a>
+            <a href="#!" class="btn btn-large orange" @click="dataUnitAtc()" id="btnDataUnit"><i class="material-icons left">table_view</i> Data unit</a>
+            <a href="#!" class="btn btn-large" @click="matDariStockAtc()" id="btnMaterialDariStock"><i class="material-icons left">grading</i> Material dari stock</a>
+            <a href="#!" class="btn btn-large" @click="matTersisaAtc()" id="btnMaterialTersisa"><i class="material-icons left">opacity</i> Material tersisa</a>
             <a href="#!" class="btn btn-large"><i class="material-icons left">print</i> Cetak dokumen project</a>
         </div>
-        <hr/>
+        <hr />
+        <div style="text-align: center;">
+            <h5 class="light">@{{ textSection2 }}</h5>
+        </div>
+        <div class="row" id="dItemDetails">
+
+        </div>
     </div>
 </div>
 

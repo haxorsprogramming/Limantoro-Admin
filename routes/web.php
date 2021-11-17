@@ -35,5 +35,13 @@ Route::get('/app/karyawan', [C_Karyawan::class, 'karyawanPage']);
 Route::get('/app/project', [C_Project::class, 'projectPage']);
 Route::post('/app/project/tambah/proses', [C_Project::class, 'prosesTambahProject']);
 Route::get('/app/project/{kdProject}/detail', [C_Project::class, 'detailProject']);
+Route::get('/app/project/{kdProject}/detail/sec/dataunit', [C_Project::class, 'dataUnitSection']);
+Route::get('/app/project/{kdProject}/detail/sec/materialdaristock', [C_Project::class, 'materialDariStock']);
+Route::get('/app/project/{kdProject}/detail/sec/materialtersisa', [C_Project::class, 'materialTersisa']);
+
+// permintaan pembelian 
+// persetujuan permintaan pembelian 
+// pemesanan pembelian 
+// laporan bukti keluar
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
