@@ -9,7 +9,7 @@
                 <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
             <main class="modal__content" id="modal-1-content">
-                <table class="table table-hover">
+                <table class="table bordered highlight">
                     <thead>
                         <tr>
                             <th>Code</th>
