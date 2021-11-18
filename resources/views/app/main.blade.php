@@ -216,7 +216,7 @@
 </aside>
 
 @include('layout.sideMenuAppPage')
-<main class="mn-inner inner-active-sidebar" id="div_utama">
+<main class="mn-inner inner-active-sidebar" id="div_utama" style="padding-right: 20px;">
 
 </main>
 @include('layout.footerAppPage')

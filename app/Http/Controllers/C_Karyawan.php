@@ -14,4 +14,9 @@ class C_Karyawan extends Controller
         $dr = ['dataKaryawan' => $dataKaryawan];
         return view('app.karyawan.karyawanPage', $dr);   
     }
+    public function prosesTambahKaryawan(Request $request)
+    {
+        $dr = ['status' => 'sukes'];
+        return \Response::json($dr);
+    }
 }
