@@ -62,7 +62,10 @@ class C_Project extends Controller
     }
     public function dataUnitSection(Request $request, $kdProject)
     {
-        echo "Data unit ".$kdProject;
+        $dataUnit = M_Unit::where('project_code', $kdProject) -> get();
+        $totalUnit = M_Unit::where('project_code', $kdProject) -> count();
+        $dr = ['dataUnit' => $dataUnit, 'totalUnit' => $totalUnit];
+        return view('app.project.details.secDataUnit', $dr);
     }
     public function materialDariStock(Request $request, $kdProject)
     {

@@ -5,7 +5,7 @@
             <i class="material-icons left">add_circle_outline</i>Tambah Karyawan
         </a>
         <hr />
-        <table id="tblMaterial" class="display responsive-table datatable-example">
+        <table id="tblMaterial" class="bordered highlight hover">
             <thead>
                 <tr>
                     <th>No</th>

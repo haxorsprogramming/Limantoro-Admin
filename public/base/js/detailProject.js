@@ -4,7 +4,8 @@ var dDetailProject = new Vue({
     el : '#dDetailProject',
     data : {
         textSection2 : "Data Unit",
-        kdProject : ''
+        kdProject : '',
+        stateEdit : false
     },
     methods : {
         dataUnitAtc : function()
@@ -25,11 +26,7 @@ var dDetailProject = new Vue({
         },
         matTersisaAtc : function()
         {
-            let kdProject = dDetailProject.kdProject;
-            dDetailProject.textSection2 = "Material Tersisa";
-            loadingSection();
-            togButton("#btnMaterialTersisa");
-            loadToItemSection(kdProject, "materialtersisa");
+            wrapSection("Material Tersisa", "#btnMaterialTersisa", "materialtersisa");
         }
     }
 });
@@ -37,6 +34,15 @@ var dDetailProject = new Vue({
 // fungsi 
 dDetailProject.kdProject = document.querySelector("#txtHidKdProject").value;
 loadSecAwal();
+
+function wrapSection(title, elBtn, routeSec)
+{
+    let kdProject = dDetailProject.kdProject;
+    dDetailProject.textSection2 = title;
+    loadingSection();
+    togButton(elBtn);
+    loadToItemSection(kdProject, routeSec);
+}
 
 function loadSecAwal()
 {
