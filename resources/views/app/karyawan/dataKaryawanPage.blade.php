@@ -1,17 +1,18 @@
-<div class="card" id="dMaterial">
+<div class="card" id="dKaryawan">
     <div class="card-content">
-        <span class="card-title">Daftar Karyawan</span>
+        <h3 class="light">Data Karyawan</h3>
         <a href="#!" class="waves-effect waves-light btn" @click="tambahKaryawanAtc()">
             <i class="material-icons left">add_circle_outline</i>Tambah Karyawan
         </a>
         <hr />
-        <table id="tblMaterial" class="bordered highlight hover">
+        <table id="tblKaryawan" class="bordered highlight hover">
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Code User</th>
                     <th>Name</th>
-                    <th>Satuan</th>
-                    <th>Jumlah</th>
+                    <th>NIK</th>
+                    <th>Jabatan</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -19,9 +20,10 @@
                 @foreach($dataKaryawan as $karyawan)
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
-                    <td>{{ ucfirst($karyawan -> name) }}</td>
-                    <td>{{ $karyawan -> birth_date }}</td>
-                    <td>{{ $karyawan -> address }}</td>
+                    <td>{{ $karyawan -> code }}</td>
+                    <td>{{ $karyawan -> name }}</td>
+                    <td>{{ $karyawan -> id_number }}</td>
+                    <td>{{ $karyawan -> roleData -> title }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $karyawan -> code }}')">
                             <i class="material-icons">edit_note</i>

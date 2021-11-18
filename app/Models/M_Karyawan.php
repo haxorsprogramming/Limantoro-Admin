@@ -15,4 +15,8 @@ class M_Karyawan extends Model
         'password','is_active','can_login',
     ];
 
+    public function roleData()
+    {
+        return $this->belongsTo(M_Roles::class, 'role_id', 'id');
+    }
 }

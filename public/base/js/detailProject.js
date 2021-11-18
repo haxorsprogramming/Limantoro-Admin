@@ -10,19 +10,11 @@ var dDetailProject = new Vue({
     methods : {
         dataUnitAtc : function()
         {
-            let kdProject = dDetailProject.kdProject;
-            dDetailProject.textSection2 = "Data Unit";
-            loadingSection();
-            togButton("#btnDataUnit");
-            loadToItemSection(kdProject, "dataunit");
+            wrapSection("Data unit", "#btnDataUnit", "dataunit");
         },
         matDariStockAtc : function()
         {
-            let kdProject = dDetailProject.kdProject;
-            dDetailProject.textSection2 = "Material dari stock";
-            loadingSection();
-            togButton("#btnMaterialDariStock");
-            loadToItemSection(kdProject, "materialdaristock");
+            wrapSection("Material dari stock", "#btnMaterialDariStock", "materialdaristock");
         },
         matTersisaAtc : function()
         {
@@ -33,7 +25,7 @@ var dDetailProject = new Vue({
 
 // fungsi 
 dDetailProject.kdProject = document.querySelector("#txtHidKdProject").value;
-loadSecAwal();
+wrapSection("Data unit", "#btnDataUnit", "dataunit");
 
 function wrapSection(title, elBtn, routeSec)
 {
@@ -42,16 +34,6 @@ function wrapSection(title, elBtn, routeSec)
     loadingSection();
     togButton(elBtn);
     loadToItemSection(kdProject, routeSec);
-}
-
-function loadSecAwal()
-{
-    let kdProject = dDetailProject.kdProject;
-    dDetailProject.textSection2 = "Data Unit";
-    loadingSection();
-    togButton("#btnDataUnit");
-    tidur_bentar(1000);
-    loadToItemSection(kdProject, "dataunit");
 }
 
 function togButton(idBtn)

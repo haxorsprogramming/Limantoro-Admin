@@ -66,9 +66,9 @@
                                 <td>{{ $project -> name }}</td>
                                 <td>{{ $project -> type }}</td>
                                 @if($project -> is_finished == 0)
-                                    <td>Belum selesai</td>
+                                <td>Belum selesai</td>
                                 @else
-                                    <td>Selesai</td>
+                                <td>Selesai</td>
                                 @endif
                                 <td></td>
                             </tr>
@@ -113,7 +113,7 @@
                     </ul>
                 </div>
                 <div id="flotchart2" style="padding: 0px; position: relative;"><canvas class="flot-base" width="277" height="120" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 277px; height: 120px;"></canvas>
-                    
+
                 </div>
             </div>
         </div>

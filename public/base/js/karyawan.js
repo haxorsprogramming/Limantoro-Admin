@@ -19,3 +19,6 @@ var appKaryawan = new Vue({
         }
     }
 });
+
+// fungsi 
+$("#tblKaryawan").dataTable();
