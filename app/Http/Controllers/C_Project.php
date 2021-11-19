@@ -6,29 +6,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\M_Project;
-use App\Models\M_Karyawan;
-use App\Models\M_Unit;
+use App\Models\M_Profile_Karyawan;
+use App\Models\M_Data_Unit;
 
 class C_Project extends Controller
 {
     public function projectPage()
     {
         $dataProject = M_Project::all();
-        $dataPenanggungJawab = M_Karyawan::where('role_id', 3) -> get();
+        $dataPenanggungJawab = M_Profile_Karyawan::where('role_id', 2) -> get();
         $dr = ['dataProject' => $dataProject, 'dataPenanggungJawab' => $dataPenanggungJawab];
         return view('app.project.projectPage', $dr);
     }
     public function prosesTambahProject(Request $request)
     {
         $project = new M_Project();
-        $project -> admin_code = "VICKY";
-        $project -> code = $request -> kdProject;
-        $project -> name = $request -> namaProject;
-        $project -> type = $request -> jenisProject;
-        $project -> date = $request -> tanggalProject;
-        $project -> address = "Medan barat";
-        $project -> is_finished = $request -> statusProject;
-        $project -> in_charge_code = $request -> pj;
+        $project -> user = session('userLogin');
+        $project -> kode = $request -> kdProject;
+        $project -> nama = $request -> namaProject;
+        $project -> deksripsi = "-";
+        $project -> tipe = $request -> jenisProject;
+        $project -> tanggal = $request -> tanggalProject;
+        $project -> address = "Medan";
+        $project -> selesai = $request -> statusProject;
+        $project -> penanggung_jawab = $request -> pj;
         $project -> save();
 
         $dataUnit = $request -> dataUnit;
@@ -36,7 +37,7 @@ class C_Project extends Controller
         $orUnit = 0;
         foreach($dataUnit as $unit){
             $sellingPrice = Str::replace(".", "", $dataUnit[$orUnit]['hargaJual']);
-            $unit = new M_Unit();
+            $unit = new M_Data_Unit();
             $unit -> ordinal = $ordinal;
             $unit -> name = $dataUnit[$orUnit]['namaUnit'];
             $unit -> land_size = $dataUnit[$orUnit]['ukuranTanah'];

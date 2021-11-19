@@ -12,19 +12,17 @@
                 <table class="table bordered highlight">
                     <thead>
                         <tr>
-                            <th>Code</th>
+                            <th>Username</th>
                             <th>Nama</th>
-                            <th>Title</th>
                             <th>Alamat</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($dataPenanggungJawab as $pj)
-                        <tr @click="selectRowPj('{{ $pj -> code }}')" id="rwPj{{ $pj -> code }}" class="rwPj">
-                            <td>{{ $pj -> code }}</td>
-                            <td>{{ $pj -> name }}</td>
-                            <td>Manajer Lapangan</td>
-                            <td>{{ $pj -> address }}</td>
+                        <tr @click="selectRowPj('{{ $pj -> username }}')" id="rwPj{{ $pj -> username }}" class="rwPj">
+                            <td>{{ $pj -> username }}</td>
+                            <td>{{ $pj -> nama_lengkap }}</td>
+                            <td>{{ $pj -> alamat }}</td>
                         </tr>
                         @endforeach
                     </tbody>

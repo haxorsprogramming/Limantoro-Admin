@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\M_Profile_Karyawan;
+use App\Models\M_User;
 
 class C_Karyawan extends Controller
 {
@@ -17,20 +18,31 @@ class C_Karyawan extends Controller
     }
     public function prosesTambahKaryawan(Request $request)
     {
+        // {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 
+            // 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
+        // save user data 
+        $user = new M_User();
+        $user -> username = $request -> username;
+        $user -> role = $request -> jabatan;
+        $user -> password = password_hash($request -> password, PASSWORD_DEFAULT);
+        $user -> api_token = "-";
+        $user -> username_parent = session('userLogin');
+        $user -> active = "1";
+        $user -> save();
+        // save profile user data 
         $karyawan = new M_Profile_Karyawan();
         $karyawan -> username = $request -> username;
-        $karyawan -> admin_code = session('userLogin');
+        $karyawan -> role_id = $request -> jabatan;
+        $karyawan -> nama_lengkap = $request -> nama;
         $karyawan -> nik = $request -> nik; 
-        $karyawan -> nama = $request -> nama;
         $karyawan -> tanggal_lahir = $request -> tanggalLahir;
         $karyawan -> alamat = $request -> alamat;
         $karyawan -> jenis_kelamin = $request -> jk;
-        $karyawan -> role_id = $request -> jabatan;
         $karyawan -> tipe = $request -> jenis;
-        $karyawan -> password = password_hash($request -> password, PASSWORD_DEFAULT);
-        $karyawan -> active = "1";
         $karyawan -> bisa_login = "1";
+        $karyawan -> active = "1";
         $karyawan -> save();
+
         $dr = ['status' => 'sukes'];
         return \Response::json($dr);
     }

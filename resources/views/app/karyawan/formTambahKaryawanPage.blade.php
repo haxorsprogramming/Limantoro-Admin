@@ -27,8 +27,8 @@
                 </div>
                 <div class="input-field col s12" style="margin-bottom: 20px;">
                     <select id="txtJk" class="browser-default" style="margin-top:9px;">
-                        <option value="male">Pria</option>
-                        <option value="female">Wanita</option>
+                        <option value="M">Pria</option>
+                        <option value="F">Wanita</option>
                     </select>
                     <label class="active">Jenis Kelamin</label>
                 </div>
@@ -40,10 +40,10 @@
                 </div>
                 <div class="input-field col s12" style="margin-bottom: 20px;">
                     <select id="txtJabatan" class="browser-default" style="margin-top:9px;">
-                        <option value="4">Manager</option>
-                        <option value="3">Manager Lapangan</option>
                         <option value="1">Owner</option>
-                        <option value="2">Purchashing</option>
+                        <option value="2">Manager</option>
+                        <option value="3">Manager Lapangan</option>
+                        <option value="4">Purchashing</option>
                     </select>
                     <label class="active">Jabatan</label>
                 </div>

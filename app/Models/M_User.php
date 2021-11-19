@@ -18,4 +18,9 @@ class M_User extends Model
         'active'
     ];
 
+    public function profileData()
+    {
+        return $this->belongsTo(M_Profile_Karyawan::class, 'username', 'username');
+    }
+
 }
