@@ -9,6 +9,7 @@ use App\Http\Controllers\C_Customer;
 use App\Http\Controllers\C_Material;
 use App\Http\Controllers\C_Karyawan;
 use App\Http\Controllers\C_Project;
+use App\Http\Controllers\C_Permintaan_Pembelian;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -40,8 +41,8 @@ Route::get('/app/project/{kdProject}/detail', [C_Project::class, 'detailProject'
 Route::get('/app/project/{kdProject}/detail/sec/dataunit', [C_Project::class, 'dataUnitSection']);
 Route::get('/app/project/{kdProject}/detail/sec/materialdaristock', [C_Project::class, 'materialDariStock']);
 Route::get('/app/project/{kdProject}/detail/sec/materialtersisa', [C_Project::class, 'materialTersisa']);
-
 // permintaan pembelian 
+Route::get('/app/permintaan-pembelian', [C_Permintaan_Pembelian::class, 'permintaanPembelianPage']);
 // persetujuan permintaan pembelian 
 // pemesanan pembelian 
 // laporan bukti keluar

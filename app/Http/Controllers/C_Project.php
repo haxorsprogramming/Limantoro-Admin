@@ -32,7 +32,6 @@ class C_Project extends Controller
         $project -> penanggung_jawab = $request -> pj;
         $project -> active = "1";
         $project -> save();
-
         $dataUnit = $request -> dataUnit;
         $ordinal = 1;
         $orUnit = 0;

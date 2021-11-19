@@ -6,6 +6,8 @@ var rCustomer = server + "app/customer";
 var rMaterial = server + "app/material";
 var rKaryawan = server + "app/karyawan";
 var rProject = server + "app/project";
+var rPermintaanPembelian = server + "app/permintaan-pembelian";
+
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -44,6 +46,10 @@ var div_menu = new Vue({
         projectAtc : function()
         {
             load_page(rProject, 'Project');
+        },
+        permintaanPembelianAtc : function()
+        {
+            load_page(rPermintaanPembelian, 'Permintaan Pembelian');
         }
     }
 });

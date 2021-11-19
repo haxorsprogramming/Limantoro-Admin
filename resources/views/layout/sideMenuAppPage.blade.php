@@ -30,7 +30,7 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">apps</i>Pembelian<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="javascript:void(0)">Permintaan Pembelian</a></li> 
+                        <li><a href="javascript:void(0)" @click="permintaanPembelianAtc()">Permintaan Pembelian</a></li> 
                         <li><a href="javascript:void(0)">Persetujuan Pembelian</a></li>
                         <li><a href="javascript:void(0)">Pemesanan Pembelian</a></li>
                     </ul>
