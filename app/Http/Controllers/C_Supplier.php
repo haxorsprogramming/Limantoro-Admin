@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DataTables;
+use PDF;
 
 use App\Models\M_Supplier;
 
@@ -61,5 +62,10 @@ class C_Supplier extends Controller
         M_Supplier::where('code', $kdSupplier) -> delete();
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
+    }
+    public function cetakSupplier()
+    {
+        $pdf = PDF::loadview('supplier');
+        return $pdf->stream();
     }
 }

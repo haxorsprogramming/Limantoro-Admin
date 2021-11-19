@@ -38,16 +38,26 @@ var appKaryawan = new Vue({
             let bisaLogin = document.querySelector("#txtBisaLogin").value;
             let password = document.querySelector("#txtPassword").value;
             let ds = {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
-            axios.post(rProsesTambah, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
-            });
+            let itemDim = ["#txtUsername", "#txtNamaKaryawan", "#txtNik", "#txtTanggalLahir"];
+            dimField(itemDim);
+            // axios.post(rProsesTambah, ds).then(function(res){
+            //     let obj = res.data;
+            //     console.log(obj);
+            // });
         }
     }
 });
 
 // fungsi 
 $("#tblKaryawan").dataTable();
+
+function dimField(itemDim)
+{
+    itemDim.forEach(renderItemDim);
+    function renderItemDim(item, index){
+        document.querySelector(itemDim[index]).setAttribute("disabled", "disabled");
+    }
+}
 
 function bisaLoginSelect()
 {

@@ -22,6 +22,7 @@ Route::get('/app/supplier/{codeSupplier}/edit/data', [C_Supplier::class, 'editDa
 Route::post('/app/supplier/tambah/proses', [C_Supplier::class, 'prosesTambahSupplier']);
 Route::post('/app/supplier/edit/proses', [C_Supplier::class, 'prosesUpdateSupplier']);
 Route::post('/app/supplier/delete/proses', [C_Supplier::class, 'prosesDeleteSupplier']);
+Route::get('/app/supplier/cetak', [C_Supplier::class, 'cetakSupplier']);
 // customer 
 Route::get('/app/customer', [C_Customer::class, 'customerPage']);
 // material 
