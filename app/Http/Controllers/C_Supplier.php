@@ -24,21 +24,22 @@ class C_Supplier extends Controller
     {
         // {'kdToko':kdToko, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
         $supplier = new M_Supplier();
-        $supplier -> code = $request -> kdToko;
-        $supplier -> name = $request -> namaToko;
-        $supplier -> address = $request -> alamat;
-        $supplier -> city = "Medan";
+        $supplier -> kode = $request -> kdToko;
+        $supplier -> nama = $request -> namaToko;
+        $supplier -> alamat = $request -> alamat;
+        $supplier -> kota = "Medan";
         $supplier -> contact_person = $request -> contactPerson;
         $supplier -> npwp = $request -> npwp;
         $supplier -> phone_number = $request -> phoneNumber;
-        $supplier -> admin_code = "VICKY";
+        $supplier -> user = "VICKY";
+        $supplier -> active = '1';
         $supplier -> save();
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }
     public function editDataSupplier(Request $request, $codeSupplier)
     {
-        $dataSupplier = M_Supplier::where('code', $codeSupplier) -> first();
+        $dataSupplier = M_Supplier::where('kode', $codeSupplier) -> first();
         $dr = ['dataSupplier' => $dataSupplier];
         return \Response::json($dr);
     }
@@ -59,7 +60,7 @@ class C_Supplier extends Controller
     public function prosesDeleteSupplier(Request $request)
     {
         $kdSupplier = $request -> kdSupplier;
-        M_Supplier::where('code', $kdSupplier) -> delete();
+        M_Supplier::where('kode', $kdSupplier) -> delete();
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }

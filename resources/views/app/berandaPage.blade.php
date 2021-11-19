@@ -62,9 +62,9 @@
                             @foreach($dataProject as $project)
                             <tr>
                                 <td>{{ $loop -> iteration }}</td>
-                                <td>{{ $project -> code }}</td>
-                                <td>{{ $project -> name }}</td>
-                                <td>{{ $project -> type }}</td>
+                                <td>{{ $project -> kode }}</td>
+                                <td>{{ $project -> nama }}</td>
+                                <td>{{ $project -> tipe }}</td>
                                 @if($project -> is_finished == 0)
                                 <td>Belum selesai</td>
                                 @else

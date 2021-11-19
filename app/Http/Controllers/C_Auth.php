@@ -19,7 +19,7 @@ class C_Auth extends Controller
         /**
          * Check total user
          */
-        $totalUserDb = M_User::where('code', $usernameCaps) -> count();
+        $totalUserDb = M_User::where('username', $usernameCaps) -> count();
         /**
          * Check & give result if user total < 1
          */
@@ -27,7 +27,7 @@ class C_Auth extends Controller
             /**
              * Get password from database with model
              */
-            $dataUserDb = M_User::where('code', $usernameCaps) -> first();
+            $dataUserDb = M_User::where('username', $usernameCaps) -> first();
             $passwordUserDb = $dataUserDb -> password;
             $passwordInput = $request -> password;
             /**
@@ -55,7 +55,7 @@ class C_Auth extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->flush();
+        $request -> session() -> flush();
         return redirect('/');
     }
 }

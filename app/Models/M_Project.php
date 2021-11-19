@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class M_Project extends Model
 {
-    protected $table = "projects";
+    protected $table = "tbl_project";
 
     protected $fillable = [
-        'admin_code',
-        'code',
-        'name',
-        'type',
-        'date',
-        'address',
-        'is_finished',
-        'in_charge_code'
+        'kode',
+        'nama',
+        'deksripsi',
+        'tipe',
+        'tanggal',
+        'alamat',
+        'penanggung_jawab',
+        'user',
+        'selesai',
+        'active'
     ];
 }

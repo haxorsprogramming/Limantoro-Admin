@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class M_Supplier extends Model
 {   
-    protected $table = 'suppliers';
+    protected $table = 'tbl_supplier';
 
     protected $fillable = [
-        'code',
-        'name',
-        'address',
-        'city',
+        'kode',
+        'nama',
+        'alamat',
+        'kota',
         'contact_person',
         'phone_number',
         'npwp',
-        'admin_code'
+        'user',
+        'active'
     ];
 }

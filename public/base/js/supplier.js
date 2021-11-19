@@ -55,12 +55,12 @@ var appSupplier = new Vue({
             axios.get(rLoadDataSupplier).then(function(res){
                 let ds = res.data;
                 let supplier = ds.dataSupplier;
-                document.querySelector("#txtKodeTokoEdit").value = supplier.code;
-                document.querySelector("#txtNamaTokoEdit").value = supplier.name;
+                document.querySelector("#txtKodeTokoEdit").value = supplier.kode;
+                document.querySelector("#txtNamaTokoEdit").value = supplier.nama;
                 document.querySelector("#txtPhoneNumberEdit").value = supplier.phone_number;
                 document.querySelector("#txtContactPersonEdit").value = supplier.contact_person;
-                document.querySelector("#txtNpwpEdit").value = supplier.code;
-                document.querySelector("#txtAlamatEdit").value = supplier.address;
+                document.querySelector("#txtNpwpEdit").value = supplier.kode;
+                document.querySelector("#txtAlamatEdit").value = supplier.alamat;
             });
             appSupplier.kdSupplierSelected = kdSupplier;
             $("#dSupplier").hide();
