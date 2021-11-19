@@ -38,7 +38,7 @@ class C_Auth extends Controller
                 /**
                  * if true, create session & status success of respond
                  */
-                // session(['user_login' => $username]);
+                session(['userLogin' => $username]);
                 $dr = ['status' => 'success'];
             }else{
                 /**
@@ -53,8 +53,9 @@ class C_Auth extends Controller
         return \Response::json($dr);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        $request->session()->flush();
         return redirect('/');
     }
 }

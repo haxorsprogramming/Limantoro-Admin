@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\M_Karyawan;
 
@@ -10,16 +11,14 @@ class C_Karyawan extends Controller
 {
     public function karyawanPage()
     {
-        $dataKaryawan = M_Karyawan::all();
+        $dataKaryawan = M_Karyawan::where('is_active', 1) -> get();
         $dr = ['dataKaryawan' => $dataKaryawan];
         return view('app.karyawan.karyawanPage', $dr);   
     }
     public function prosesTambahKaryawan(Request $request)
     {
-        // {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 
-            // 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
         $karyawan = new M_Karyawan();
-        $karyawan -> code = $request -> username;
+        $karyawan -> code = Str::upper($request -> username);
         $karyawan -> admin_code = 'VICKY';
         $karyawan -> id_number = $request -> nik; 
         $karyawan -> name = $request -> nama;

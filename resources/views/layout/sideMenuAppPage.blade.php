@@ -2,12 +2,11 @@
     <div class="side-nav-wrapper">
         <div class="sidebar-profile">
             <div class="sidebar-profile-image">
-                <img src="{{ asset('/style/alpha') }}/images/profile-image.png" class="circle" alt="">
+                <img src="https://i.pravatar.cc/300" class="circle" alt="">
             </div>
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">
-                    <p>@{{username}}</p>
-                   
+                    <p>{{ session('userLogin' )}}</p>
                 </a>
             </div>
         </div>
