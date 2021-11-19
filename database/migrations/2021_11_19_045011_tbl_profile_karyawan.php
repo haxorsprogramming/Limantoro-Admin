@@ -16,6 +16,7 @@ class TblProfileKaryawan extends Migration
         Schema::create('tbl_profile_karyawan', function (Blueprint $table) {
             $table -> id();
             $table -> char('username', 50);
+            $table -> char('role_id', 1);
             $table -> char('nama_lengkap', 100);
             $table -> char('nik', 30);
             $table -> date('tanggal_lahir') -> nullable();

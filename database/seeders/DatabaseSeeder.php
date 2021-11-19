@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('tbl_profile_karyawan') -> insert([
             'username' => 'vicky',
+            'role_id' => '1',
             'nama_lengkap' => 'Vicky Root',
             'nik' => '216522889911',
             'tanggal_lahir' => NULL,
@@ -54,6 +55,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('tbl_profile_karyawan') -> insert([
             'username' => 'vicky-ml',
+            'role_id' => '2',
             'nama_lengkap' => 'Vicky Manager lapangan',
             'nik' => '216522889911',
             'tanggal_lahir' => NULL,
@@ -94,7 +96,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        // inser sample customer
+        // insert sample customer
         DB::table('tbl_customer') -> insert([
             'kode' => 'SP001',
             'nama' => 'Riska Umaiyah',
@@ -108,5 +110,10 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        // insert role 
+        DB::table('tbl_role') -> insert(['kode' => '1','nama' => 'Owner']);
+        DB::table('tbl_role') -> insert(['kode' => '2','nama' => 'Manager']);
+        DB::table('tbl_role') -> insert(['kode' => '3','nama' => 'Manager Lapangan']);
+        DB::table('tbl_role') -> insert(['kode' => '4','nama' => 'Purchasing']);
     }
 }

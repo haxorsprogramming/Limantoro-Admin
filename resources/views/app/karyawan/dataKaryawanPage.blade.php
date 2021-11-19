@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Code User</th>
+                    <th>Username</th>
                     <th>Name</th>
                     <th>NIK</th>
                     <th>Jabatan</th>
@@ -20,15 +20,15 @@
                 @foreach($dataKaryawan as $karyawan)
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
-                    <td>{{ $karyawan -> code }}</td>
-                    <td>{{ $karyawan -> name }}</td>
-                    <td>{{ $karyawan -> id_number }}</td>
-                    <td>{{ $karyawan -> roleData -> title }}</td>
+                    <td>{{ $karyawan -> username }}</td>
+                    <td>{{ $karyawan -> nama_lengkap }}</td>
+                    <td>{{ $karyawan -> nik }}</td>
+                    <td>{{ $karyawan -> roleData -> nama }}</td>
                     <td>
-                        <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $karyawan -> code }}')">
+                        <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $karyawan -> username }}')">
                             <i class="material-icons">edit_note</i>
                         </a>
-                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $karyawan -> code }}')">
+                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $karyawan -> username }}')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>
