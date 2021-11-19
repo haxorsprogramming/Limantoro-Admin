@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col s12 m12 l12" id="appProject">
+    <div class="col s12 m12 l12" id="appPermintaanPembelian">
         @include('app.permintaanPembelian.dataPermintaanPembelian')
         @include('app.permintaanPembelian.formTambahPermintaanPembelian')
         @include('app.permintaanPembelian.formEditPermintaanPembelian')

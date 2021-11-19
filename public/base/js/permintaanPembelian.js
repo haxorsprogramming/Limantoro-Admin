@@ -1,13 +1,19 @@
 // vue object 
 var appPermintaan = new Vue({
-    el : '#dPermintaanPembelian',
+    el : '#appPermintaanPembelian',
     data : {
-
+        prosesBtnText : 'Proses permintaan'
     },
     methods : {
         tambahPermintaanPembelian : function()
         {
-
+            $("#dPermintaanPembelian").hide();
+            $("#dFormTambahPermintaanPembelian").show();
+        },
+        pilihProjectAtc : function()
+        {
+            MicroModal.show('modalProject');
+            $("#tblModalProject").dataTable();
         }
     }
 });
