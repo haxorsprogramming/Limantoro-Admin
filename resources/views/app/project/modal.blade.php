@@ -1,38 +1,29 @@
-<!-- div modal penanggung jawab  -->
-<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-            <header class="modal__header">
-                <h2 class="modal__title" id="modal-1-title">
-                    Pilih penanggung jawab
-                </h2>
-                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-            </header>
-            <main class="modal__content" id="modal-1-content">
-                <table class="table bordered highlight">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($dataPenanggungJawab as $pj)
-                        <tr @click="selectRowPj('{{ $pj -> username }}')" id="rwPj{{ $pj -> username }}" class="rwPj">
-                            <td>{{ $pj -> username }}</td>
-                            <td>{{ $pj -> nama_lengkap }}</td>
-                            <td>{{ $pj -> alamat }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </main>
-            <footer class="modal__footer">
-                <button class="modal__btn modal__btn-primary" @click="pilihPjAtc()">Pilih</button>
-                <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Tutup</button>
-            </footer>
-        </div>
+<!-- div modal new penanggung jawab  -->
+<div id="modalPenanggungJawab" class="modal">
+    <div class="modal-content">
+        <h4>Pilih penanggung jawab</h4>
+        <table class="table bordered highlight">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($dataPenanggungJawab as $pj)
+                <tr @click="selectRowPj('{{ $pj -> username }}')" id="rwPj{{ $pj -> username }}" class="rwPj">
+                    <td>{{ $pj -> username }}</td>
+                    <td>{{ $pj -> nama_lengkap }}</td>
+                    <td>{{ $pj -> alamat }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Tutup</a>
+        <a href="javascript:void(0)" @click="pilihPjAtc()" class="btn">Pilih</a>
     </div>
 </div>
 
@@ -81,7 +72,7 @@
                             <input type="text" id="txtMarketingFee" placeholder="Marketing Fee">
                         </td>
                         <td>
-                            
+
                         </td>
                     </tr>
                 </table>

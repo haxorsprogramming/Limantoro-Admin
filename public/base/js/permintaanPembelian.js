@@ -12,10 +12,10 @@ var appPermintaan = new Vue({
         },
         pilihProjectAtc : function()
         {
-            MicroModal.show('modalProject');
-            $("#tblModalProject").dataTable();
+            $("#modalProject").openModal();
         }
     }
 });
 // fungsi inisialisasi 
 $("#tblPermintaan").dataTable();
+$("#tblModalProject").dataTable();

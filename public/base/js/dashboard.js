@@ -67,8 +67,8 @@ var footer_app = new Vue({
 document.addEventListener('DOMContentLoaded', function() {
     NProgress.configure({ showSpinner: false });
     load_page(r_beranda, 'Dashboard');
+    
     MicroModal.init();
-    $('.modal').modal();
     $('.tooltipped').tooltip();
     $('.dropdown-trigger').dropdown();
   });

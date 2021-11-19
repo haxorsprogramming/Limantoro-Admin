@@ -39,7 +39,7 @@ var appProject = new Vue({
         },
         showModalPenanggungJawabAtc : function()
         {
-            MicroModal.show('modal-1');
+            $("#modalPenanggungJawab").openModal();
         },
         selectRowPj : function(kdProject)
         {
@@ -51,7 +51,7 @@ var appProject = new Vue({
         pilihPjAtc : function()
         {
             document.querySelector("#txtPenanggungJawab").value = appProject.kdProjectRowSelected;
-            MicroModal.close('modal-1');
+            $("#modalPenanggungJawab").closeModal();
         },
         tambahUnitAtc : function()
         {

@@ -14,7 +14,7 @@ class C_Project extends Controller
     public function projectPage()
     {
         $dataProject = M_Project::all();
-        $dataPenanggungJawab = M_Profile_Karyawan::where('role_id', 2) -> get();
+        $dataPenanggungJawab = M_Profile_Karyawan::where('role_id', 3) -> get();
         $dr = ['dataProject' => $dataProject, 'dataPenanggungJawab' => $dataPenanggungJawab];
         return view('app.project.projectPage', $dr);
     }
