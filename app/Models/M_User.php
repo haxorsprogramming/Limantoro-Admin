@@ -7,22 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class M_User extends Model
 {
-    protected $table = 'users';
+    protected $table = 'tbl_user';
 
     protected $fillable = [
-        'code',
-        'admin_code',
-        'id_number',
-        'name',
-        'photo',
-        'birth_date',
-        'address',
-        'gender',
-        'role_id',
-        'type',
-        'password',
-        'is_active',
-        'can_login',
+        
     ];
 
 }

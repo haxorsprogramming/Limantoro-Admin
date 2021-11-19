@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblUser extends Migration
+class TblProfileKaryawan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class TblUser extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_user', function (Blueprint $table) {
+        Schema::create('tbl_profile_karyawan', function (Blueprint $table) {
             $table -> id();
             $table -> char('username', 50);
-            $table -> char('role', 1);
-            $table -> char('password', 100);
-            $table -> text('api_token');
-            $table -> char('username_parent', 50);
+            $table -> char('nama_lengkap', 100);
+            $table -> char('nik', 30);
+            $table -> date('tanggal_lahir') -> nullable();
+            $table -> text('alamat');
+            $table -> char('jenis_kelamin', 1);
+            $table -> char('tipe', 30);
+            $table -> char('bisa_login', 1);
             $table -> timestamps(); 
             $table -> char('active', 1);
         });
@@ -32,6 +35,6 @@ class TblUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_user');
+        Schema::dropIfExists('tbl_profile_karyawan');
     }
 }
