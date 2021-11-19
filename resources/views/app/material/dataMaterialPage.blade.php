@@ -19,14 +19,14 @@
                 @foreach($dataMaterial as $material)
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
-                    <td>{{ ucfirst($material -> name) }}</td>
+                    <td>{{ ucfirst($material -> nama) }}</td>
                     <td>{{ $material -> satuan }}</td>
                     <td>{{ $material -> jumlah }}</td>
                     <td>
-                        <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $material -> code }}')">
+                        <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $material -> kode }}')">
                             <i class="material-icons">edit_note</i>
                         </a>
-                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $material -> code }}')">
+                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $material -> kode }}')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

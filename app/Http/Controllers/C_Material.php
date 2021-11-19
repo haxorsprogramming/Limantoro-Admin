@@ -18,18 +18,19 @@ class C_Material extends Controller
     {
         // {'kdMaterial':kdMaterial, 'namaMaterial':namaMaterial, 'satuan':satuan}
         $material = new M_Material();
-        $material -> code = $request -> kdMaterial;
-        $material -> name = $request -> namaMaterial;
+        $material -> kode = $request -> kdMaterial;
+        $material -> nama = $request -> namaMaterial;
         $material -> satuan = $request -> satuan;
         $material -> jumlah = 0;
-        $material -> admin_code = "VICKY";
+        $material -> user = session('userLogin');
+        $material -> active = "1";
         $material -> save();
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }
     public function editDataMaterial(Request $request, $codeMaterial)
     {
-        $dataMaterial = M_Material::where('code', $codeMaterial) -> first();
+        $dataMaterial = M_Material::where('kode', $codeMaterial) -> first();
         $dr = ['dataMaterial' => $dataMaterial];
         return \Response::json($dr);
     }
@@ -37,8 +38,8 @@ class C_Material extends Controller
     {
         // {'kdMaterial':kdMaterial, 'namaMaterial':namaMaterial, 'satuan':satuan}
         $kdMaterial = $request -> kdMaterial;
-        M_Material::where('code', $kdMaterial) -> update([
-            'name' => $request -> namaMaterial,
+        M_Material::where('kode', $kdMaterial) -> update([
+            'nama' => $request -> namaMaterial,
             'satuan' => $request -> satuan
         ]);
         $dr = ['dataMaterial' => 'halo'];

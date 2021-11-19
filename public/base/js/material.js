@@ -52,7 +52,7 @@ var appMaterial = new Vue({
                 $("#dMaterial").hide();
                 $("#dFormEditMaterial").show();
                 document.querySelector("#txtSatuanEdit").value = dataMaterial.satuan;
-                document.querySelector("#txtNamaMaterialEdit").value = dataMaterial.name;
+                document.querySelector("#txtNamaMaterialEdit").value = dataMaterial.nama;
                 document.querySelector("#txtKodeMaterialEdit").value = appMaterial.selectedKdMaterial;
             });
         },

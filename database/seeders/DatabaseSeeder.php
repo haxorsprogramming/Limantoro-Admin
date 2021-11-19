@@ -94,5 +94,19 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        // inser sample customer
+        DB::table('tbl_customer') -> insert([
+            'kode' => 'SP001',
+            'nama' => 'Riska Umaiyah',
+            'alamat' => 'Jln. Perjuangan, No. 14',
+            'kota' => 'Medan',
+            'contact_person' => 'Riska',
+            'phone_number' => '087899227811',
+            'npwp' => '1455 1345 4122',
+            'user' => 'vicky',
+            'active' => '1',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

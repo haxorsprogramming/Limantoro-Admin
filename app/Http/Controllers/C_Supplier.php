@@ -31,7 +31,7 @@ class C_Supplier extends Controller
         $supplier -> contact_person = $request -> contactPerson;
         $supplier -> npwp = $request -> npwp;
         $supplier -> phone_number = $request -> phoneNumber;
-        $supplier -> user = "VICKY";
+        $supplier -> user = session('userLogin');
         $supplier -> active = '1';
         $supplier -> save();
         $dr = ['status' => 'sukses'];
@@ -47,9 +47,9 @@ class C_Supplier extends Controller
     {
         // {'kdToko':kdSupplier, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
         $kdSupplier = $request -> kdToko;
-        M_Supplier::where('code', $kdSupplier) -> update([
-            'name' => $request -> namaToko,
-            'address' => $request -> alamat,
+        M_Supplier::where('kode', $kdSupplier) -> update([
+            'nama' => $request -> namaToko,
+            'alamat' => $request -> alamat,
             'contact_person' => $request -> contactPerson,
             'phone_number' => $request -> phoneNumber,
             'npwp' => $request -> npwp

@@ -7,7 +7,7 @@
                     <i class="material-icons left">add_circle_outline</i>Tambah Customer
                 </a>
                 <hr />
-                <table id="tblCustomer" class="display responsive-table datatable-example">
+                <table id="tblCustomer" class="bordered highlight hover">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -22,8 +22,8 @@
                         @foreach($dataCustomer as $Customer)
                         <tr>
                             <td>{{ $loop -> iteration }}</td>
-                            <td>{{ $Customer -> name }}</td>
-                            <td>{{ $Customer -> address }}</td>
+                            <td>{{ $Customer -> nama }}</td>
+                            <td>{{ $Customer -> alamat }}</td>
                             <td>{{ $Customer -> contact_person }}</td>
                             <td>{{ $Customer -> phone_number }}</td>
                             <td>

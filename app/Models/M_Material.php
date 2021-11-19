@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class M_Material extends Model
 {
-    protected $table = "materials";
+    protected $table = "tbl_material";
 
     protected $fillable = [
-        'code',
-        'name',
+        'kode',
+        'nama',
         'satuan',
-        'admin_code'
+        'admin_code',
+        'jumlah',
+        'user',
+        'active'
     ];
 }
