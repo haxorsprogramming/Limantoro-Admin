@@ -27,8 +27,8 @@
                 </div>
                 <div class="input-field col s12" style="margin-bottom: 20px;">
                     <select id="txtJk" class="browser-default" style="margin-top:9px;">
-                        <option value="p">Pria</option>
-                        <option value="w">Wanita</option>
+                        <option value="male">Pria</option>
+                        <option value="female">Wanita</option>
                     </select>
                     <label class="active">Jenis Kelamin</label>
                 </div>

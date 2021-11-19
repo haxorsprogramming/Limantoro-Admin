@@ -27,7 +27,18 @@ var appKaryawan = new Vue({
         },
         prosesAtc : function()
         {
-            axios.post(rProsesTambah).then(function(res){
+            let username = document.querySelector("#txtUsername").value;
+            let nama = document.querySelector("#txtNamaKaryawan").value;
+            let nik = document.querySelector("#txtNik").value;
+            let tanggalLahir = document.querySelector("#txtTanggalLahir").value;
+            let jk = document.querySelector("#txtJk").value;
+            let alamat = document.querySelector("#txtAlamat").value;
+            let jabatan = document.querySelector("#txtJabatan").value;
+            let jenis = document.querySelector("#txtJenis").value;
+            let bisaLogin = document.querySelector("#txtBisaLogin").value;
+            let password = document.querySelector("#txtPassword").value;
+            let ds = {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
+            axios.post(rProsesTambah, ds).then(function(res){
                 let obj = res.data;
                 console.log(obj);
             });
