@@ -1,22 +1,22 @@
 <div class="card" id="dDetailProject">
     <div class="card-content">
-        <h4 class="light">Detail Project {{ $dataProject -> name }}</h4>
+        <h4 class="light">Detail Project {{ $dataProject -> nama }}</h4>
         <div class="row" style="margin-top: 20px;">
             <div class="col s12 m4 l4">
                 <div class="input-field">
                     <label for="txtKodeProject" class="active">Kode Project</label>
-                    <input placeholder="Kode Project" id="txtKodeProject" disabled type="text" class="validate" value="{{ $dataProject -> code }}">
-                    <input type="hidden" value="{{ $dataProject -> code }}" id="txtHidKdProject">
+                    <input placeholder="Kode Project" id="txtKodeProject" disabled type="text" class="validate" value="{{ $dataProject -> kode }}">
+                    <input type="hidden" value="{{ $dataProject -> kode }}" id="txtHidKdProject">
                 </div>
                 <div class="input-field">
                     <label for="txtNamaProject" class="active">Nama Project</label>
-                    <input placeholder="Kode Project" id="txtNamaProject" disabled type="text" class="validate" value="{{ $dataProject -> name }}">
+                    <input placeholder="Kode Project" id="txtNamaProject" disabled type="text" class="validate" value="{{ $dataProject -> nama }}">
                 </div>
             </div>
             <div class="col s12 m4 l4">
                 <div class="input-field">
                     <label for="txtPenanggungJawab" class="active">Penanggung Jawab</label>
-                    <input placeholder="Kode Project" id="txtPenanggungJawab" disabled type="text" class="validate" value="{{ $dataProject -> in_charge_code }}">
+                    <input placeholder="Kode Project" id="txtPenanggungJawab" disabled type="text" class="validate" value="{{ $dataProject -> penanggung_jawab }}">
                 </div>
                 <div class="input-field">
                     <label for="txtJenisProject" class="active">Jenis Project</label>
@@ -26,11 +26,11 @@
             <div class="col s12 m4 l4">
                 <div class="input-field">
                     <label for="txtTanggalProject" class="active">Tanggal Project</label>
-                    <input placeholder="Kode Project" id="txtTanggalProject" disabled type="date" class="validate" value="{{ $dataProject -> date }}">
+                    <input placeholder="Kode Project" id="txtTanggalProject" disabled type="date" class="validate" value="{{ $dataProject -> tanggal }}">
                 </div>
                 <div class="input-field">
                     <label for="txtKodeProject" class="active">Status Project</label>
-                    <select id="txtStatusProject" class="browser-default" style="margin-top:9px;" disabled value="{{ $dataProject -> is_finished }}">
+                    <select id="txtStatusProject" class="browser-default" style="margin-top:9px;" disabled value="{{ $dataProject -> selesai }}">
                         <option value="0">Berjalan</option>
                         <option value="1">Selesai</option>
                     </select>

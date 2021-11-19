@@ -23,12 +23,12 @@
             @foreach($dataUnit as $unit)
             <tr>
                 <td>{{ $loop -> iteration }}</td>
-                <td>{{ $unit -> name }}</td>
-                <td>{{ $unit -> land_size }}</td>
-                <td>{{ $unit -> building_size }}</td>
-                <td>{{ $unit -> builded }}</td>
-                <td>{{ $unit -> sold }}</td>
-                <td>{{ $unit -> selling_price }}</td>
+                <td>{{ $unit -> nama }}</td>
+                <td>{{ $unit -> ukuran_tanah }}</td>
+                <td>{{ $unit -> ukuran_bangunan }}</td>
+                <td>{{ $unit -> jumlah_unit }}</td>
+                <td>{{ $unit -> unit_terjual }}</td>
+                <td>{{ $unit -> harga_jual }}</td>
                 <td>{{ $unit -> marketing_fee }}</td>
                 <td>
                     <a class="btn" href="javascript:void(0)" >

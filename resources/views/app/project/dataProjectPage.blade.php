@@ -9,9 +9,9 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Address</th>
+                    <th>Nama</th>
+                    <th>Tipe</th>
+                    <th>Alamat</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -20,19 +20,19 @@
                 @foreach($dataProject as $project)
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
-                    <td><b>{{ ucfirst($project -> name) }}</b></td>
-                    <td>{{ $project -> type }}</td>
-                    <td>{{ $project -> address }}</td>
-                    @if($project -> is_finished === 0)
+                    <td><b>{{ ucfirst($project -> nama) }}</b></td>
+                    <td>{{ $project -> tipe }}</td>
+                    <td>{{ $project -> alamat }}</td>
+                    @if($project -> selesai === "0")
                     <td>Berjalan</td>
                     @else
                     <td>Selesai</td>
                     @endif
                     <td>
-                        <a class="btn-floating waves-effect waves-light btnDetail" href="javascript:void(0)" @click="detailAtc('{{ $project -> code }}')">
+                        <a class="btn-floating waves-effect waves-light btnDetail" href="javascript:void(0)" @click="detailAtc('{{ $project -> kode }}')">
                             <i class="material-icons">fact_check</i>
                         </a>
-                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1 btnHapus" href="javascript:void(0)" @click="deleteAtc('{{ $project -> code }}')">
+                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1 btnHapus" href="javascript:void(0)" @click="deleteAtc('{{ $project -> kode }}')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

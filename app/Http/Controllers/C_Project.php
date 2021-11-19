@@ -27,9 +27,10 @@ class C_Project extends Controller
         $project -> deksripsi = "-";
         $project -> tipe = $request -> jenisProject;
         $project -> tanggal = $request -> tanggalProject;
-        $project -> address = "Medan";
+        $project -> alamat = "Medan";
         $project -> selesai = $request -> statusProject;
         $project -> penanggung_jawab = $request -> pj;
+        $project -> active = "1";
         $project -> save();
 
         $dataUnit = $request -> dataUnit;
@@ -38,16 +39,17 @@ class C_Project extends Controller
         foreach($dataUnit as $unit){
             $sellingPrice = Str::replace(".", "", $dataUnit[$orUnit]['hargaJual']);
             $unit = new M_Data_Unit();
-            $unit -> ordinal = $ordinal;
-            $unit -> name = $dataUnit[$orUnit]['namaUnit'];
-            $unit -> land_size = $dataUnit[$orUnit]['ukuranTanah'];
-            $unit -> building_size = $dataUnit[$orUnit]['ukuranTanah'];
-            $unit -> builded = $dataUnit[$orUnit]['jumlahUnit'];
-            $unit -> sold = $dataUnit[$orUnit]['unitTerjual'];
-            $unit -> selling_price = $sellingPrice;
+            $unit -> kode = Str::uuid();
+            $unit -> nama = $dataUnit[$orUnit]['namaUnit'];
+            $unit -> ukuran_tanah = $dataUnit[$orUnit]['ukuranTanah'];
+            $unit -> ukuran_bangunan = $dataUnit[$orUnit]['ukuranTanah'];
+            $unit -> jumlah_unit = $dataUnit[$orUnit]['jumlahUnit'];
+            $unit -> unit_terjual = $dataUnit[$orUnit]['unitTerjual'];
+            $unit -> harga_jual = $sellingPrice;
             $unit -> marketing_fee = $dataUnit[$orUnit]['marketingFee'];
-            $unit -> project_code = $request -> kdProject;
-            $unit -> admin_code = 'VICKY';
+            $unit -> kode_project = $request -> kdProject;
+            $unit -> user = session('userLogin');
+            $unit -> active = "1";
             $unit -> save();
             $ordinal++;
             $orUnit++;
@@ -57,14 +59,14 @@ class C_Project extends Controller
     }
     public function detailProject(Request $request, $kdProject)
     {
-        $dataProject = M_Project::where('code', $kdProject) -> first();
+        $dataProject = M_Project::where('kode', $kdProject) -> first();
         $dr = ['dataProject' => $dataProject];
         return view('app.project.details.detailsProjectPage', $dr);
     }
     public function dataUnitSection(Request $request, $kdProject)
     {
-        $dataUnit = M_Unit::where('project_code', $kdProject) -> get();
-        $totalUnit = M_Unit::where('project_code', $kdProject) -> count();
+        $dataUnit = M_Data_Unit::where('kode_project', $kdProject) -> get();
+        $totalUnit = M_Data_Unit::where('kode_project', $kdProject) -> count();
         $dr = ['dataUnit' => $dataUnit, 'totalUnit' => $totalUnit];
         return view('app.project.details.secDataUnit', $dr);
     }
