@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('tbl_profile_karyawan') -> insert([
             'username' => 'vicky-ml',
-            'role_id' => '2',
+            'role_id' => '3',
             'nama_lengkap' => 'Vicky Manager lapangan',
             'nik' => '216522889911',
             'tanggal_lahir' => NULL,

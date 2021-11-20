@@ -46,7 +46,6 @@ var appProject = new Vue({
             $(".rwPj").css("background-color", "");
             appProject.kdProjectRowSelected = kdProject;
             $("#rwPj"+kdProject).css("background-color", "#81ecec");
-            console.log(kdProject);
         },
         pilihPjAtc : function()
         {
@@ -58,7 +57,7 @@ var appProject = new Vue({
             if(appProject.stateBtnTambahUnit === false){
                 appProject.titleManageUnit = "Tambah Unit";
                 appProject.statusManage = "add";
-                MicroModal.show('mdlUnit');
+                $("#modalDataUnit").openModal();
                 document.querySelector("#txtNamaUnit").focus();
             }
         },
@@ -89,7 +88,7 @@ var appProject = new Vue({
                         marketingFee : marketingFee
                     });
                     pesan_toast("Unit "+namaUnit+" berhasil ditambahkan ...");
-                    MicroModal.close('mdlUnit');
+                    $("#modalDataUnit").closeModal();
                 }
             }else{
                 
@@ -139,6 +138,7 @@ var appProject = new Vue({
 });
 // function inisialisasi
 $("#tblProject").dataTable();
+$("#tblPenanggungJawab").dataTable();
 $("#txtHargaJual").mask('000.000.000.000.000', {reverse: true});
 $(".select2").select2();
 tip('.btnDetail', 'Detail');
