@@ -4,7 +4,7 @@
         <a href="#!" class="waves-effect waves-light btn" @click="tambahPermintaanPembelian()">
             <i class="material-icons left">add_circle_outline</i>Tambah Permintaan
         </a>
-        <hr />
+
         <table id="tblPermintaan" class="display responsive-table datatable-example table-hover">
             <thead>
                 <tr>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-              
+
             </tbody>
         </table>
     </div>

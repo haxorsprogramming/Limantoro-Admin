@@ -16,7 +16,7 @@
             <!-- div col 2 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input placeholder="Penanggung Jawab" id="txtProject" readonly type="text" @click="pilihProjectAtc()">
+                    <input placeholder="Project" id="txtProject" readonly type="text" @click="pilihProjectAtc()">
                     <label for="txtProject" class="active">Project</label>
                 </div>
             </div>
@@ -28,7 +28,6 @@
                 </div>
             </div>
         </div>
-        <hr />
         <!-- data unit  -->
         <span class="card-title">Data Material</span>
         <div class="row">
@@ -62,6 +61,5 @@
 
     </div>
 </div>
-
 
 @include('app.permintaanPembelian.modal')
