@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col s12">
                 <div style="margin-bottom: 20px;">
-                    <a href="javascript:void(0)" class="btn" id="btnTambahUnit">
+                    <a href="javascript:void(0)" class="btn" id="btnTambahMaterial" @click="tambahMaterialAtc()">
                         <i class="material-icons left">add_circle_outline</i> Tambah Material
                     </a>
                 </div>

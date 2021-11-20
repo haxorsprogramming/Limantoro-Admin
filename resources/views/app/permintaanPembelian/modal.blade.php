@@ -1,5 +1,5 @@
 <!-- div modal project  -->
-<div id="modalProject" class="modal" style="z-index: 1003; display: none; opacity: 0; transform: scaleX(0.7); top: 250.516304347826px;">
+<div id="modalProject" class="modal">
     <div class="modal-content">
         <h4>Pilih project</h4>
         <table id="tblModalProject" class="table bordered highlight">
@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 @foreach($dataProject as $project)
-                <tr @click="selectRowProject('{{ $project -> kode }}')" id="rwProject{{ $project -> kode }}" class="rwProject">
+                <tr @click="selectRowProject('{{ $project -> kode }}-{{ $project -> nama }}')" id="rwProject{{ $project -> kode }}" class="rwProject">
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ $project -> kode }}</td>
                     <td><b>{{ $project -> nama }}</b></td>
@@ -26,5 +26,36 @@
     <div class="modal-footer">
         <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-blue btn-flat">Tutup</a>
         <a href="javascript:void(0)" class="btn waves-effect waves-blue" @click="pilihProjectModalAtc()">Pilih</a>
+    </div>
+</div>
+
+<!-- div modal tambah material  -->
+<div id="modalMaterial" class="modal">
+    <div class="modal-content">
+        <h4>Tambah material</h4>
+        <table id="tblModalMaterial" class="table bordered highlight">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode</th>
+                    <th>Nama Material</th>
+                    <th>Stok</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($dataMaterial as $material)
+                <tr id="rwMaterial{{$material -> nama}}" @click="rwMaterialSelectAtc('{{$material -> kode}}')">
+                    <td>{{ $loop -> iteration }}</td>
+                    <td>{{ $material -> kode }}</td>
+                    <td>{{ $material -> nama }}</td>
+                    <td>{{ $material -> jumlah }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-blue btn-flat">Tutup</a>
+        <a href="javascript:void(0)" class="btn waves-effect waves-blue">Tambah</a>
     </div>
 </div>

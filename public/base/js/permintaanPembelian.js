@@ -3,7 +3,8 @@ var appPermintaan = new Vue({
     el : '#appPermintaanPembelian',
     data : {
         prosesBtnText : 'Proses permintaan',
-        kdProjectRowSelected : ''
+        kdProjectRowSelected : '',
+        titleProjectSelected : ''
     },
     methods : {
         tambahPermintaanPembelian : function()
@@ -18,18 +19,28 @@ var appPermintaan = new Vue({
         },
         selectRowProject : function(kdProject)
         {
-            console.log(kdProject);
+            let prSplit = kdProject.split("-");
             $(".rwProject").css("background-color", "");
-            appPermintaan.kdProjectRowSelected = kdProject;
-            document.querySelector("#rwProject"+kdProject).style.backgroundColor = "#81ecec";
+            appPermintaan.kdProjectRowSelected = prSplit[0];
+            appPermintaan.titleProjectSelected = prSplit[1];
+            document.querySelector("#rwProject"+prSplit[0]).style.backgroundColor = "#81ecec";
         },
         pilihProjectModalAtc : function()
         {
-            document.querySelector("#txtProject").value = appPermintaan.kdProjectRowSelected;
+            document.querySelector("#txtProject").value = appPermintaan.kdProjectRowSelected + " - " + appPermintaan.titleProjectSelected;
             $("#modalProject").closeModal();
+        },
+        tambahMaterialAtc : function()
+        {
+            $("#modalMaterial").openModal();
+        },
+        rwMaterialSelectAtc : function(kdMaterial)
+        {
+            console.log("haloo");
         }
     }
 });
 // fungsi inisialisasi 
 $("#tblPermintaan").dataTable();
 $("#tblModalProject").dataTable();
+$("#tblModalMaterial").dataTable();
