@@ -55,8 +55,8 @@
                             <td>@{{material.kode}}</td>
                             <td>@{{material.nama}}</td>
                             <td>@{{material.satuan}}</td>
-                            <td><input type="number" placeholder="Jumlah barang" style="width: 150px;" maxlength="5"></td>
-                            <td><input type="text" style="width: 200px;"></td>
+                            <td><input type="number" placeholder="Jumlah barang" style="width: 150px;" maxlength="5" :id="'txtJumlahBarang_'+material.kode"></td>
+                            <td><input type="text" placeholder="Pesan" style="width: 200px;" :id="'txtPesan_'+material.kode"></td>
                             <td><a class="btn">Hapus</a></td>
                         </tr>
                     </tbody>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="row" style="text-align: center;margin-top:30px;">
-            <a href="javascript:void(0)" class="btn btn-large" id="btnSimpanProject">
+            <a href="javascript:void(0)" class="btn btn-large" id="btnSimpanProject" @click="prosesPermintaanAtc()">
                 <i class="material-icons left">file_download_done</i> @{{ prosesBtnText }}
             </a>
         </div>

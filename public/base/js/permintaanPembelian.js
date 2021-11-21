@@ -63,6 +63,15 @@ var appPermintaan = new Vue({
                 noTabelMaterial++;
                 $("#modalMaterial").closeModal();
             }
+        },
+        prosesPermintaanAtc : function()
+        {
+            dataMaterialKode.forEach(renderMaterial);
+            function renderMaterial(item, index){
+                let valJumlahMaterial = document.querySelector("#txtJumlahBarang_"+dataMaterialKode[index]).value;
+                let pesanMaterial = document.querySelector("#txtPesan_"+dataMaterialKode[index]).value;
+                console.log(pesanMaterial);
+            }
         }
     }
 });
