@@ -37,18 +37,29 @@
                         <i class="material-icons left">add_circle_outline</i> Tambah Material
                     </a>
                 </div>
-                <table id="tblUnit" class="bordered striped highlight">
+                <table id="tblMaterialPermintaan" class="bordered striped highlight">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Satuan</th>
+                            <th>Kode</th>
+                            <th style="width: 200px;">Nama</th>
+                            <th style="width: 150px;">Satuan</th>
                             <th>Jumlah</th>
                             <th>Pesan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-
+                    <tbody>
+                        <tr v-for="material in materialData">
+                            <td>@{{material.no}}</td>
+                            <td>@{{material.kode}}</td>
+                            <td>@{{material.nama}}</td>
+                            <td>@{{material.satuan}}</td>
+                            <td><input type="number" placeholder="Jumlah barang" style="width: 150px;" maxlength="5"></td>
+                            <td><input type="text" style="width: 200px;"></td>
+                            <td><a class="btn">Hapus</a></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -4,7 +4,11 @@ var appPermintaan = new Vue({
     data : {
         prosesBtnText : 'Proses permintaan',
         kdProjectRowSelected : '',
-        titleProjectSelected : ''
+        titleProjectSelected : '',
+        materialData : [],
+        kdMaterialTemp : '',
+        namaMaterialTemp : '',
+        satuanMaterialTemp : ''
     },
     methods : {
         tambahPermintaanPembelian : function()
@@ -34,9 +38,31 @@ var appPermintaan = new Vue({
         {
             $("#modalMaterial").openModal();
         },
-        rwMaterialSelectAtc : function(kdMaterial)
+        rwMaterialSelectAtc : function(dataMaterial)
         {
-            console.log("haloo");
+            let matSplit = dataMaterial.split("-");
+            appPermintaan.kdMaterialTemp = matSplit[0];
+            appPermintaan.namaMaterialTemp = matSplit[1];
+            appPermintaan.satuanMaterialTemp = matSplit[2];
+            $(".rwMaterial").css("background-color", "");
+            document.querySelector("#rwMaterial"+matSplit[0]).style.backgroundColor = "#81ecec";
+        },
+        tambahMaterialAtcModal : function()
+        {
+            let kdMaterialTemp = appPermintaan.kdMaterialTemp;
+            if(dataMaterialKode.indexOf(kdMaterialTemp) !== -1){
+                pesan_toast("Material sudah dimasukkan ... !!!");
+            }else{
+                appPermintaan.materialData.push({
+                    no : noTabelMaterial,
+                    kode : appPermintaan.kdMaterialTemp,
+                    nama : appPermintaan.namaMaterialTemp,
+                    satuan : appPermintaan.satuanMaterialTemp
+                });
+                dataMaterialKode.push(appPermintaan.kdMaterialTemp);
+                noTabelMaterial++;
+                $("#modalMaterial").closeModal();
+            }
         }
     }
 });
@@ -44,3 +70,6 @@ var appPermintaan = new Vue({
 $("#tblPermintaan").dataTable();
 $("#tblModalProject").dataTable();
 $("#tblModalMaterial").dataTable();
+
+var noTabelMaterial = 1;
+var dataMaterialKode = [];

@@ -44,7 +44,7 @@
             </thead>
             <tbody>
                 @foreach($dataMaterial as $material)
-                <tr id="rwMaterial{{$material -> nama}}" @click="rwMaterialSelectAtc('{{$material -> kode}}')">
+                <tr id="rwMaterial{{$material -> kode}}" @click="rwMaterialSelectAtc('{{$material -> kode}}-{{$material -> nama}}-{{$material -> satuan}}')" class="rwMaterial">
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ $material -> kode }}</td>
                     <td>{{ $material -> nama }}</td>
@@ -56,6 +56,6 @@
     </div>
     <div class="modal-footer">
         <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-blue btn-flat">Tutup</a>
-        <a href="javascript:void(0)" class="btn waves-effect waves-blue">Tambah</a>
+        <a href="javascript:void(0)" class="btn waves-effect waves-blue" @click="tambahMaterialAtcModal()">Tambah</a>
     </div>
 </div>
