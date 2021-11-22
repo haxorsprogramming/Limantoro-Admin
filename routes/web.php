@@ -48,6 +48,7 @@ Route::post('/app/permintaan-pembelian/tambah/proses', [C_Permintaan_Pembelian::
 Route::get('/app/permintaan-pembelian/{noPr}/print', [C_Permintaan_Pembelian::class, 'cetakPermintaan']);
 // persetujuan permintaan pembelian 
 Route::get('/app/persetujuan-permintaan-pembelian', [C_Persetujuan_Permintaan_Pembelian::class, 'persetujuanPermintaanPembelianPage']);
+Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/data-for-modal', [C_Persetujuan_Permintaan_Pembelian::class, 'dataForModal']);
 // pemesanan pembelian 
 // laporan bukti keluar
 // API 

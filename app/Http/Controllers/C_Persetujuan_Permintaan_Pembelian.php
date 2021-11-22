@@ -15,4 +15,9 @@ class C_Persetujuan_Permintaan_Pembelian extends Controller
         $dr = ['dataPermintaan' => $dataPermintaan];
         return view('app.persetujuanPermintaanPembelian.persetujuanPermintaanPembelianPage', $dr);
     }
+    public function dataForModal(Request $request, $noPr)
+    {
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
+    }
 }

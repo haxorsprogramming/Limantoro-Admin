@@ -2,11 +2,17 @@
 var appSetuju = new Vue({
     el : '#appPersetujuanPermintaanPembelian',
     data : {
-
+        noPrSelected : ''
     },
     methods : {
-        setujuiAtc : function()
+        setujuiAtc : function(noPr)
         {
+            let rDataModal = server + "app/persetujuan-permintaan-pembelian/"+noPr+"/data-for-modal";
+            axios.get(rDataModal).then(function(res){
+                let obj = res.data;
+                console.log(obj);
+            });
+            appSetuju.noPrSelected = noPr;
             $("#modalPersetujuan").openModal();
         }
     }

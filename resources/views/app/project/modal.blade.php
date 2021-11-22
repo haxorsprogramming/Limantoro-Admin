@@ -4,7 +4,7 @@
         <h4>Pilih penanggung jawab</h4>
         <table class="table bordered highlight" id="tblPenanggungJawab">
             <thead>
-                <tr>
+                <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>Username</th>
                     <th>Nama</th>
                     <th>Alamat</th>

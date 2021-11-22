@@ -4,7 +4,7 @@
         <h4>Pilih project</h4>
         <table id="tblModalProject" class="table bordered highlight">
             <thead>
-                <tr>
+                <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
                     <th>Kode Project</th>
                     <th>Nama Project</th>
@@ -35,7 +35,7 @@
         <h4>Tambah material</h4>
         <table id="tblModalMaterial" class="table bordered highlight">
             <thead>
-                <tr>
+                <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
                     <th>Kode</th>
                     <th>Nama Material</th>

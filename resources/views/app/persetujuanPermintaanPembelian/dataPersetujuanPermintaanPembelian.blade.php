@@ -42,7 +42,7 @@
                     <td>{{ $total }} </td>
                     <td></td>
                     <td>
-                        <a class="btn-floating waves-effect waves-light" id="btnSetujui" @click="setujuiAtc()" href="javascript:void(0)">
+                        <a class="btn-floating waves-effect waves-light" id="btnSetujui" @click="setujuiAtc('{{ $permintaan -> no_pr }}')" href="javascript:void(0)">
                             <i class="material-icons">gavel</i>
                         </a>
                         <a class="btn-floating waves-effect waves-light" id="btnPrint" target="new" href="{{ url('/app/permintaan-pembelian/'.$permintaan -> no_pr.'/print') }}">
