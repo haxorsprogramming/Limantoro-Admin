@@ -87,8 +87,10 @@ class C_Permintaan_Pembelian extends Controller
     }
     public function cetakPermintaan(Request $request, $noPr)
     {
+        $dataPermintaan = M_Permintaan_Pembelian::where('no_pr', $noPr) -> first();
+        $userProfile = $dataPermintaan -> userProfileData;
         $dataItem = M_Item_Permintaan_Pembelian::where('no_pr', $noPr) -> get();
-        $dr = ['dataItem' => $dataItem];
+        $dr = ['dataItem' => $dataItem, 'noPr' => $noPr, 'userProfile' => $userProfile];
         $pdf = PDF::loadview('app.permintaanPembelian.cetakPermintaan', $dr);
         $pdf -> setPaper('A4', 'landscape');
         return $pdf -> stream();

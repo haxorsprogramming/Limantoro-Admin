@@ -68,7 +68,7 @@ var appPermintaan = new Vue({
                 $("#modalMaterial").closeModal();
             }
         },
-        prosesPermintaanAtc : function()
+        prosesPermintaanAtc : async function()
         {
             dataMaterialKode.forEach(renderMaterial);
             function renderMaterial(item, index){
@@ -81,9 +81,11 @@ var appPermintaan = new Vue({
             let kdProject = appPermintaan.kdProjectRowSelected;
             let tanggal = document.querySelector("#txtTanggalProject").value;
             let ds = {'dataMaterial':appPermintaan.materialData, 'kdProject':kdProject, 'tanggal':tanggal}
+            appPermintaan.prosesBtnText = "Memproses ...";
+            await tidur_bentar(2000);
             axios.post(rProsesPermintaan, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
+                pesan_toast("Data permintaan pembelian berhasi di tambahkan ...");
+                load_page(rPermintaanPembelian, 'Permintaan Pembelian');
             });
         }
     }

@@ -24,4 +24,9 @@ class M_Permintaan_Pembelian extends Model
         return $this->belongsTo(M_Project::class, 'kode_project', 'kode');
     }
 
+    public function userProfileData()
+    {
+        return $this->belongsTo(M_Profile_Karyawan::class, 'user_request', 'username');
+    }
+
 }
