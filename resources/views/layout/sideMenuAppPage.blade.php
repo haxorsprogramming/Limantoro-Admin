@@ -31,7 +31,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="javascript:void(0)" @click="permintaanPembelianAtc()">Permintaan Pembelian</a></li> 
-                        <li><a href="javascript:void(0)">Persetujuan Pembelian</a></li>
+                        <li><a href="javascript:void(0)" @click="persetujuanPermintaanPembelianAtc()">Persetujuan Pembelian</a></li>
                         <li><a href="javascript:void(0)">Pemesanan Pembelian</a></li>
                     </ul>
                 </div>

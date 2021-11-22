@@ -7,7 +7,7 @@ var rMaterial = server + "app/material";
 var rKaryawan = server + "app/karyawan";
 var rProject = server + "app/project";
 var rPermintaanPembelian = server + "app/permintaan-pembelian";
-
+var rPersetujuanPermintaanPembelian = server + "app/persetujuan-permintaan-pembelian";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -50,6 +50,10 @@ var div_menu = new Vue({
         permintaanPembelianAtc : function()
         {
             load_page(rPermintaanPembelian, 'Permintaan Pembelian');
+        },
+        persetujuanPermintaanPembelianAtc : function()
+        {
+            load_page(rPersetujuanPermintaanPembelian, 'Persetujuan Permintaan Pembelian');
         }
     }
 });

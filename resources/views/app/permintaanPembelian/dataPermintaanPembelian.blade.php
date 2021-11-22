@@ -7,7 +7,7 @@
 
         <table id="tblPermintaan" class="display responsive-table datatable-example table-hover">
             <thead>
-                <tr>
+                <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
                     <th>No PR</th>
                     <th>Tanggal Permintaan</th>
@@ -25,7 +25,11 @@
                     <td>{{ $permintaan -> tanggal }}</td>
                     <td>{{ $permintaan -> projectData -> nama }}</td>
                     <td>{{ $permintaan -> projectData -> penanggung_jawab }}</td>
-                    <td>Status</td>
+                    @if($permintaan -> status == 'not_approve')
+                        <td>Not yet approved</td>
+                    @else
+                        <td>Approve</td>
+                    @endif
                     <td>
                         <a class="btn-floating waves-effect waves-light" target="new" href="{{ url('/app/permintaan-pembelian/'.$permintaan -> no_pr.'/print') }}">
                             <i class="material-icons">print</i>

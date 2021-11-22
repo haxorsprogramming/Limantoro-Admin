@@ -10,6 +10,7 @@ use App\Http\Controllers\C_Material;
 use App\Http\Controllers\C_Karyawan;
 use App\Http\Controllers\C_Project;
 use App\Http\Controllers\C_Permintaan_Pembelian;
+use App\Http\Controllers\C_Persetujuan_Permintaan_Pembelian;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -46,6 +47,7 @@ Route::get('/app/permintaan-pembelian', [C_Permintaan_Pembelian::class, 'permint
 Route::post('/app/permintaan-pembelian/tambah/proses', [C_Permintaan_Pembelian::class, 'prosesPermintaanPembelian']);
 Route::get('/app/permintaan-pembelian/{noPr}/print', [C_Permintaan_Pembelian::class, 'cetakPermintaan']);
 // persetujuan permintaan pembelian 
+Route::get('/app/persetujuan-permintaan-pembelian', [C_Persetujuan_Permintaan_Pembelian::class, 'persetujuanPermintaanPembelianPage']);
 // pemesanan pembelian 
 // laporan bukti keluar
 // API 

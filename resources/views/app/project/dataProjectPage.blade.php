@@ -7,7 +7,7 @@
         <hr />
         <table id="tblProject" class="display responsive-table datatable-example table-hover">
             <thead>
-                <tr>
+                <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
                     <th>Nama</th>
                     <th>Tipe</th>

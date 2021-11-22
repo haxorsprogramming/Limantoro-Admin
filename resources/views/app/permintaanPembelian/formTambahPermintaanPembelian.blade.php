@@ -3,7 +3,7 @@
     <div class="card-content">
         <h3 class="light">Tambah Permintaan Pembelian</h3>
         <div class="row">
-            <a class="btn-floating waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+            <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="kembaliAtc()"><i class="material-icons">arrow_back</i></a>
         </div>
         <div class="row">
             <!-- div col 1 -->

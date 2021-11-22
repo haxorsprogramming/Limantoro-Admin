@@ -87,6 +87,10 @@ var appPermintaan = new Vue({
                 pesan_toast("Data permintaan pembelian berhasi di tambahkan ...");
                 load_page(rPermintaanPembelian, 'Permintaan Pembelian');
             });
+        },
+        kembaliAtc : function()
+        {
+            load_page(rPermintaanPembelian, 'Permintaan Pembelian');
         }
     }
 });

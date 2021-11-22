@@ -19,6 +19,7 @@
     <link href="{{ asset('/style/alpha') }}/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet">
     <link href="{{ asset('/base') }}/css/nprogress.css" rel="stylesheet">
     <link href="{{ asset('/base') }}/css/micromodal.css" rel="stylesheet">
+    <link href="{{ asset('/base') }}/css/limantoro.css" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="{{ asset('/style/alpha') }}/plugins/select2/css/select2.css" rel="stylesheet">
     <!-- Theme Styles -->
