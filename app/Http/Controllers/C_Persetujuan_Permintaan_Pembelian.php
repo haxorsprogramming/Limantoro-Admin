@@ -25,8 +25,29 @@ class C_Persetujuan_Permintaan_Pembelian extends Controller
     }
     public function tabelPermintaanMaterial(Request $request, $noPr)
     {
-        $dataItem = M_Item_Permintaan_Pembelian::where('no_pr', $noPr)->get();
-        $dr = ['dataItem' => $dataItem];
+        $dataItem = M_Item_Permintaan_Pembelian::where('no_pr', $noPr) -> get();
+        $dr = ['dataItem' => $dataItem, 'noPr' => $noPr];
         return view('app.persetujuanPermintaanPembelian.permintaanMaterial', $dr);
+    }
+    public function prosesPersetujuan(Request $request)
+    {
+        // {'noPr':noPr, 'dataQt':dBantuan.dataQt} 
+        // update status permintaan pembelian
+        M_Permintaan_Pembelian::where('no_pr', $request -> noPr) -> update([
+            'status' => 'approved',
+            'user_approve' => session('userLogin')
+        ]);
+        // update item permintaan pembelian 
+        $j = 0;
+        $dataQt = $request -> dataQt;
+        foreach($dataQt as $dq){
+            M_Item_Permintaan_Pembelian::where('no_pr', $request -> noPr) -> where('kode_material', $dataQt[$j]['kode']) -> update([
+                'qt_approve' => $dataQt[$j]['qt'],
+                'status' => 'approved'
+            ]);
+            $j++;
+        }
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
     }
 }

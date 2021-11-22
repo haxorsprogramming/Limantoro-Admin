@@ -17,25 +17,43 @@
         <td>{{ $item -> qt }}</td>
         <td>
             <input type="number" class="qtRequest" style="width: 150px;" placeholder="Total disetujui">
+            <input type="hidden" class="kdBat" value="{{ $item -> kode_material }}">
         </td>
     </tr>
     @endforeach
     </tbody>
 </table>
-<div style="text-align: center;">
-    <a href="javascript:void(0)" class="btn" onclick="prosesPersetujuan()">Proses Persetujuan</a>
+<div style="text-align: center;" id="dDataMaterialBot">
+    <a href="javascript:void(0)" class="btn" onclick="prosesPersetujuan('{{ $noPr }}')">Proses Persetujuan</a>
 </div>
 
 <script>
+
+    var rToProsesPersetujuanPermintaan = server + "app/persetujuan-permintaan-pembelian/proses";
+
     $("#tblPermintaanMaterial").dataTable();
     
-    function prosesPersetujuan()
+    var dBantuan = new Vue({
+        el : '#dDataMaterialBot',
+        data : {
+            dataQt : []
+        }
+    });
+
+    function prosesPersetujuan(noPr)
     {
         let ti = document.querySelectorAll('.qtRequest').length;
         for(let i = 0; i < ti; i++){
             let qt = document.getElementsByClassName('qtRequest')[i].value;
-            console.log(qt);
+            let kd = document.getElementsByClassName('kdBat')[i].value;
+            dBantuan.dataQt.push({kode:kd, qt:qt});
         }
-        // $("#modalPersetujuan").closeModal();
+        let ds = {'noPr':noPr, 'dataQt':dBantuan.dataQt}
+
+        axios.post(rToProsesPersetujuanPermintaan, ds).then(function(res){
+            let obj = res.data;
+            console.log(obj);
+        });
+
     }
 </script>

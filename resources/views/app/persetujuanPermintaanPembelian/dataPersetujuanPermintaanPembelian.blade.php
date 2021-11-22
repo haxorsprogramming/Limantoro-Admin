@@ -1,7 +1,7 @@
 <div class="card" id="dPersetujuanPermintaanPembelian">
     <div class="card-content">
         <h3 class="light">Data Persetujuan Permintaan Pembelian</h3>
-        
+
         <table id="tblPersetujuanPermintaanPembelian" class="display responsive-table datatable-example table-hover">
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;font-size:12px;">
@@ -39,9 +39,13 @@
                     <td>{{ $total }} </td>
                     <td></td>
                     <td>
+                        @if($permintaan -> status == 'not_approve')
                         <a class="btn-floating waves-effect waves-light" id="btnSetujui" @click="setujuiAtc('{{ $permintaan -> no_pr }}')" href="javascript:void(0)">
                             <i class="material-icons">gavel</i>
                         </a>
+                        @else
+                        
+                        @endif
                         <a class="btn-floating waves-effect waves-light" id="btnPrint" target="new" href="{{ url('/app/permintaan-pembelian/'.$permintaan -> no_pr.'/print') }}">
                             <i class="material-icons">print</i>
                         </a>
