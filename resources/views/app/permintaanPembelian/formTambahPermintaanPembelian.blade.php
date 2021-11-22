@@ -9,7 +9,7 @@
             <!-- div col 1 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input placeholder="Kode Project" id="txtNomorPr" type="text" class="validate">
+                    <input placeholder="Nomor PR" id="txtNomorPr" type="text" class="validate" disabled value="{{ $noPr }}">
                     <label for="txtNomorPr" class="active">Nomor PR</label>
                 </div>
             </div>
