@@ -18,4 +18,9 @@ class M_Item_Permintaan_Pembelian extends Model
         'status',
         'active'
     ];
+
+    public function materialData()
+    {
+        return $this->belongsTo(M_Material::class, 'kode_material', 'kode');
+    }
 }
