@@ -19,4 +19,9 @@ class M_Permintaan_Pembelian extends Model
         'active'
     ];
 
+    public function projectData()
+    {
+        return $this->belongsTo(M_Project::class, 'kode_project', 'kode');
+    }
+
 }

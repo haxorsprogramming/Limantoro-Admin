@@ -1,3 +1,5 @@
+// route 
+var rProsesPermintaan = server + "app/permintaan-pembelian/tambah/proses";
 // vue object 
 var appPermintaan = new Vue({
     el : '#appPermintaanPembelian',
@@ -57,7 +59,9 @@ var appPermintaan = new Vue({
                     no : noTabelMaterial,
                     kode : appPermintaan.kdMaterialTemp,
                     nama : appPermintaan.namaMaterialTemp,
-                    satuan : appPermintaan.satuanMaterialTemp
+                    satuan : appPermintaan.satuanMaterialTemp,
+                    jumlah : 0,
+                    pesan : ''
                 });
                 dataMaterialKode.push(appPermintaan.kdMaterialTemp);
                 noTabelMaterial++;
@@ -70,8 +74,17 @@ var appPermintaan = new Vue({
             function renderMaterial(item, index){
                 let valJumlahMaterial = document.querySelector("#txtJumlahBarang_"+dataMaterialKode[index]).value;
                 let pesanMaterial = document.querySelector("#txtPesan_"+dataMaterialKode[index]).value;
+                appPermintaan.materialData[index].jumlah = valJumlahMaterial;
+                appPermintaan.materialData[index].pesan = pesanMaterial;
             }
-            let kdPr = '';
+            // proses 
+            let kdProject = appPermintaan.kdProjectRowSelected;
+            let tanggal = document.querySelector("#txtTanggalProject").value;
+            let ds = {'dataMaterial':appPermintaan.materialData, 'kdProject':kdProject, 'tanggal':tanggal}
+            axios.post(rProsesPermintaan, ds).then(function(res){
+                let obj = res.data;
+                console.log(obj);
+            });
         }
     }
 });

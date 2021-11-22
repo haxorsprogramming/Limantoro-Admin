@@ -43,6 +43,8 @@ Route::get('/app/project/{kdProject}/detail/sec/materialdaristock', [C_Project::
 Route::get('/app/project/{kdProject}/detail/sec/materialtersisa', [C_Project::class, 'materialTersisa']);
 // permintaan pembelian 
 Route::get('/app/permintaan-pembelian', [C_Permintaan_Pembelian::class, 'permintaanPembelianPage']);
+Route::post('/app/permintaan-pembelian/tambah/proses', [C_Permintaan_Pembelian::class, 'prosesPermintaanPembelian']);
+Route::get('/app/permintaan-pembelian/{noPr}/print', [C_Permintaan_Pembelian::class, 'cetakPermintaan']);
 // persetujuan permintaan pembelian 
 // pemesanan pembelian 
 // laporan bukti keluar
