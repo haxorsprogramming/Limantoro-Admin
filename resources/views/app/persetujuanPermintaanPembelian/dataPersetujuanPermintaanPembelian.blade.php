@@ -1,10 +1,7 @@
 <div class="card" id="dPersetujuanPermintaanPembelian">
     <div class="card-content">
         <h3 class="light">Data Persetujuan Permintaan Pembelian</h3>
-        <a href="#!" class="waves-effect waves-light btn" @click="tambahPermintaanPembelian()">
-            <i class="material-icons left">add_circle_outline</i>Tambah Permintaan
-        </a>
-
+        
         <table id="tblPersetujuanPermintaanPembelian" class="display responsive-table datatable-example table-hover">
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;font-size:12px;">

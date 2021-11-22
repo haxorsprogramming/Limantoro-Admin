@@ -49,6 +49,7 @@ Route::get('/app/permintaan-pembelian/{noPr}/print', [C_Permintaan_Pembelian::cl
 // persetujuan permintaan pembelian 
 Route::get('/app/persetujuan-permintaan-pembelian', [C_Persetujuan_Permintaan_Pembelian::class, 'persetujuanPermintaanPembelianPage']);
 Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/data-for-modal', [C_Persetujuan_Permintaan_Pembelian::class, 'dataForModal']);
+Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-material', [C_Persetujuan_Permintaan_Pembelian::class, 'tabelPermintaanMaterial']);
 // pemesanan pembelian 
 // laporan bukti keluar
 // API 
