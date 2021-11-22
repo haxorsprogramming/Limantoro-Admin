@@ -24,7 +24,7 @@
     </tbody>
 </table>
 <div style="text-align: center;" id="dDataMaterialBot">
-    <a href="javascript:void(0)" class="btn" onclick="prosesPersetujuan('{{ $noPr }}')">Proses Persetujuan</a>
+    <a href="javascript:void(0)" class="btn" id="btnProses" onclick="prosesPersetujuan('{{ $noPr }}')">@{{ btnProsesText }}</a>
 </div>
 
 <script>
@@ -36,24 +36,30 @@
     var dBantuan = new Vue({
         el : '#dDataMaterialBot',
         data : {
-            dataQt : []
+            dataQt : [],
+            btnProsesText : 'Proses Persetujuan'
         }
     });
 
-    function prosesPersetujuan(noPr)
+    async function prosesPersetujuan(noPr)
     {
         let ti = document.querySelectorAll('.qtRequest').length;
         for(let i = 0; i < ti; i++){
             let qt = document.getElementsByClassName('qtRequest')[i].value;
             let kd = document.getElementsByClassName('kdBat')[i].value;
             dBantuan.dataQt.push({kode:kd, qt:qt});
+            document.getElementsByClassName('qtRequest')[i].setAttribute('disabled', 'disabled');
         }
         let ds = {'noPr':noPr, 'dataQt':dBantuan.dataQt}
-
+        dBantuan.btnProsesText = "Memproses ...";
+        document.querySelector("#btnProses").setAttribute('disabled', 'disabled');
+        await tidur_bentar(2000);
         axios.post(rToProsesPersetujuanPermintaan, ds).then(function(res){
-            let obj = res.data;
-            console.log(obj);
+            pesan_toast("Persetujuan permintaan berhasil di proses ...");
+            $("#modalPersetujuan").closeModal();
+            tidur_bentar(1000);
+            load_page(rPersetujuanPermintaanPembelian, 'Persetujuan Permintaan Pembelian');
         });
-
+        
     }
 </script>
