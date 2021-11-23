@@ -1,6 +1,6 @@
 <div class="card" id="dProject">
     <div class="card-content">
-        <span class="card-title">Data Project</span>
+        <h3 class="light">Data Project</h3>
         <a href="#!" class="waves-effect waves-light btn" @click="tambahProjectAtc()">
             <i class="material-icons left">add_circle_outline</i>Tambah Project
         </a>

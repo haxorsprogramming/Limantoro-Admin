@@ -23,6 +23,7 @@
                 $tanggalCap = \Carbon\Carbon::parse($permintaan -> tanggal) -> isoFormat('dddd, D MMMM Y');
                 
                 $total = DB::table('tbl_item_permintaan_pembelian') -> where('no_pr', $permintaan -> no_pr) -> sum('qt');
+                $totalApprove = DB::table('tbl_item_permintaan_pembelian') -> where('no_pr', $permintaan -> no_pr) -> sum('qt_approve');
                 @endphp
                 <tr>
                     <td>{{ $loop -> iteration }}</td>
@@ -37,7 +38,7 @@
                     <td>{{ $permintaan -> user_request }}</td>
                     <td>{{ $permintaan -> user_approve }}</td>
                     <td>{{ $total }} </td>
-                    <td></td>
+                    <td>{{ $totalApprove }}</td>
                     <td>
                         @if($permintaan -> status == 'not_approve')
                         <a class="btn-floating waves-effect waves-light" id="btnSetujui" @click="setujuiAtc('{{ $permintaan -> no_pr }}')" href="javascript:void(0)">

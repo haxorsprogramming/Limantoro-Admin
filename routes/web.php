@@ -52,6 +52,7 @@ Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/data-for-modal', [C_Per
 Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-material', [C_Persetujuan_Permintaan_Pembelian::class, 'tabelPermintaanMaterial']);
 Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permintaan_Pembelian::class, 'prosesPersetujuan']);
 // pemesanan pembelian 
+
 // laporan bukti keluar
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
