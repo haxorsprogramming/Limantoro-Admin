@@ -11,6 +11,7 @@ use App\Http\Controllers\C_Karyawan;
 use App\Http\Controllers\C_Project;
 use App\Http\Controllers\C_Permintaan_Pembelian;
 use App\Http\Controllers\C_Persetujuan_Permintaan_Pembelian;
+use App\Http\Controllers\C_Penggajian;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -54,5 +55,8 @@ Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permi
 // pemesanan pembelian 
 
 // laporan bukti keluar
+
+// penggajian 
+Route::get('/penggajian/test', [C_Penggajian::class, 'test']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

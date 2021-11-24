@@ -12,6 +12,8 @@
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "o2system/spl": "^1.2",
+        "steevenz/id-payroll-calculator": "^1.7",
         "tymon/jwt-auth": "dev-develop",
         "yajra/laravel-datatables-oracle": "^9.18"
     },
