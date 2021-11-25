@@ -31,7 +31,7 @@ class C_Penggajian extends Controller
         $payrollCalculator->employee->presences->indisposedDays = 0; //  perhitungan jumlah hari sakit yang telah memiliki surat dokter
         $payrollCalculator->employee->presences->absentDays = 0; //  perhitungan jumlah hari alpha
         $payrollCalculator->employee->presences->splitShifts = 0; // perhitungan jumlah split shift
-        $payrollCalculator -> company -> allowances = "Ebunga";
+        $payrollCalculator -> company -> allowances = 8000000;
         $payrollCalculator -> success = false;
         // Set data tunjangan karyawan diluar tunjangan BPJS Kesehatan dan Ketenagakerjaan
         $payrollCalculator->employee->allowances->offsetSet('tunjanganMakan', 100000);

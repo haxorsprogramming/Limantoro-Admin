@@ -32,7 +32,7 @@
                     <ul>
                         <li><a href="javascript:void(0)" @click="permintaanPembelianAtc()">Permintaan Pembelian</a></li> 
                         <li><a href="javascript:void(0)" @click="persetujuanPermintaanPembelianAtc()">Persetujuan Pembelian</a></li>
-                        <li><a href="javascript:void(0)">Pemesanan Pembelian</a></li>
+                        <li><a href="javascript:void(0)" @click="pemesananPembelianAtc()">Pemesanan Pembelian</a></li>
                     </ul>
                 </div>
             </li>

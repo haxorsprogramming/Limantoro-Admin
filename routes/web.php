@@ -11,6 +11,7 @@ use App\Http\Controllers\C_Karyawan;
 use App\Http\Controllers\C_Project;
 use App\Http\Controllers\C_Permintaan_Pembelian;
 use App\Http\Controllers\C_Persetujuan_Permintaan_Pembelian;
+use App\Http\Controllers\C_Pemesanan_Pembelian;
 use App\Http\Controllers\C_Penggajian;
 
 Route::get('/', [C_Page::class, 'loginPage']);
@@ -53,7 +54,7 @@ Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/data-for-modal', [C_Per
 Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-material', [C_Persetujuan_Permintaan_Pembelian::class, 'tabelPermintaanMaterial']);
 Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permintaan_Pembelian::class, 'prosesPersetujuan']);
 // pemesanan pembelian 
-
+Route::get('/app/pemesanan-pembelian', [C_Pemesanan_Pembelian::class, 'pemesananPembelianPage']);
 // laporan bukti keluar
 
 // penggajian 
