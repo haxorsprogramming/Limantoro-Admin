@@ -1,7 +1,7 @@
 <div class="card" id="dPemesananPembelian">
     <div class="card-content">
         <h3 class="light">Data Pemesanan Pembelian</h3>
-        <a href="javascript:void(0)" class="waves-effect waves-light btn">
+        <a href="javascript:void(0)" class="waves-effect waves-light btn" @click="tambahPemesananAtc()">
             <i class="material-icons left">add_circle_outline</i>Tambah Pemesanan
         </a>
 
