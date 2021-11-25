@@ -4,7 +4,8 @@ var appPemesanan = new Vue({
     data : {
         prosesBtnText : 'Proses pemesanan',
         kdSupplierSelected : '',
-        noPrSelected : ''
+        namaSupplierSelected : '',
+        noPrSelected : '',
     },
     methods : {
         tambahPemesananAtc : function()
@@ -22,13 +23,15 @@ var appPemesanan = new Vue({
         },
         rwSupplierAtc : function(kdSupplier)
         {
+            let supSplit = kdSupplier.split("|");
             $(".rwSupplier").css("background-color", "");
-            document.querySelector("#rwSupplier_"+kdSupplier).style.backgroundColor = "#81ecec";
-            appPemesanan.kdSupplierSelected = kdSupplier;
+            document.querySelector("#rwSupplier_"+supSplit[0]).style.backgroundColor = "#81ecec";
+            appPemesanan.kdSupplierSelected = supSplit[0];
+            appPemesanan.namaSupplierSelected = supSplit[1];
         },
         pilihSupplierAtc : function()
         {
-            document.querySelector("#txtKdSupplier").value = appPemesanan.kdSupplierSelected;
+            document.querySelector("#txtKdSupplier").value = appPemesanan.namaSupplierSelected;
             $("#modalSupplier").closeModal();
         },
         modalPrAtc : function()

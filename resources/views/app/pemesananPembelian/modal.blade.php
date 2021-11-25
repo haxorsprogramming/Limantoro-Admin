@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 @foreach($dataSupplier as $supplier)
-                <tr @click="rwSupplierAtc('{{ $supplier -> kode }}')" class="rwSupplier" id="rwSupplier_{{ $supplier -> kode }}">
+                <tr @click="rwSupplierAtc('{{ $supplier -> kode }}|{{ $supplier -> nama }}')" class="rwSupplier" id="rwSupplier_{{ $supplier -> kode }}">
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ $supplier -> kode }}</td>
                     <td>{{ $supplier -> nama }}</td>
