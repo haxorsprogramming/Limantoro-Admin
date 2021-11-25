@@ -39,3 +39,4 @@ var appPemesanan = new Vue({
 // fungsi inisialisasi 
 $("#tblPemesananPembelian").dataTable();
 $("#tblModalSupplier").dataTable();
+$("#tblModalPermintaanPembelian").dataTable();

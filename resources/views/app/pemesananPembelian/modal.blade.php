@@ -37,12 +37,23 @@
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
-                    <th>Kode Supplier</th>
-                    <th>Nama Supplier</th>
-                    <th>Alamat</th>
+                    <th>No. PR</th>
+                    <th>Tanggal Permintaan</th>
+                    <th>PJ</th>
+                    <th>Project</th>
                 </tr>
             </thead>
-            
+            <tbody>
+            @foreach($dataPermintaanPembelian as $pr)
+            <tr>
+                <td>{{ $loop -> iteration }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            @endforeach
+            </tbody>
         </table>
     </div>
     <div class="modal-footer">
