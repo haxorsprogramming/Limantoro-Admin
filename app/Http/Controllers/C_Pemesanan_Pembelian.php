@@ -8,6 +8,6 @@ class C_Pemesanan_Pembelian extends Controller
 {
     public function pemesananPembelianPage()
     {
-        echo "Halo";
+        return view('app.pemesananPembelian.pemesananPembelianPage');
     }
 }
