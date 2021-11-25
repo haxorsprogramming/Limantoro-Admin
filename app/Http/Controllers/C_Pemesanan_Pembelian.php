@@ -12,7 +12,7 @@ class C_Pemesanan_Pembelian extends Controller
     public function pemesananPembelianPage()
     {
         $dataSupplier = M_Supplier::all();
-        $dataPermintaanPembelian = M_Permintaan_Pembelian::where('status', 'not_approve') -> get();
+        $dataPermintaanPembelian = M_Permintaan_Pembelian::where('status', 'approved') -> get();
         $dr = ['dataSupplier' => $dataSupplier, 'dataPermintaanPembelian' => $dataPermintaanPembelian];
         return view('app.pemesananPembelian.pemesananPembelianPage', $dr);
     }

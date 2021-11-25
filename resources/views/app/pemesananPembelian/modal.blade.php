@@ -45,12 +45,12 @@
             </thead>
             <tbody>
             @foreach($dataPermintaanPembelian as $pr)
-            <tr>
+            <tr @click="rwPjAtc('{{ $pr -> no_pr }}')" class="rwPr" id="rwPr_{{ $pr -> no_pr }}">
                 <td>{{ $loop -> iteration }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><b>{{ $pr -> no_pr }}</b></td>
+                <td>{{ $pr -> tanggal }}</td>
+                <td>{{ $pr -> userProfileData -> nama_lengkap }}</td>
+                <td>{{ $pr -> projectData -> nama }}</td>
             </tr>
             @endforeach
             </tbody>
@@ -58,7 +58,7 @@
     </div>
     <div class="modal-footer">
         <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-blue btn-flat">Tutup</a>
-        <a href="javascript:void(0)" class="btn waves-effect waves-blue">Pilih</a>
+        <a href="javascript:void(0)" class="btn waves-effect waves-blue" @click="pilihPrAtc()">Pilih</a>
     </div>
 </div>
 

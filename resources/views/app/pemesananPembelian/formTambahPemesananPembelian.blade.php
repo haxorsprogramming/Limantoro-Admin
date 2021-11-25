@@ -23,8 +23,8 @@
             <!-- div col 2 -->
             <div class="col s3">
                 <div class="input-field col s12">
-                    <input placeholder="Nomor PR" id="txtProject" readonly type="text" @click="modalPrAtc()">
-                    <label for="txtProject" class="active">Nomor PR</label>
+                    <input placeholder="Nomor PR" id="txtNoPr" readonly type="text" @click="modalPrAtc()">
+                    <label for="txtNoPr" class="active">Nomor PR</label>
                 </div>
             </div>
              <!-- div col 2 -->

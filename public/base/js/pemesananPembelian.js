@@ -3,7 +3,8 @@ var appPemesanan = new Vue({
     el : '#appPemesananPembelian',
     data : {
         prosesBtnText : 'Proses pemesanan',
-        kdSupplierSelected : ''
+        kdSupplierSelected : '',
+        noPrSelected : ''
     },
     methods : {
         tambahPemesananAtc : function()
@@ -33,6 +34,17 @@ var appPemesanan = new Vue({
         modalPrAtc : function()
         {
             $("#modalPermintaanPembelian").openModal();
+        },
+        rwPjAtc : function(noPr)
+        {
+            appPemesanan.noPrSelected = noPr;
+            $(".rwPr").css("background-color", "");
+            document.querySelector("#rwPr_"+noPr).style.backgroundColor = "#81ecec";
+        },
+        pilihPrAtc : function()
+        {
+            document.querySelector("#txtNoPr").value = appPemesanan.noPrSelected;
+            $("#modalPermintaanPembelian").closeModal();
         }
     }
 });
