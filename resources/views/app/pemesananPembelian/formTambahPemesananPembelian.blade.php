@@ -57,12 +57,12 @@
                             <td>@{{ dm.nomor }}</td>
                             <td>@{{ dm.kode }}</td>
                             <td>@{{ dm.nama }}</td>
-                            <td>@{{ dm.satuan }}</td>
+                            <td>@{{ dm.satuan }} - @{{ dm.qtInput }}</td>
                             <td>
-                                <input type="number" placeholder="Qt" v-on:keyup="setQtAtc(dm.kode)">
+                                <input type="number" placeholder="Qt" v-on:keyup="setQtAtc(dm.kode)" v-bind:id="'qt_'+dm.kode">
                             </td>
                             <td>
-                                <input type="number" placeholder="Qt">
+                                <input type="number" placeholder="Harga" v-on:keyup="setHarga(dm.kode)" v-bind:id="'harga_'+dm.kode">
                             </td>
                             <td>Rp. @{{ dm.subTotal }}</td>
                             <td></td>

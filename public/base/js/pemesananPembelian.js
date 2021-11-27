@@ -68,6 +68,7 @@ var appPemesanan = new Vue({
                         nama : namaMaterial,
                         qt : qt,
                         qtApprove : qtApprove,
+                        qtInput : 0,
                         satuan : satuan,
                         hargaAt : 0,
                         subTotal : 0,
@@ -81,17 +82,23 @@ var appPemesanan = new Vue({
         setQtAtc : function(kode)
         {
             let jlhArray = appPemesanan.dataMaterialPesanan.length;
-            var j;
-            var posKode = 0;
+            let j;
+            let posKode = 0;
             for(j=0; j < jlhArray; j++){
                 let nowRecKode = appPemesanan.dataMaterialPesanan[j].kode;
                 if(nowRecKode === kode){
                     posKode = j;
-                }else{
-                    posKode = j;
                 }
             }
-            console.log(appPemesanan.dataMaterialPesanan[posKode]);
+            // pening dimulai 
+            let qtKd = document.querySelector("#qt_"+kode).value;
+            appPemesanan.dataMaterialPesanan[posKode].qtInput = qtKd;
+        },
+        setHarga : function(kode)
+        {
+            // let jlhArray = appPemesanan.dataMaterialPesanan.length;
+            // var j;
+            // var posKode = 0; 
         }
     }
 });
