@@ -46,19 +46,25 @@
                             <th>Kode</th>
                             <th style="width: 200px;">Nama</th>
                             <th style="width: 150px;">Satuan</th>
-                            <th>Jumlah</th>
-                            <th>Pesan</th>
-                            <th>Action</th>
+                            <th>Qt</th>
+                            <th>Harga (@)</th>
+                            <th>SubTotal</th>
+                            <th>Note</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="dm in dataMaterialPesanan">
-                            <td>@{{dm.nomor}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>@{{ dm.nomor }}</td>
+                            <td>@{{ dm.kode }}</td>
+                            <td>@{{ dm.nama }}</td>
+                            <td>@{{ dm.satuan }}</td>
+                            <td>
+                                <input type="number" placeholder="Qt">
+                            </td>
+                            <td>
+                                <input type="number" placeholder="Qt">
+                            </td>
+                            <td>Rp. @{{ dm.subTotal }}</td>
                             <td></td>
                         </tr>
                     </tbody>

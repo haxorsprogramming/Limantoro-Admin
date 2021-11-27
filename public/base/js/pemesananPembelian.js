@@ -49,15 +49,36 @@ var appPemesanan = new Vue({
         },
         pilihPrAtc : function()
         {
+            resetMaterial();
             let ds = {'noPr':appPemesanan.noPrSelected}
             document.querySelector("#txtNoPr").value = appPemesanan.noPrSelected;
             axios.post(rGetMaterialPemesanan, ds).then(function(res){
                 let obj = res.data;
-                console.log(obj);
+                let dataMaterial = obj.dataMaterial;
+                dataMaterial.forEach(renderMaterial);
+                function renderMaterial(item, index){
+                    let kdMaterial = dataMaterial[index].kode_material;
+                    let qt = dataMaterial[index].qt;
+                    let qtApprove = dataMaterial[index].qt_approve;
+                    let namaMaterial = dataMaterial[index].nama_material;
+                    let satuan = dataMaterial[index].satuan;
+                    appPemesanan.dataMaterialPesanan.push({
+                        nomor : noMaterial,
+                        kode : kdMaterial,
+                        nama : namaMaterial,
+                        qt : qt,
+                        qtApprove : qtApprove,
+                        satuan : satuan,
+                        hargaAt : 0,
+                        subTotal : 0,
+                        note : ''
+                    });
+                    noMaterial++;
+                }
             });
             // appPemesanan.dataMaterialPesanan.push({nomor : noMaterial});
             $("#modalPermintaanPembelian").closeModal();
-            noMaterial++;
+            
         }
     }
 });
@@ -66,3 +87,13 @@ $("#tblPemesananPembelian").dataTable();
 $("#tblModalSupplier").dataTable();
 $("#tblModalPermintaanPembelian").dataTable();
 var noMaterial = 1;
+
+function resetMaterial()
+{
+    let dataMaterial = appPemesanan.dataMaterialPesanan;
+    let jlhMaterial = dataMaterial.length;
+    var i;
+    for(i=0; i < jlhMaterial; i++){
+        appPemesanan.dataMaterialPesanan.splice(0,1);
+    }
+}

@@ -45,6 +45,7 @@ class C_Pemesanan_Pembelian extends Controller
             $arrTemp['qt'] = $dm['qt'];
             $arrTemp['qt_approve'] = $dm['qt_approve'];
             $arrTemp['nama_material'] = $dm['materialData']['nama'];
+            $arrTemp['satuan'] = $dm['materialData']['satuan'];
             $dr['dataMaterial'][] = $arrTemp;
         }
         // $dr = ['status' => $noPr];
