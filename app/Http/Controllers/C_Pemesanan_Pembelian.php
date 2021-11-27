@@ -39,7 +39,6 @@ class C_Pemesanan_Pembelian extends Controller
         // cari material data 
         $dataMaterial = M_Item_Permintaan_Pembelian::where('no_pr', $request -> noPr) -> get();
         foreach($dataMaterial as $dm){
-            
             $arrTemp['id'] = $dm['id'];
             $arrTemp['kode_material'] = $dm['kode_material'];
             $arrTemp['qt'] = $dm['qt'];
@@ -49,6 +48,13 @@ class C_Pemesanan_Pembelian extends Controller
             $dr['dataMaterial'][] = $arrTemp;
         }
         // $dr = ['status' => $noPr];
+        return \Response::json($dr);
+    }
+    public function prosesPemesananPembelian(Request $request)
+    {
+        // {'tanggal':tanggal, 'noPr':noPr, 'kdSupplier':kdSupplier, 'material':material}
+        $kdSupplier = $request -> kdSupplier;
+        $dr = ['status' => $kdSupplier];
         return \Response::json($dr);
     }
 }

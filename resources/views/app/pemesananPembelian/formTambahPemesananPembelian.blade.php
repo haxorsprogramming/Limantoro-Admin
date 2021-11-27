@@ -9,15 +9,15 @@
             <!-- div col 3 -->
             <div class="col s3">
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="date" class="validate">
-                    <label for="txtTanggalProject" class="active">Tanggal Pesanan</label>
+                    <input id="txtTanggalPesanan" type="date" class="validate">
+                    <label for="txtTanggalPesanan" class="active">Tanggal Pesanan</label>
                 </div>
             </div>
             <!-- div col 1 -->
             <div class="col s3">
                 <div class="input-field col s12">
-                    <input placeholder="Nomor PO" id="txtNomorPr" type="text" class="validate" disabled value="{{ $noPo }}">
-                    <label for="txtNomorPr" class="active">Nomor PO</label>
+                    <input placeholder="Nomor PO" id="txtNomorPo" type="text" class="validate" disabled value="{{ $noPo }}">
+                    <label for="txtNomorPo" class="active">Nomor PO</label>
                 </div>
             </div>
             <!-- div col 2 -->
@@ -65,7 +65,9 @@
                                 <input type="text" class="hargaAt" placeholder="Harga" v-on:keyup="setHarga(dm.kode)" v-bind:id="'harga_'+dm.kode" value="0">
                             </td>
                             <td>Rp. @{{ Number(dm.subTotal).toLocaleString() }}<br/></td>
-                            <td></td>
+                            <td>
+                                <input type="text" placeholder="Note" v-bind:id="'note_'+dm.kode">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,7 +75,7 @@
         </div>
 
         <div class="row" style="text-align: center;margin-top:30px;">
-            <a href="javascript:void(0)" class="btn btn-large" id="btnSimpanProject">
+            <a href="javascript:void(0)" class="btn btn-large" id="btnSimpanProject" @click="prosesPemesananAtc()">
                 <i class="material-icons left">file_download_done</i> @{{ prosesBtnText }}
             </a>
         </div>

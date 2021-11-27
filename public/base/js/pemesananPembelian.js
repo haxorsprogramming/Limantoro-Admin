@@ -1,5 +1,6 @@
 // route 
 var rGetMaterialPemesanan = server + "app/pemesanan-pembelian/get-material-pemesanan";
+var rProsesPemesananPembelian = server + "app/pemesanan-pembelian/proses";
 // vue object 
 var appPemesanan = new Vue({
     el : '#appPemesananPembelian',
@@ -112,7 +113,20 @@ var appPemesanan = new Vue({
             let capHarga = document.querySelector("#harga_"+kode).value
             let hargaKd = capHarga.replace(".", "");
             let subTotal = BigInt(qtKd) * BigInt(hargaKd);
+            appPemesanan.dataMaterialPesanan[posKode].hargaAt = hargaKd;
             appPemesanan.dataMaterialPesanan[posKode].subTotal = subTotal;
+        },
+        prosesPemesananAtc : function()
+        {
+            let tanggal = document.querySelector("#txtTanggalPesanan").value;
+            let noPr = appPemesanan.noPrSelected;
+            let kdSupplier = appPemesanan.kdSupplierSelected;
+            let material = appPemesanan.dataMaterialPesanan;
+            let ds = {'tanggal':tanggal, 'noPr':noPr, 'kdSupplier':kdSupplier, 'material':material}
+            axios.post(rProsesPemesananPembelian, ds).then(function(res){
+                let obj = res.data;
+                console.log(obj);
+            });
         }
     }
 });
