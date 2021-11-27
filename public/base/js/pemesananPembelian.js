@@ -76,9 +76,22 @@ var appPemesanan = new Vue({
                     noMaterial++;
                 }
             });
-            // appPemesanan.dataMaterialPesanan.push({nomor : noMaterial});
             $("#modalPermintaanPembelian").closeModal();
-            
+        },
+        setQtAtc : function(kode)
+        {
+            let jlhArray = appPemesanan.dataMaterialPesanan.length;
+            var j;
+            var posKode = 0;
+            for(j=0; j < jlhArray; j++){
+                let nowRecKode = appPemesanan.dataMaterialPesanan[j].kode;
+                if(nowRecKode === kode){
+                    posKode = j;
+                }else{
+                    posKode = j;
+                }
+            }
+            console.log(appPemesanan.dataMaterialPesanan[posKode]);
         }
     }
 });

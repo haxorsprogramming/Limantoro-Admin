@@ -59,7 +59,7 @@
                             <td>@{{ dm.nama }}</td>
                             <td>@{{ dm.satuan }}</td>
                             <td>
-                                <input type="number" placeholder="Qt">
+                                <input type="number" placeholder="Qt" v-on:keyup="setQtAtc(dm.kode)">
                             </td>
                             <td>
                                 <input type="number" placeholder="Qt">
