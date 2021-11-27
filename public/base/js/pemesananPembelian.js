@@ -84,21 +84,35 @@ var appPemesanan = new Vue({
             let jlhArray = appPemesanan.dataMaterialPesanan.length;
             let j;
             let posKode = 0;
-            for(j=0; j < jlhArray; j++){
+            for(j = 0; j < jlhArray; j++){
                 let nowRecKode = appPemesanan.dataMaterialPesanan[j].kode;
                 if(nowRecKode === kode){
                     posKode = j;
                 }
             }
-            // pening dimulai 
             let qtKd = document.querySelector("#qt_"+kode).value;
+            let capHarga = document.querySelector("#harga_"+kode).value
+            let hargaKd = capHarga.replace(".", "");
+            let subTotal = BigInt(qtKd) * BigInt(hargaKd);
             appPemesanan.dataMaterialPesanan[posKode].qtInput = qtKd;
+            appPemesanan.dataMaterialPesanan[posKode].subTotal = subTotal;
         },
         setHarga : function(kode)
         {
-            // let jlhArray = appPemesanan.dataMaterialPesanan.length;
-            // var j;
-            // var posKode = 0; 
+            let jlhArray = appPemesanan.dataMaterialPesanan.length;
+            let j;
+            let posKode = 0;
+            for(j = 0; j < jlhArray; j++){
+                let nowRecKode = appPemesanan.dataMaterialPesanan[j].kode;
+                if(nowRecKode === kode){
+                    posKode = j;
+                }
+            }
+            let qtKd = document.querySelector("#qt_"+kode).value;
+            let capHarga = document.querySelector("#harga_"+kode).value
+            let hargaKd = capHarga.replace(".", "");
+            let subTotal = BigInt(qtKd) * BigInt(hargaKd);
+            appPemesanan.dataMaterialPesanan[posKode].subTotal = subTotal;
         }
     }
 });
@@ -106,6 +120,8 @@ var appPemesanan = new Vue({
 $("#tblPemesananPembelian").dataTable();
 $("#tblModalSupplier").dataTable();
 $("#tblModalPermintaanPembelian").dataTable();
+// $(".hargaAt").mask('000.000.000.000.000.000.000.000.000.000', {reverse: true});
+
 var noMaterial = 1;
 
 function resetMaterial()
