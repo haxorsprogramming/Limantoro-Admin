@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<!-- div modal permintaan pembelian  -->
+<!-- div modal pilih project  -->
 <div id="modalPermintaanPembelian" class="modal">
     <div class="modal-content">
         <h4>Pilih PR</h4>
@@ -61,4 +61,3 @@
         <a href="javascript:void(0)" class="btn waves-effect waves-blue" @click="pilihPrAtc()">Pilih</a>
     </div>
 </div>
-

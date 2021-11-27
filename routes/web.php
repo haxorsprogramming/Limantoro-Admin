@@ -58,6 +58,7 @@ Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-materi
 Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permintaan_Pembelian::class, 'prosesPersetujuan']);
 // pemesanan pembelian 
 Route::get('/app/pemesanan-pembelian', [C_Pemesanan_Pembelian::class, 'pemesananPembelianPage']);
+Route::post('/app/pemesanan-pembelian/get-material-pemesanan', [C_Pemesanan_Pembelian::class, 'getMaterialData']);
 // penerimaan barang 
 Route::get('/app/penerimaan-barang', [C_Penerimaan_Barang::class, 'penerimaanBarangPage']);
 // pengembalian barang 

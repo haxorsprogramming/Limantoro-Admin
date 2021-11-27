@@ -1,3 +1,5 @@
+// route 
+var rGetMaterialPemesanan = server + "app/pemesanan-pembelian/get-material-pemesanan";
 // vue object 
 var appPemesanan = new Vue({
     el : '#appPemesananPembelian',
@@ -6,6 +8,7 @@ var appPemesanan = new Vue({
         kdSupplierSelected : '',
         namaSupplierSelected : '',
         noPrSelected : '',
+        dataMaterialPesanan : []
     },
     methods : {
         tambahPemesananAtc : function()
@@ -46,8 +49,15 @@ var appPemesanan = new Vue({
         },
         pilihPrAtc : function()
         {
+            let ds = {'noPr':appPemesanan.noPrSelected}
             document.querySelector("#txtNoPr").value = appPemesanan.noPrSelected;
+            axios.post(rGetMaterialPemesanan, ds).then(function(res){
+                let obj = res.data;
+                console.log(obj);
+            });
+            // appPemesanan.dataMaterialPesanan.push({nomor : noMaterial});
             $("#modalPermintaanPembelian").closeModal();
+            noMaterial++;
         }
     }
 });
@@ -55,3 +65,4 @@ var appPemesanan = new Vue({
 $("#tblPemesananPembelian").dataTable();
 $("#tblModalSupplier").dataTable();
 $("#tblModalPermintaanPembelian").dataTable();
+var noMaterial = 1;

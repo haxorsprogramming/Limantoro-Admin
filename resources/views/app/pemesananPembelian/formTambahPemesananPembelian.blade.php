@@ -16,7 +16,7 @@
             <!-- div col 1 -->
             <div class="col s3">
                 <div class="input-field col s12">
-                    <input placeholder="Nomor PO" id="txtNomorPr" type="text" class="validate" disabled>
+                    <input placeholder="Nomor PO" id="txtNomorPr" type="text" class="validate" disabled value="{{ $noPo }}">
                     <label for="txtNomorPr" class="active">Nomor PO</label>
                 </div>
             </div>
@@ -39,11 +39,6 @@
         <span class="card-title">Data Material</span>
         <div class="row">
             <div class="col s12">
-                <div style="margin-bottom: 20px;">
-                    <a href="javascript:void(0)" class="btn" id="btnTambahMaterial">
-                        <i class="material-icons left">add_circle_outline</i> Tambah Material
-                    </a>
-                </div>
                 <table id="tblMaterialPermintaan" class="bordered striped highlight">
                     <thead>
                         <tr>
@@ -57,7 +52,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <tr v-for="dm in dataMaterialPesanan">
+                            <td>@{{dm.nomor}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
