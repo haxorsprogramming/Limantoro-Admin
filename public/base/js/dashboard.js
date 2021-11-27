@@ -9,7 +9,9 @@ var rProject = server + "app/project";
 var rPermintaanPembelian = server + "app/permintaan-pembelian";
 var rPersetujuanPermintaanPembelian = server + "app/persetujuan-permintaan-pembelian";
 var rPemesananPembelian = server + "app/pemesanan-pembelian";
-
+var rPenerimaanBarang = server + "app/penerimaan-barang";
+var rPengembalianBarang = server + "app/pengembalian-barang";
+var rPengembalianPembelian = server + "app/pengembalian-pembelian";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -20,14 +22,6 @@ var div_menu = new Vue({
         dashboarc_atc : function()
         {
             load_page(r_beranda, 'Dashboard');
-        },
-        member_atc : function()
-        {
-            load_page(r_member, 'Member');
-        },
-        statistik_atc : function()
-        {
-            
         },
         supplierAtc : function()
         {
@@ -60,6 +54,18 @@ var div_menu = new Vue({
         pemesananPembelianAtc : function()
         {
             load_page(rPemesananPembelian, 'Pemesanan Pembelian');
+        },
+        penerimaanBarangAtc : function()
+        {
+            load_page(rPenerimaanBarang, 'Penerimaan Barang');
+        },
+        pengembalianBarangAtc : function()
+        {
+            load_page(rPengembalianBarang, 'Pengembalian Barang');
+        },
+        pengembalianPembelianAtc : function()
+        {
+            load_page(rPengembalianPembelian, 'Pengembalian Pembelian');
         }
     }
 });

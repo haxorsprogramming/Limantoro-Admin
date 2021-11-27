@@ -13,6 +13,9 @@ use App\Http\Controllers\C_Permintaan_Pembelian;
 use App\Http\Controllers\C_Persetujuan_Permintaan_Pembelian;
 use App\Http\Controllers\C_Pemesanan_Pembelian;
 use App\Http\Controllers\C_Penggajian;
+use App\Http\Controllers\C_Penerimaan_Barang;
+use App\Http\Controllers\C_Pengembalian_Barang;
+use App\Http\Controllers\C_Pengembalian_Pembelian;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -55,6 +58,12 @@ Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-materi
 Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permintaan_Pembelian::class, 'prosesPersetujuan']);
 // pemesanan pembelian 
 Route::get('/app/pemesanan-pembelian', [C_Pemesanan_Pembelian::class, 'pemesananPembelianPage']);
+// penerimaan barang 
+Route::get('/app/penerimaan-barang', [C_Penerimaan_Barang::class, 'penerimaanBarangPage']);
+// pengembalian barang 
+Route::get('/app/pengembalian-barang', [C_Pengembalian_Barang::class, 'pengembalianBarangPage']);
+// pengembalian pembelian 
+Route::get('/app/pengembalian-pembelian', [C_Pengembalian_Pembelian::class, 'pengembalianPembelianPage']);
 // laporan bukti keluar
 
 // penggajian 

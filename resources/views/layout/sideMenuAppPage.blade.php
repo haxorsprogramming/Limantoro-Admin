@@ -40,9 +40,9 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">apps</i>Manajemen Barang<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="javascript:void(0)">Penerimaan Barang</a></li>
-                        <li><a href="javascript:void(0)">Pengembalian Barang</a></li>
-                        <li><a href="javascript:void(0)">Pengembalian Pembelian</a></li>
+                        <li><a href="javascript:void(0)" @click="penerimaanBarangAtc()">Penerimaan Barang</a></li>
+                        <li><a href="javascript:void(0)" @click="pengembalianBarangAtc()">Pengembalian Barang</a></li>
+                        <li><a href="javascript:void(0)" @click="pengembalianPembelianAtc()">Pengembalian Pembelian</a></li>
                     </ul>
                 </div>
             </li>
