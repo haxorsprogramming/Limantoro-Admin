@@ -21,6 +21,7 @@ class TblPemesananPembelian extends Migration
             $table -> char('no_pr', 40);
             $table -> char('kode_supplier', 30);
             $table -> char('no_poy', 40);
+            $table -> char('user_request', 40);
             $table -> char('user_approve', 50);
             $table -> char('user_lock', 100);
             $table -> char('no_poe', 40);

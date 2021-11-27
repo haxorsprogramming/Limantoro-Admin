@@ -14,6 +14,7 @@ class M_Pemesanan_Pembelian extends Model
         'tanggal',
         'no_pr',
         'kode_supplier',
+        'user_request',
         'no_poy',
         'user_approve',
         'user_lock',
