@@ -19,5 +19,11 @@ class M_Pemesanan_Pembelian extends Model
         'user_approve',
         'user_lock',
         'active'
-    ]; 
+    ];
+
+    public function supplierData()
+    {
+        return $this->belongsTo(M_Supplier::class, 'kode_supplier', 'kode');
+    }
+
 }

@@ -9,16 +9,36 @@
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
-                    <th>No PR</th>
+                    <th>No PO</th>
                     <th>Tanggal Permintaan</th>
-                    <th>Project</th>
-                    <th>Penanggung Jawab</th>
-                    <th>Status</th>
+                    <th>No PR</th>
+                    <th>Supplier</th>
+                    <th>No Bukti Keluar</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                
+            @foreach($dataPemesananPembelian as $ps)
+            <tr>
+                <td>{{ $loop -> iteration }}</td>
+                <td>{{ $ps -> no_po }}</td>
+                <td>{{ $ps -> tanggal }}</td>
+                <td>{{ $ps -> no_pr }}</td>
+                <td>{{ $ps -> supplierData -> nama }}</td>
+                <td>{{ $ps -> no_poe }}</td>
+                <td>
+                    <a class="btn-floating waves-effect waves-light btnLock" target="new" href="#!">
+                        <i class="material-icons">lock</i>
+                    </a>
+                    <a class="btn-floating waves-effect waves-light btnGenBk" target="new" href="#!">
+                        <i class="material-icons">outbox</i>
+                    </a>
+                    <a class="btn-floating waves-effect waves-light btnPrintBk" target="new" href="#!">
+                        <i class="material-icons">print</i>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
