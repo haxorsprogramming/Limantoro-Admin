@@ -148,6 +148,11 @@ var appPemesanan = new Vue({
                     });
                 }
             }
+        },
+        generateBkAtc : function(noPo)
+        {
+            let pageGenerate = server + "app/bukti-keluar/"+noPo+"/generate";
+            load_page(pageGenerate, "Generate bukti keluar ("+noPo+")");
         }
     }
 });

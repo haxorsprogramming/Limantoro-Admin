@@ -16,6 +16,7 @@ use App\Http\Controllers\C_Penggajian;
 use App\Http\Controllers\C_Penerimaan_Barang;
 use App\Http\Controllers\C_Pengembalian_Barang;
 use App\Http\Controllers\C_Pengembalian_Pembelian;
+use App\Http\Controllers\C_Bukti_Keluar;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
@@ -66,7 +67,8 @@ Route::get('/app/penerimaan-barang', [C_Penerimaan_Barang::class, 'penerimaanBar
 Route::get('/app/pengembalian-barang', [C_Pengembalian_Barang::class, 'pengembalianBarangPage']);
 // pengembalian pembelian 
 Route::get('/app/pengembalian-pembelian', [C_Pengembalian_Pembelian::class, 'pengembalianPembelianPage']);
-// laporan bukti keluar
+// bukti keluar
+Route::get('/app/bukti-keluar/{noPo}/generate', [C_Bukti_Keluar::class, 'generateBuktiKeluar']);
 
 // penggajian 
 Route::get('/penggajian/test', [C_Penggajian::class, 'test']);

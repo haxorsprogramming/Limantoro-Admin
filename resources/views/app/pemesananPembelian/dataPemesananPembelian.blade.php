@@ -27,13 +27,13 @@
                 <td>{{ $ps -> supplierData -> nama }}</td>
                 <td>{{ $ps -> no_poe }}</td>
                 <td>
-                    <a class="btn-floating waves-effect waves-light btnLock" target="new" href="#!">
+                    <a class="btn-floating waves-effect waves-light btnLock" href="javascript:void(0)">
                         <i class="material-icons">lock</i>
                     </a>
-                    <a class="btn-floating waves-effect waves-light btnGenBk" target="new" href="#!">
+                    <a class="btn-floating waves-effect waves-light btnGenBk" @click="generateBkAtc('{{ $ps -> no_po}}')" href="javascript:void(0)">
                         <i class="material-icons">outbox</i>
                     </a>
-                    <a class="btn-floating waves-effect waves-light btnPrintBk" target="new" href="#!">
+                    <a class="btn-floating waves-effect waves-light btnPrintBk" target="new" href="javascript:void(0)">
                         <i class="material-icons">print</i>
                     </a>
                 </td>

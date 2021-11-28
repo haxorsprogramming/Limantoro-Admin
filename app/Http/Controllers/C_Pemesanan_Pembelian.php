@@ -69,7 +69,7 @@ class C_Pemesanan_Pembelian extends Controller
             $noPo = $huruf . sprintf("%07s", $urutan);
         }else{
             $noPoLast = M_Pemesanan_Pembelian::orderby('id', 'desc') -> limit(1) -> get();
-            $noPo = $noPoLast -> no_po;
+            $noPo = $noPoLast[0] -> no_po;
             $lastId = substr($noPo, -1);
             $urutan = $lastId;
             $urutan++;
