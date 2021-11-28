@@ -78,7 +78,7 @@
         </div>
 
         <div class="row" style="text-align: center;margin-top:30px;">
-            <a href="javascript:void(0)" class="btn btn-large" id="btnSimpanProject" @click="prosesPemesananAtc()">
+            <a href="javascript:void(0)" class="btn btn-large" id="btnProsesPemesanan" @click="prosesPemesananAtc()">
                 <i class="material-icons left">file_download_done</i> @{{ prosesBtnText }}
             </a>
         </div>

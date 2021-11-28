@@ -116,7 +116,7 @@ var appPemesanan = new Vue({
             appPemesanan.dataMaterialPesanan[posKode].hargaAt = hargaKd;
             appPemesanan.dataMaterialPesanan[posKode].subTotal = subTotal;
         },
-        prosesPemesananAtc : function()
+        prosesPemesananAtc : async function()
         {
             let jlhArray = appPemesanan.dataMaterialPesanan.length;
             let j;
@@ -136,10 +136,17 @@ var appPemesanan = new Vue({
             let material = appPemesanan.dataMaterialPesanan;
             let ds = {'tanggal':tanggal, 'noPr':noPr, 'kdSupplier':kdSupplier, 'material':material}
             if(statusValidasi === true){
-                axios.post(rProsesPemesananPembelian, ds).then(function(res){
-                    let obj = res.data;
-                    console.log(obj);
-                });
+                if(tanggal === ''){
+                    pesan_toast('Harap set tanggal !!!');
+                }else{
+                    appPemesanan.prosesBtnText = "Memproses ...";
+                    document.querySelector("#btnProsesPemesanan").setAttribute('disabled', 'disabled');
+                    await tidur_bentar(2000);
+                    axios.post(rProsesPemesananPembelian, ds).then(function(res){
+                        pesan_toast("Pemesanan pembelian berhasil di proses ...");
+                        load_page(rPemesananPembelian, 'Pemesanan Pembelian');
+                    });
+                }
             }
         }
     }
