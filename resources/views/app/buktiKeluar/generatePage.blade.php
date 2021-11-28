@@ -41,9 +41,9 @@
         </div>
         <span class="card-title">Data PO</span>
         <div class="row">
-            <table>
+            <table class="bordered highlight hover" id="tblDataPo">
                 <thead>
-                    <tr>
+                    <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                         <th>No</th>
                         <th>Uraian</th>
                         <th>Jumlah</th>

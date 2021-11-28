@@ -13,7 +13,18 @@ class TblPenerimaanBarang extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tbl_penerimaan_barang', function (Blueprint $table) {
+            $table -> id();
+            $table -> char('user_request', 50);
+            $table -> char('no_gr', 30);
+            $table -> date('tanggal');
+            $table -> char('no_surat', 30);
+            $table -> char('kode_supplier', 50);
+            $table -> char('no_po', 30);
+            $table -> char('checker_code', 50);
+            $table -> timestamps(); 
+            $table -> char('active', 1);
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ class TblPenerimaanBarang extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tbl_penerimaan_barang');
     }
 }

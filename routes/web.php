@@ -69,7 +69,6 @@ Route::get('/app/pengembalian-barang', [C_Pengembalian_Barang::class, 'pengembal
 Route::get('/app/pengembalian-pembelian', [C_Pengembalian_Pembelian::class, 'pengembalianPembelianPage']);
 // bukti keluar
 Route::get('/app/bukti-keluar/{noPo}/generate', [C_Bukti_Keluar::class, 'generateBuktiKeluar']);
-
 // penggajian 
 Route::get('/penggajian/test', [C_Penggajian::class, 'test']);
 // API 

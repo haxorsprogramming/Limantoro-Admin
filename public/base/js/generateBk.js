@@ -10,7 +10,9 @@ var appBk = new Vue({
         },
         kembaliAtc : function()
         {
-            
+
         }
     }
 });
+
+$("#tblDataPo").dataTable();
