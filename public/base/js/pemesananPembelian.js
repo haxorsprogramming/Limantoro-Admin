@@ -112,21 +112,35 @@ var appPemesanan = new Vue({
             let qtKd = document.querySelector("#qt_"+kode).value;
             let capHarga = document.querySelector("#harga_"+kode).value
             let hargaKd = capHarga.replace(".", "");
-            let subTotal = BigInt(qtKd) * BigInt(hargaKd);
+            let subTotal = qtKd * hargaKd;
             appPemesanan.dataMaterialPesanan[posKode].hargaAt = hargaKd;
             appPemesanan.dataMaterialPesanan[posKode].subTotal = subTotal;
         },
         prosesPemesananAtc : function()
         {
+            let jlhArray = appPemesanan.dataMaterialPesanan.length;
+            let j;
+            let statusValidasi = true;
+            for(j = 0; j < jlhArray; j++){
+                let qtApprove = appPemesanan.dataMaterialPesanan[j].qtApprove;
+                let kdMaterial = appPemesanan.dataMaterialPesanan[j].kode;
+                let qtKd = document.querySelector("#qt_"+kdMaterial).value;
+                if(qtApprove < qtKd){
+                    pesan_toast("Qt "+kdMaterial+" tidak boleh dari qt approve");
+                    statusValidasi = false;
+                }
+            }
             let tanggal = document.querySelector("#txtTanggalPesanan").value;
             let noPr = appPemesanan.noPrSelected;
             let kdSupplier = appPemesanan.kdSupplierSelected;
             let material = appPemesanan.dataMaterialPesanan;
             let ds = {'tanggal':tanggal, 'noPr':noPr, 'kdSupplier':kdSupplier, 'material':material}
-            axios.post(rProsesPemesananPembelian, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
-            });
+            if(statusValidasi === true){
+                axios.post(rProsesPemesananPembelian, ds).then(function(res){
+                    let obj = res.data;
+                    console.log(obj);
+                });
+            }
         }
     }
 });

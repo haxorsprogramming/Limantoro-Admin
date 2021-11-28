@@ -78,11 +78,26 @@ class C_Pemesanan_Pembelian extends Controller
         $pemesanan -> no_pr = $request -> noPr;
         $pemesanan -> kode_supplier = $request -> kdSupplier;
         $pemesanan -> no_poy = "-";
+        $pemesanan -> user_request = session('userLogin');
         $pemesanan -> user_lock = "-";
         $pemesanan -> user_approve = session('userLogin');
         $pemesanan -> no_poe = "-";
         $pemesanan -> active = "1";
         $pemesanan -> save();
+        // save ke item pemesanan 
+        $material = $request -> material;
+        $or = 0;
+        foreach($material as $mat){
+            $ip = new M_Item_Pemesanan_Pembelian();
+            $ip -> no_po = $noPo;
+            $ip -> kode_material = $material[$or]['kode'];
+            $ip -> qt = $material[$or]['qt'];
+            $ip -> price = $material[$or]['hargaAt'];
+            $ip -> note = $material[$or]['note'];
+            $ip -> active = "1";
+            $ip -> save();
+            $or++;
+        }
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
     }

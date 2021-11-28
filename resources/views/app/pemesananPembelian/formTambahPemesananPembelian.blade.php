@@ -45,7 +45,7 @@
                             <th>No</th>
                             <th>Kode</th>
                             <th style="width: 200px;">Nama</th>
-                            <th style="width: 150px;">Satuan</th>
+                            <th style="width: 150px;">Qt Disetujui</th>
                             <th>Qt</th>
                             <th>Harga (@)</th>
                             <th>SubTotal</th>
@@ -56,8 +56,11 @@
                         <tr v-for="dm in dataMaterialPesanan">
                             <td>@{{ dm.nomor }}</td>
                             <td>@{{ dm.kode }}</td>
-                            <td>@{{ dm.nama }}</td>
-                            <td>@{{ dm.satuan }}</td>
+                            <td>
+                                <b>@{{ dm.nama }}</b><br/>
+                                Satuan : @{{ dm.satuan }}
+                            </td>
+                            <td>@{{ dm.qtApprove }}</td>
                             <td>
                                 <input type="text" placeholder="Qt" v-on:keyup="setQtAtc(dm.kode)" v-bind:id="'qt_'+dm.kode" value="0">
                             </td>
@@ -66,7 +69,7 @@
                             </td>
                             <td>Rp. @{{ Number(dm.subTotal).toLocaleString() }}<br/></td>
                             <td>
-                                <input type="text" placeholder="Note" v-bind:id="'note_'+dm.kode">
+                                <input type="text" placeholder="Note" v-bind:id="'note_'+dm.kode" value="-">
                             </td>
                         </tr>
                     </tbody>
