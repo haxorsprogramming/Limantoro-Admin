@@ -33,7 +33,7 @@
                         <li><a href="javascript:void(0)" @click="permintaanPembelianAtc()">Permintaan Pembelian</a></li> 
                         <li><a href="javascript:void(0)" @click="persetujuanPermintaanPembelianAtc()">Persetujuan Pembelian</a></li>
                         <li><a href="javascript:void(0)" @click="pemesananPembelianAtc()">Pemesanan Pembelian</a></li>
-                        <li><a href="javascript:void(0)">Bukti Keluar</a></li>
+                        <li><a href="javascript:void(0)" @click="buktiKeluarAtc()">Bukti Keluar</a></li>
                     </ul>
                 </div>
             </li>
@@ -51,7 +51,7 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">ballot</i>Penggajian<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="javascript:void(0)">Data Karyawan</a></li>
+                        <li><a href="{{ url('/penggajian') }}">Data Karyawan</a></li>
                         <li><a href="javascript:void(0)">Payroll Set</a></li>
                     </ul>
                 </div>

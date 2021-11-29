@@ -70,6 +70,6 @@ Route::get('/app/pengembalian-pembelian', [C_Pengembalian_Pembelian::class, 'pen
 // bukti keluar
 Route::get('/app/bukti-keluar/{noPo}/generate', [C_Bukti_Keluar::class, 'generateBuktiKeluar']);
 // penggajian 
-Route::get('/penggajian/test', [C_Penggajian::class, 'test']);
+Route::get('/penggajian', [C_Penggajian::class, 'test']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

@@ -25,6 +25,7 @@ var div_menu = new Vue({
         },
         supplierAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rSupplier, 'Supplier');
         },
         customerAtc : function()
@@ -33,6 +34,7 @@ var div_menu = new Vue({
         },
         materialAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rMaterial, 'Material');
         },
         karyawanAtc : function()
@@ -41,31 +43,42 @@ var div_menu = new Vue({
         },
         projectAtc : function()
         {
+
             load_page(rProject, 'Project');
         },
         permintaanPembelianAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPermintaanPembelian, 'Permintaan Pembelian');
         },
         persetujuanPermintaanPembelianAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPersetujuanPermintaanPembelian, 'Persetujuan Permintaan Pembelian');
         },
         pemesananPembelianAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPemesananPembelian, 'Pemesanan Pembelian');
         },
         penerimaanBarangAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPenerimaanBarang, 'Penerimaan Barang');
         },
         pengembalianBarangAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPengembalianBarang, 'Pengembalian Barang');
         },
         pengembalianPembelianAtc : function()
         {
+            window.alert("Datatable thrownError ({}) error !");
             load_page(rPengembalianPembelian, 'Pengembalian Pembelian');
+        },
+        buktiKeluarAtc : function()
+        {
+            window.alert("Datatable thrownError ({}) error !");
         }
     }
 });
