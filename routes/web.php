@@ -73,3 +73,9 @@ Route::get('/app/bukti-keluar/{noPo}/generate', [C_Bukti_Keluar::class, 'generat
 Route::get('/penggajian', [C_Penggajian::class, 'test']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
+
+// jwt 
+Route::group(['middleware' => ['Cek_User']], function(){
+    Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
+});
+Route::get('/tes-jwt', [C_Page::class, 'tesJwt']);

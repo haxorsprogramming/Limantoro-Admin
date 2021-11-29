@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 use App\Models\M_User;
 
@@ -38,6 +40,12 @@ class C_Auth extends Controller
                 /**
                  * if true, create session & status success of respond
                  */
+                $key = env('JWT_KEY');
+                $payload = array(
+                    "username" => $username
+                );
+                $jwt = JWT::encode($payload, $key, 'HS256');
+                setcookie("KACTUS_LIMANTORO_TOKEN", $jwt);
                 session(['userLogin' => $username]);
                 $dr = ['status' => 'success'];
             }else{
