@@ -12,7 +12,7 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>,
-                <span>Develop by <a href="#!" target="_blank">-</a></span>
+                <span>Develop by <a href="https://kactusidea.com/" target="_blank">Kactus Idea</a></span>
             </div>
         </div>
     </footer>

@@ -12,21 +12,32 @@ var appLogin = new Vue({
     {
         loginAtc : function()
         {
-            document.querySelector("#btnMasuk").innerHTML = "<i class='zmdi zmdi-settings zmdi-hc-spin'></i> Login process ...";
+            
             tidur_bentar(1500);
             let username = document.querySelector("#txtUsername").value;
             let password = document.querySelector("#txtPassword").value;
-            let ds = {'username':username, 'password':password}
-            axios.post(rLoginProses, ds).then(function(res){
-                let dr = res.data;
-                if(dr.status === 'no_user'){
-                    pesanUmumApp('warning', 'No user!!!', 'Tidak ada user terdaftar!!!');
-                }else if(dr.status === 'wrong_password'){
-                    pesanUmumApp('warning', 'Auth fail!!!', 'Username / password salah!!!');
-                }else if(dr.status === 'success'){
-                    window.location.assign(rDashboard);
-                }
-            });
+            if(username === '' || password === ''){
+                pesanUmumApp("warning", "Fill field!!!", "Harap isi username/password!!!");
+            }else{
+                document.querySelector("#btnMasuk").innerHTML = "<i class='zmdi zmdi-settings zmdi-hc-spin'></i> Login process ...";
+                let ds = {'username':username, 'password':password}
+                axios.post(rLoginProses, ds).then(function(res){
+                    let dr = res.data;
+                    if(dr.status === 'no_user'){
+                        pesanUmumApp('warning', 'No user!!!', 'Tidak ada user terdaftar!!!');
+                        document.querySelector("#btnMasuk").innerHTML = "Log In";
+                        document.querySelector("#txtPassword").value = "";      
+                        document.querySelector("#txtUsername").focus();
+                    }else if(dr.status === 'wrong_password'){
+                        pesanUmumApp('warning', 'Auth fail!!!', 'Username / password salah!!!');
+                        document.querySelector("#btnMasuk").innerHTML = "Log In";
+                        document.querySelector("#txtPassword").value = "";      
+                        document.querySelector("#txtUsername").focus();
+                    }else if(dr.status === 'success'){
+                        window.location.assign(rDashboard);
+                    }
+                });
+            }
         }
     }
 });

@@ -7,6 +7,8 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 use App\Models\M_Project;
+use App\Models\M_User;
+use App\Models\M_Role;
 
 class C_Page extends Controller
 {
@@ -16,7 +18,11 @@ class C_Page extends Controller
     }
     public function appPage()
     {
-        return view('app.main');
+        $userLogin = session('userLogin');
+        $dataUser = M_User::where('username', $userLogin) -> first();
+        $dataRole = M_Role::where('kode', $dataUser -> role) -> first();
+        $dr = ['dataRole' => $dataRole];
+        return view('app.main', $dr);
     }
     public function berandaPage()
     {
