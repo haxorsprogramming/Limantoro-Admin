@@ -21,8 +21,8 @@
             <div class="col s4">
                 <div class="input-field col s12">
                     <select id="txtDibayar" class="browser-default" style="margin-top:9px;">
-                        <option value="rumah">Ya</option>
-                        <option value="toko">Tidak</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
                     </select>
                     <label class="active">Telah dibayar?</label>
                 </div>
@@ -103,12 +103,12 @@
             </div>
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtTotal1" type="text" class="validate">
+                    <input id="txtTotal1" type="number" class="validate" onkeyup="setBankT()" value="0">
                     <label for="txtTotal1" class="active">Total payment bank 1</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="txtTotal2" type="text" class="validate">
-                    <label for="txtTotal2" class="active">Total payment bank 1</label>
+                    <input id="txtTotal2" type="number" class="validate" onkeyup="setBankT()" value="0">
+                    <label for="txtTotal2" class="active">Total payment bank 2</label>
                 </div>
             </div>
         </div>
@@ -121,10 +121,10 @@
                     <h6 class="m-t-sm light-blue-text"><b>Diskon</b></h6>
                         <input id="txtDiskon" type="number" class="validate" style="width: 200px;" value="0" onkeyup="setDiskon()">
                     <h6 class="m-t-sm light-blue-text"><b>Total Tagihan</b></h6>
-                    <h5 class="">Rp. </h5>
+                    <h5 class="">Rp. @{{ Number(totalTagihan).toLocaleString() }}</h5>
                     
                     <h6 class="m-t-md text-success light-blue-text"><b>Total Dibayar</b></h6>
-                    <h4 class="text-success">Rp. @{{ Number(totalDibayar).toLocaleString() }}</h4>
+                    <h5 class="text-success">Rp. @{{ Number(totalDibayar).toLocaleString() }}</h5>
                     
                 </div>
             </div>
@@ -138,5 +138,6 @@
 </div>
 <script>
     var totalTagihan = "{{$totalTagihan}}";
+    var totalDibayar = 0;
 </script>
 <script src="{{ asset('base/js/generateBk.js') }}"></script>
