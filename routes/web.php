@@ -61,7 +61,9 @@ Route::get('/app/permintaan-pembelian/{noPr}/print', [C_Permintaan_Pembelian::cl
 Route::get('/app/persetujuan-permintaan-pembelian', [C_Persetujuan_Permintaan_Pembelian::class, 'persetujuanPermintaanPembelianPage']);
 Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/data-for-modal', [C_Persetujuan_Permintaan_Pembelian::class, 'dataForModal']);
 Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/tabel-permintaan-material', [C_Persetujuan_Permintaan_Pembelian::class, 'tabelPermintaanMaterial']);
+Route::get('/app/persetujuan-permintaan-pembelian/{noPr}/print', [C_Persetujuan_Permintaan_Pembelian::class, 'cetakPersetujuan']);
 Route::post('/app/persetujuan-permintaan-pembelian/proses', [C_Persetujuan_Permintaan_Pembelian::class, 'prosesPersetujuan']);
+
 // pemesanan pembelian 
 Route::get('/app/pemesanan-pembelian', [C_Pemesanan_Pembelian::class, 'pemesananPembelianPage']);
 Route::post('/app/pemesanan-pembelian/get-material-pemesanan', [C_Pemesanan_Pembelian::class, 'getMaterialData']);

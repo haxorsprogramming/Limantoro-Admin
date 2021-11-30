@@ -45,11 +45,11 @@
                             <i class="material-icons">gavel</i>
                         </a>
                         @else
-                        
-                        @endif
-                        <a class="btn-floating waves-effect waves-light" id="btnPrint" target="new" href="{{ url('/app/permintaan-pembelian/'.$permintaan -> no_pr.'/print') }}">
+                        <a class="btn-floating waves-effect waves-light" id="btnPrint" target="new" href="{{ url('/app/persetujuan-permintaan-pembelian/'.$permintaan -> no_pr.'/print') }}">
                             <i class="material-icons">print</i>
                         </a>
+                        @endif
+                        
                     </td>
                 </tr>
                 @endforeach

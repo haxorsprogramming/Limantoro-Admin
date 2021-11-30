@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\M_Permintaan_Pembelian;
 use App\Models\M_Item_Permintaan_Pembelian;
+use App\Models\M_Project;
+
+use PDF;
 
 class C_Persetujuan_Permintaan_Pembelian extends Controller
 {
@@ -49,5 +52,26 @@ class C_Persetujuan_Permintaan_Pembelian extends Controller
         }
         $dr = ['status' => 'sukses'];
         return \Response::json($dr);
+    }
+    public function cetakPersetujuan(Request $request, $noPr)
+    {
+        $judul = "Persetujuan Permintaan Pembelian";
+        $dataPermintaan = M_Permintaan_Pembelian::where('no_pr', $noPr) -> first();
+        $approver = $dataPermintaan -> user_approve;
+        $kdProject = $dataPermintaan -> kode_project;
+        $dataProject = M_Project::where('kode', $kdProject) -> first();
+        $userProfile = $dataPermintaan -> userProfileData;
+        $dataItem = M_Item_Permintaan_Pembelian::where('no_pr', $noPr) -> get();
+        $dr = [
+            'judul' => $judul,
+            'dataItem' => $dataItem,
+            'userProfile' => $userProfile,
+            'dataProject' => $dataProject,
+            'noPr' => $noPr,
+            'approver' => $approver
+        ];
+        $pdf = PDF::loadview('app.persetujuanPermintaanPembelian.cetakPersetujuan', $dr);
+        $pdf -> setPaper('A4', 'landscape');
+        return $pdf -> stream();
     }
 }
