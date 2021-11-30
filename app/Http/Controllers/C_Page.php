@@ -14,7 +14,12 @@ class C_Page extends Controller
 {
     public function loginPage()
     {
-        setcookie("KACTUS_LIMANTORO_TOKEN", "Haloo");
+        $key = env('JWT_KEY');
+        $payload = array(
+            "username" => ""
+        );
+        $jwt = JWT::encode($payload, $key, 'HS256');
+        setcookie("KACTUS_LIMANTORO_TOKEN", $jwt);
         return view('login.loginPage');
     }
     public function appPage()
