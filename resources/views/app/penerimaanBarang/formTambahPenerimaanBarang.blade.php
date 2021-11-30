@@ -35,9 +35,10 @@
         </div>
         <div class="divider"></div>
         <span class="card-title">Data Material</span>
-        <a href="javascript:void(0)" class="btn" id="btnProsesTambah" @click="prosesPenerimaanAtc()">
-            <i class="material-icons left">file_download_done</i> @{{prosesBtnText}}
-        </a>
+        <div class="row" id="dDataMaterial">
+            
+        </div>
+        
     </div>
 </div>
 

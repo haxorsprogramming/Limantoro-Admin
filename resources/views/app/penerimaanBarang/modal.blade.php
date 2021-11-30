@@ -36,15 +36,13 @@
         <table id="tblModalPo" class="table bordered highlight">
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
-                    <th>No</th>
                     <th>No PO</th>
                     <th>Tanggal</th>
                     <th>No PR </th>
                 </tr>
             </thead>
             <tbody>
-               <tr v-for="dp in dataPo">
-                  <td>1</td>
+               <tr v-for="dp in dataPo" @click="rwPoAtc(dp.noPo)" class="rwPo" v-bind:id="'rwPo_'+dp.noPo">
                   <td>@{{ dp.noPo }}</td>
                   <td>@{{ dp.tanggal }}</td>
                   <td>@{{ dp.noPr }}</td> 

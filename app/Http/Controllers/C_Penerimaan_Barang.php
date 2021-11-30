@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\M_Penerimaan_Barang;
 use App\Models\M_Supplier;
 use App\Models\M_Pemesanan_Pembelian;
+use App\Models\M_Item_Pemesanan_Pembelian;
 
 class C_Penerimaan_Barang extends Controller
 {
@@ -22,6 +23,12 @@ class C_Penerimaan_Barang extends Controller
         $dataPemesanan = M_Pemesanan_Pembelian::where('kode_supplier', $kdSup) -> get();
         $dr = ['status' => $kdSup, 'dataPemesanan' => $dataPemesanan];
         return \Response::json($dr);
+    }
+    public function getMaterial(Request $request, $noPo)
+    {
+        $dataItemMaterial = M_Item_Pemesanan_Pembelian::where('no_po', $noPo) -> get();
+        $dr = ['dataItemMaterial' => $dataItemMaterial];
+        return view('app.penerimaanBarang.materialData', $dr);
     }
     function getNoGr()
     {

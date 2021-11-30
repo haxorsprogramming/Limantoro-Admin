@@ -16,4 +16,10 @@ class M_Item_Pemesanan_Pembelian extends Model
         'note',
         'active'
     ];
+
+    public function materialData()
+    {
+        return $this->belongsTo(M_Material::class, 'kode_material', 'kode');
+    }
+
 }

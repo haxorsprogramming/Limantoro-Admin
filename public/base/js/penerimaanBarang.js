@@ -7,6 +7,7 @@ var appPb = new Vue({
         prosesBtnText : 'Proses penerimaan',
         kdSupplierSelected : '',
         namaSupplierSelected : '',
+        kdPoSelected : '',
         dataPo : []
     },
     methods : {
@@ -59,9 +60,19 @@ var appPb = new Vue({
                 });
             }
         },
+        rwPoAtc : function(noPo)
+        {
+            appPb.kdPoSelected = noPo;
+            $(".rwPo").css("background-color", "");
+            document.querySelector("#rwPo_"+noPo).style.backgroundColor = "#81ecec";
+        },
         pilihPoAtc : function()
         {
-            
+            document.querySelector("#txtNoPo").value = appPb.kdPoSelected;
+            $("#modalPo").closeModal();
+            document.querySelector("#dDataMaterial").innerHTML = "Memuat ...";
+            var rLoadDataMaterial = server + "app/penerimaan-barang/"+appPb.kdPoSelected+"/get-material";
+            $("#dDataMaterial").load(rLoadDataMaterial);
         }
     }
 });
