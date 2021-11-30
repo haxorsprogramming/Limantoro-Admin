@@ -14,6 +14,7 @@ class C_Page extends Controller
 {
     public function loginPage()
     {
+        setcookie("KACTUS_LIMANTORO_TOKEN", "Haloo");
         return view('login.loginPage');
     }
     public function appPage()
