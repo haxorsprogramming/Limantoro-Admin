@@ -10,6 +10,12 @@ use App\Models\M_Bukti_Keluar;
 
 class C_Bukti_Keluar extends Controller
 {
+    public function buktiKeluarPage()
+    {
+        $dataBk = M_Bukti_Keluar::all();
+        $dr = ['dataBk' => $dataBk];
+        return view('app.buktiKeluar.buktiKeluarPage', $dr);
+    }
     public function generateBuktiKeluar(Request $request, $noPo)
     {
         $noPoe = $this -> getNoPoe();
@@ -20,9 +26,6 @@ class C_Bukti_Keluar extends Controller
     }
     public function generateProses(Request $request)
     {
-        // 'noPoe':noPoe, 'tanggal':tanggal, 'dibayar':dibayar, 'tanggalDibayar':tanggalDibayar, 'note':note, 'nmBank1':nmBank1, 'nmBank2':nmBank2,
-        //         'accBank1' : accBank1, 'accBank2':accBank2, 'tBank1':tBank1, 'tBank2':tBank2, 'disc':disc
-        // save bukti keluar 
         $noPoe = $this -> getNoPoe();
         $bk = new M_Bukti_Keluar();
         $bk -> token = Str::uuid();

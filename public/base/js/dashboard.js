@@ -12,6 +12,7 @@ var rPemesananPembelian = server + "app/pemesanan-pembelian";
 var rPenerimaanBarang = server + "app/penerimaan-barang";
 var rPengembalianBarang = server + "app/pengembalian-barang";
 var rPengembalianPembelian = server + "app/pengembalian-pembelian";
+var rBuktiKeluar = server + "app/bukti-keluar";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -41,7 +42,6 @@ var div_menu = new Vue({
         },
         projectAtc : function()
         {
-
             load_page(rProject, 'Project');
         },
         permintaanPembelianAtc : function()
@@ -50,32 +50,27 @@ var div_menu = new Vue({
         },
         persetujuanPermintaanPembelianAtc : function()
         {
-            
             load_page(rPersetujuanPermintaanPembelian, 'Persetujuan Permintaan Pembelian');
         },
         pemesananPembelianAtc : function()
         {
-            
             load_page(rPemesananPembelian, 'Pemesanan Pembelian');
         },
         penerimaanBarangAtc : function()
         {
-            
             load_page(rPenerimaanBarang, 'Penerimaan Barang');
         },
         pengembalianBarangAtc : function()
         {
-            
             load_page(rPengembalianBarang, 'Pengembalian Barang');
         },
         pengembalianPembelianAtc : function()
         {
-           
             load_page(rPengembalianPembelian, 'Pengembalian Pembelian');
         },
         buktiKeluarAtc : function()
         {
-
+            load_page(rBuktiKeluar, 'Bukti Keluar');
         }
     }
 });
