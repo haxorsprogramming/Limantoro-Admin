@@ -161,7 +161,7 @@ $("#tblPemesananPembelian").dataTable();
 $("#tblModalSupplier").dataTable();
 $("#tblModalPermintaanPembelian").dataTable();
 // $(".hargaAt").mask('000.000.000.000.000.000.000.000.000.000', {reverse: true});
-tip(".btnPrintBk", "Cetak bukti keluar");
+tip(".btnPrintBk", "Cetak Pemesanan Pembelian");
 tip(".btnGenBk", "Generate bukti keluar");
 tip(".btnLock", "Lock");
 var noMaterial = 1;

@@ -9,36 +9,37 @@
             <!-- div col 1 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input placeholder="Kode Project" id="txtKodeProject" type="text" class="validate">
-                    <label for="txtKodeProject" class="active">No POE</label>
+                    <input id="txtNoPoe" type="text" disabled class="validate" value="{{ $noPoe }}">
+                    <label for="txtNoPoe" class="active">No POE</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="Nama Project" id="txtNamaProject" type="date" class="validate">
-                    <label for="txtNamaProject" class="active">Tanggal</label>
+                    <input id="txtTanggal" type="date" class="validate">
+                    <label for="txtTanggal" class="active">Tanggal</label>
                 </div>
             </div>
             <!-- div col 2 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <select id="txtJenisProject" class="browser-default" style="margin-top:9px;">
+                    <select id="txtDibayar" class="browser-default" style="margin-top:9px;">
                         <option value="rumah">Ya</option>
                         <option value="toko">Tidak</option>
                     </select>
                     <label class="active">Telah dibayar?</label>
                 </div>
                 <div class="input-field col s12" style="margin-top:31px;">
-                    <input id="txtPenanggungJawab" type="date">
-                    <label for="txtPenanggungJawab" class="active">Tanggal dibayar</label>
+                    <input id="txtTanggalDibayar" type="date">
+                    <label for="txtTanggalDibayar" class="active">Tanggal dibayar</label>
                 </div>
             </div>
             <!-- div col 3 -->
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">Catatan</label>
+                    <input id="txtCatatan" type="text" class="validate" value="-">
+                    <label for="txtCatatan" class="active">Catatan</label>
                 </div>
             </div>
         </div>
+        <div class="divider"></div>
         <span class="card-title">Data PO</span>
         <div class="row">
             <table class="bordered highlight hover" id="tblDataPo">
@@ -51,6 +52,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php 
+                    $totalTagihan = 0;
+                    @endphp
                     @foreach($dataPo as $po)
                     @php
                         $noPo = $po -> no_po;
@@ -62,6 +66,7 @@
                             $totalPrice = $price * $qt;
                             $totalAwal = $totalAwal + $totalPrice;
                         }
+                    $totalTagihan = $totalAwal;
                     @endphp
                     <tr>
                         <td>{{ $loop -> iteration }}</td>
@@ -73,36 +78,37 @@
                 </tbody>
             </table>
         </div>
+        <div class="divider"></div>
         <span class="card-title">Data Payment</span>
         <div class="row">
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">Name Bank 1</label>
+                    <input id="txtNameBank1" type="text" class="validate">
+                    <label for="txtNameBank1" class="active">Name Bank 1</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">Name Bank 2</label>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">No Account Bank 1</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">No Account Bank 2</label>
+                    <input id="txtNameBank2" type="text" class="validate">
+                    <label for="txtNameBank2" class="active">Name Bank 2</label>
                 </div>
             </div>
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">Total payment bank 1</label>
+                    <input id="txtNoAcc1" type="text" class="validate">
+                    <label for="txtNoAcc1" class="active">No Account Bank 1</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="txtTanggalProject" type="text" class="validate">
-                    <label for="txtTanggalProject" class="active">Total payment bank 1</label>
+                    <input id="txtNoAcc2" type="text" class="validate">
+                    <label for="txtNoAcc2" class="active">No Account Bank 2</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field col s12">
+                    <input id="txtTotal1" type="text" class="validate">
+                    <label for="txtTotal1" class="active">Total payment bank 1</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="txtTotal2" type="text" class="validate">
+                    <label for="txtTotal2" class="active">Total payment bank 1</label>
                 </div>
             </div>
         </div>
@@ -111,16 +117,15 @@
                 <div class="text-right">
                     <h6 class="m-t-sm light-blue-text"><b>Tagihan</b></h6>
                     <h5 class="">Rp. {{ number_format($totalAwal) }}</h5>
-                    <div class="divider"></div>
+                    
                     <h6 class="m-t-sm light-blue-text"><b>Diskon</b></h6>
-                        <input id="txtTanggalProject" type="text" class="validate" style="width: 200px;">
-                    <div class="divider"></div>
+                        <input id="txtDiskon" type="number" class="validate" style="width: 200px;" value="0" onkeyup="setDiskon()">
                     <h6 class="m-t-sm light-blue-text"><b>Total Tagihan</b></h6>
                     <h5 class="">Rp. </h5>
-                    <div class="divider"></div>
+                    
                     <h6 class="m-t-md text-success light-blue-text"><b>Total Dibayar</b></h6>
-                    <h4 class="text-success">Rp. </h4>
-                    <div class="divider"></div>
+                    <h4 class="text-success">Rp. @{{ Number(totalDibayar).toLocaleString() }}</h4>
+                    
                 </div>
             </div>
         </div>
@@ -131,5 +136,7 @@
         </div>
     </div>
 </div>
-
+<script>
+    var totalTagihan = "{{$totalTagihan}}";
+</script>
 <script src="{{ asset('base/js/generateBk.js') }}"></script>
