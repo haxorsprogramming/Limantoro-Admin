@@ -73,6 +73,7 @@ Route::get('/app/penerimaan-barang/{noPo}/get-material', [C_Penerimaan_Barang::c
 Route::post('/app/penerimaan-barang/proses', [C_Penerimaan_Barang::class, 'prosesPenerimaanBarang']);
 // pengembalian barang 
 Route::get('/app/pengembalian-barang', [C_Pengembalian_Barang::class, 'pengembalianBarangPage']);
+Route::get('/app/pengembalian-barang/{noPo}/get-material', [C_Pengembalian_Barang::class, 'getMaterial']);
 // pengembalian pembelian 
 Route::get('/app/pengembalian-pembelian', [C_Pengembalian_Pembelian::class, 'pengembalianPembelianPage']);
 // bukti keluar

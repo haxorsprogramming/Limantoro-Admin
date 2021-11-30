@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblPengembalianBarang extends Migration
+class TblItemPengembalianBarang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class TblPengembalianBarang extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_pengembalian_barang', function (Blueprint $table) {
+        Schema::create('tbl_item_pengembalian_barang', function (Blueprint $table) {
             $table -> id();
-            $table -> char('user_request', 50);
-            $table -> char('no_grn', 30);
-            $table -> date('tanggal');
-            $table -> char('kode_supplier', 30);
-            $table -> char('no_po', 30);
+            $table -> char('user_request', 100);
+            $table -> char('no_grn', 20);
+            $table -> char('kode_material', 20);
+            $table -> integer('qt');
             $table -> timestamps(); 
             $table -> char('active', 1);
         });
@@ -32,6 +31,6 @@ class TblPengembalianBarang extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_pengembalian_barang');
+        Schema::dropIfExists('tbl_item_pengembalian_barang');
     }
 }
