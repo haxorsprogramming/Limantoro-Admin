@@ -22,7 +22,8 @@ class MD_Cek_User
         if(isset($_COOKIE['KACTUS_LIMANTORO_TOKEN'])){
             $jwt = $_COOKIE['KACTUS_LIMANTORO_TOKEN'];
             $data = JWT::decode($jwt, new Key($key, 'HS256'));
-            return \Response::json($data);
+            // return \Response::json($data);
+            return $next($request);
         }else{
             return redirect('/');
         }

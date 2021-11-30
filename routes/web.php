@@ -19,9 +19,14 @@ use App\Http\Controllers\C_Pengembalian_Pembelian;
 use App\Http\Controllers\C_Bukti_Keluar;
 
 Route::get('/', [C_Page::class, 'loginPage']);
+
+Route::group(['middleware' => ['Cek_User']], function(){
+    Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
+    Route::get('/app', [C_Page::class, 'appPage']);
+});
+
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
 // Route::post('')
-Route::get('/app', [C_Page::class, 'appPage']);
 Route::get('/app/beranda', [C_Page::class, 'berandaPage']);
 // supplier 
 Route::get('/app/supplier', [C_Supplier::class, 'supplierPage']);
@@ -75,7 +80,5 @@ Route::get('/penggajian', [C_Penggajian::class, 'test']);
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
 
 // jwt 
-Route::group(['middleware' => ['Cek_User']], function(){
-    Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
-});
+
 Route::get('/tes-jwt', [C_Page::class, 'tesJwt']);
