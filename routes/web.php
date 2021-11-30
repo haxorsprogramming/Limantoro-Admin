@@ -70,6 +70,7 @@ Route::post('/app/pemesanan-pembelian/proses', [C_Pemesanan_Pembelian::class, 'p
 Route::get('/app/penerimaan-barang', [C_Penerimaan_Barang::class, 'penerimaanBarangPage']);
 Route::get('/app/penerimaan-barang/{kdSup}/get-po', [C_Penerimaan_Barang::class, 'getPo']);
 Route::get('/app/penerimaan-barang/{noPo}/get-material', [C_Penerimaan_Barang::class, 'getMaterial']);
+Route::post('/app/penerimaan-barang/proses', [C_Penerimaan_Barang::class, 'prosesPenerimaanBarang']);
 // pengembalian barang 
 Route::get('/app/pengembalian-barang', [C_Pengembalian_Barang::class, 'pengembalianBarangPage']);
 // pengembalian pembelian 

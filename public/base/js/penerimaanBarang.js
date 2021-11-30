@@ -73,6 +73,10 @@ var appPb = new Vue({
             document.querySelector("#dDataMaterial").innerHTML = "Memuat ...";
             var rLoadDataMaterial = server + "app/penerimaan-barang/"+appPb.kdPoSelected+"/get-material";
             $("#dDataMaterial").load(rLoadDataMaterial);
+        },
+        kembaliAtc : function()
+        {
+            load_page(rPenerimaanBarang, 'Penerimaan Barang');
         }
     }
 });

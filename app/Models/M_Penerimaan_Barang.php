@@ -19,4 +19,9 @@ class M_Penerimaan_Barang extends Model
         'active'
     ];
 
+    public function supplierData()
+    {
+        return $this->belongsTo(M_Supplier::class, 'kode_supplier', 'kode');
+    }
+
 }

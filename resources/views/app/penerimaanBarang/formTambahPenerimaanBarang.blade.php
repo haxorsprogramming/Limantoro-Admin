@@ -28,7 +28,7 @@
             </div>
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtNoSurat" type="text" class="validate">
+                    <input id="txtNoSurat" type="text" class="validate" value="-">
                     <label for="txtNoSurat" class="active">No. Surat Jalan</label>
                 </div>
             </div>
