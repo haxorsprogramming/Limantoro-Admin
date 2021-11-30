@@ -63,7 +63,7 @@ var appPengembalianBarang = new Vue({
             document.querySelector("#txtNoPo").value = appPengembalianBarang.kdPoSelected;
             $("#modalPo").closeModal();
             document.querySelector("#dDataMaterial").innerHTML = "Memuat ...";
-            var rLoadDataMaterial = server + "app/pengembalian-barang/"+appPb.kdPoSelected+"/get-material";
+            var rLoadDataMaterial = server + "app/pengembalian-barang/"+appPengembalianBarang.kdPoSelected+"/get-material";
             $("#dDataMaterial").load(rLoadDataMaterial);
         }
     }
@@ -76,7 +76,7 @@ $("#tblModalSupplier").dataTable();
 function clearPo()
 {
     // let pjgPo = appPb.dataPo.length;
-    let dataPo = appPb.dataPo;
+    let dataPo = appPengembalianBarang.dataPo;
     let jlhPo = dataPo.length;
     var i;
     for(i=0; i < jlhPo; i++){

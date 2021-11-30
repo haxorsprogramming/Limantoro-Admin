@@ -9,15 +9,24 @@
             <thead>
                 <tr style="background-color:#636e72!important;color:#dfe6e9!important;">
                     <th>No</th>
-                    <th>No GR</th>
+                    <th>No GRN</th>
                     <th>Tanggal</th>
-                    <th>No Surat Jalan</th>
                     <th>Supplier</th>
                     <th>No PO</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach($dataPengembalian as $dp)
+            <tr>
+                <td>{{ $loop -> iteration }}</td>
+                <td><b>{{ $dp -> no_grn }}</b></td>
+                <td>{{ $dp -> tanggal }}</td>
+                <td>{{ $dp -> supplierData -> nama }}</td>
+                <td>{{ $dp -> no_po }}</td>
+                <td></td>
+            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

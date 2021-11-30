@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\M_Pengembalian_Barang;
 use App\Models\M_Supplier;
 use App\Models\M_Item_Pemesanan_Pembelian;
+use App\Models\M_Item_Pengembalian_Barang;
 
 class C_Pengembalian_Barang extends Controller
 {
@@ -14,7 +15,8 @@ class C_Pengembalian_Barang extends Controller
     {
         $noGrn = $this -> getNoGrn();
         $dataSupplier = M_Supplier::all();
-        $dr = ['noGrn' => $noGrn, 'dataSupplier' => $dataSupplier];
+        $dataPengembalian = M_Pengembalian_Barang::all();
+        $dr = ['noGrn' => $noGrn, 'dataSupplier' => $dataSupplier, 'dataPengembalian' => $dataPengembalian];
         return view('app.pengembalianBarang.pengembalianBarangPage', $dr);
     }
     public function getMaterial(Request $request, $noPo)
@@ -22,6 +24,34 @@ class C_Pengembalian_Barang extends Controller
         $dataItemMaterial = M_Item_Pemesanan_Pembelian::where('no_po', $noPo) -> get();
         $dr = ['dataItemMaterial' => $dataItemMaterial];
         return view('app.pengembalianBarang.materialData', $dr);
+    }
+    public function prosesPengembalianBarang(Request $request)
+    {
+        // {'noGr':noGr, 'kdSupplier':kdSupplier, 'tanggal':tanggal, 'noPo':noPo, 'qtMasuk':dBantuan.qtMasuk}
+        $noGrn = $this -> getNoGrn();
+        // save pengembalian barang 
+        $pb = new M_Pengembalian_Barang();
+        $pb -> user_request = session('userLogin');
+        $pb -> no_grn = $noGrn;
+        $pb -> tanggal = $request -> tanggal;
+        $pb -> kode_supplier = $request -> kdSupplier;
+        $pb -> no_po = $request -> noPo;
+        $pb -> active = "1";
+        $pb -> save();
+        // save item pembalian barang
+        $itemMaterial = $request -> qtMasuk;
+        $or = 0;
+        foreach($itemMaterial as $im){
+            $ipb = new M_Item_Pengembalian_Barang();
+            $ipb -> user_request = session('userLogin');
+            $ipb -> no_grn = $noGrn;
+            $ipb -> kode_material = $itemMaterial[$or]['kode'];
+            $ipb -> qt = $itemMaterial[$or]['qt'];
+            $ipb -> active = "1";
+            $ipb -> save();
+        } 
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
     }
     function getNoGrn()
     {
