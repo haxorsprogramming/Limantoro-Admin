@@ -30,9 +30,12 @@
                     <a class="btn-floating waves-effect waves-light btnLock" href="javascript:void(0)">
                         <i class="material-icons">lock</i>
                     </a>
+                    @if($ps -> no_poe == '-')
                     <a class="btn-floating waves-effect waves-light btnGenBk" @click="generateBkAtc('{{ $ps -> no_po}}')" href="javascript:void(0)">
                         <i class="material-icons">outbox</i>
                     </a>
+                    @endif
+                   
                     <a class="btn-floating waves-effect waves-light btnPrintBk" target="new" href="javascript:void(0)">
                         <i class="material-icons">print</i>
                     </a>

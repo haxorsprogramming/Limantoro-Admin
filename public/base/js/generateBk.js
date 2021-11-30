@@ -9,7 +9,7 @@ var appBk = new Vue({
         totalDibayar : 0
     },
     methods : {
-        prosesGenerateAtc : function()
+        prosesGenerateAtc : async function()
         {
             let noPoe = document.querySelector("#txtNoPoe").value;
             let tanggal =  document.querySelector("#txtTanggal").value;
@@ -23,18 +23,27 @@ var appBk = new Vue({
             let tBank1 = document.querySelector("#txtTotal1").value;
             let tBank2 = document.querySelector("#txtTotal2").value;
             let disc = document.querySelector("#txtDiskon").value;
-            let ds = {
-                'noPoe':noPoe, 'tanggal':tanggal, 'dibayar':dibayar, 'tanggalDibayar':tanggalDibayar, 'note':note, 'nmBank1':nmBank1, 'nmBank2':nmBank2,
-                'accBank1' : accBank1, 'accBank2':accBank2, 'tBank1':tBank1, 'tBank2':tBank2, 'disc':disc
+            console.log(tanggalDibayar);
+            if(tanggal === '' || tanggalDibayar === ''){
+                pesan_toast('Harap set tanggal !!!');
+            }else{
+                let ds = {
+                    'noPoe':noPoe, 'tanggal':tanggal, 'dibayar':dibayar, 'tanggalDibayar':tanggalDibayar, 'note':note, 'nmBank1':nmBank1, 'nmBank2':nmBank2,
+                    'accBank1' : accBank1, 'accBank2':accBank2, 'tBank1':tBank1, 'tBank2':tBank2, 'disc':disc, 'noPo':noPo
+                }
+                appBk.prosesGenerateText = "Memproses ....";
+                document.querySelector("#btnProsesGenerate").setAttribute('disabled','disabled');
+                await tidur_bentar(2000);
+                axios.post(rProsesGenerate, ds).then(function(res){
+                    pesan_toast("Bukti keluar berhasil di generate");
+                    load_page(rPemesananPembelian, 'Pemesanan Pembelian');
+                });
             }
-            axios.post(rProsesGenerate, ds).then(function(res){
-                let obj = res.data;
-                console.log(obj);
-            });
+            
         },
         kembaliAtc : function()
         {
-
+            load_page(rPemesananPembelian, 'Pemesanan Pembelian');
         }
     }
 });

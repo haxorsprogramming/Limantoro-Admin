@@ -83,21 +83,21 @@
         <div class="row">
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtNameBank1" type="text" class="validate">
+                    <input id="txtNameBank1" type="text" class="validate" value="-">
                     <label for="txtNameBank1" class="active">Name Bank 1</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="txtNameBank2" type="text" class="validate">
+                    <input id="txtNameBank2" type="text" class="validate" value="-">
                     <label for="txtNameBank2" class="active">Name Bank 2</label>
                 </div>
             </div>
             <div class="col s4">
                 <div class="input-field col s12">
-                    <input id="txtNoAcc1" type="text" class="validate">
+                    <input id="txtNoAcc1" type="text" class="validate" value="0">
                     <label for="txtNoAcc1" class="active">No Account Bank 1</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="txtNoAcc2" type="text" class="validate">
+                    <input id="txtNoAcc2" type="text" class="validate" value="0">
                     <label for="txtNoAcc2" class="active">No Account Bank 2</label>
                 </div>
             </div>
@@ -130,13 +130,14 @@
             </div>
         </div>
         <div class="row" style="text-align: center;margin-top:30px;">
-            <a href="javascript:void(0)" class="btn btn-large" @click="prosesGenerateAtc()" id="btnSimpanProject">
+            <a href="javascript:void(0)" class="btn btn-large" @click="prosesGenerateAtc()" id="btnProsesGenerate">
                 <i class="material-icons left">file_download_done</i> @{{ prosesGenerateText }}
             </a>
         </div>
     </div>
 </div>
 <script>
+    var noPo = "{{$noPo}}";
     var totalTagihan = "{{$totalTagihan}}";
     var totalDibayar = 0;
 </script>

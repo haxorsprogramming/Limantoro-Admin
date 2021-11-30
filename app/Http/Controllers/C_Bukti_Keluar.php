@@ -14,7 +14,8 @@ class C_Bukti_Keluar extends Controller
     {
         $noPoe = $this -> getNoPoe();
         $dataPo = M_Pemesanan_Pembelian::where('no_po', $noPo) -> get();
-        $dr = ['dataPo' => $dataPo, 'noPoe' => $noPoe];
+        $noPo = $dataPo[0] -> no_po;
+        $dr = ['dataPo' => $dataPo, 'noPoe' => $noPoe, 'noPo' => $noPo];
         return view('app.buktiKeluar.generatePage', $dr);
     }
     public function generateProses(Request $request)
@@ -40,6 +41,11 @@ class C_Bukti_Keluar extends Controller
         $bk -> discount = $request -> disc;
         $bk -> active = "1";
         $bk -> save();
+        // update pemesanan pembelian 
+        $noPo = $request -> noPo;
+        M_Pemesanan_Pembelian::where('no_po', $noPo) -> update([
+            'no_poe' => $noPoe
+        ]);
         $dr = ['status' => $noPoe];
         return \Response::json($dr);
     }
