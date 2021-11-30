@@ -1,0 +1,2 @@
+// inisialisasi 
+$("#tblPenerimaanBarang").dataTable();
