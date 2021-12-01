@@ -23,6 +23,7 @@ var appLogin = new Vue({
                 let ds = {'username':username, 'password':password}
                 axios.post(rLoginProses, ds).then(function(res){
                     let dr = res.data;
+                    console.log(dr);
                     if(dr.status === 'no_user'){
                         pesanUmumApp('warning', 'No user!!!', 'Tidak ada user terdaftar!!!');
                         document.querySelector("#btnMasuk").innerHTML = "Log In";
@@ -34,6 +35,7 @@ var appLogin = new Vue({
                         document.querySelector("#txtPassword").value = "";      
                         document.querySelector("#txtUsername").focus();
                     }else if(dr.status === 'success'){
+                        document.cookie = "K_TOKEN="+dr.token;
                         window.location.assign(rDashboard);
                     }
                 });

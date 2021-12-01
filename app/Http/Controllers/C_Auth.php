@@ -41,13 +41,14 @@ class C_Auth extends Controller
                  * if true, create session & status success of respond
                  */
                 $key = env('JWT_KEY');
+                $role = $dataUserDb -> role;
                 $payload = array(
-                    "username" => $username
+                    "username" => $username,
+                    "role" => $role
                 );
                 $jwt = JWT::encode($payload, $key, 'HS256');
-                setcookie("KACTUS_LIMANTORO_TOKEN", $jwt);
                 session(['userLogin' => $username]);
-                $dr = ['status' => 'success'];
+                $dr = ['status' => 'success', 'token' => $jwt];
             }else{
                 /**
                  * if false, create status error of respond

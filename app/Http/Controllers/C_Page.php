@@ -10,25 +10,32 @@ use App\Models\M_Project;
 use App\Models\M_User;
 use App\Models\M_Role;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Page extends Controller
 {
-    public function loginPage()
+
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
     {
-        $key = env('JWT_KEY');
-        $payload = array(
-            "username" => ""
-        );
-        $jwt = JWT::encode($payload, $key, 'HS256');
-        setcookie("KACTUS_LIMANTORO_TOKEN", $jwt);
+        $this -> helperCtr = $helperCtr;
+    }
+
+    public function loginPage(Request $request)
+    {
         return view('login.loginPage');
     }
     public function appPage()
     {
-        $userLogin = session('userLogin');
-        $dataUser = M_User::where('username', $userLogin) -> first();
-        $dataRole = M_Role::where('kode', $dataUser -> role) -> first();
-        $dr = ['dataRole' => $dataRole];
-        return view('app.main', $dr);
+        
+        $getDataUser = $this -> helperCtr -> getUserData();
+        dd($getDataUser);
+        // $userLogin = session('userLogin');
+        // $dataUser = M_User::where('username', $userLogin) -> first();
+        // $dataRole = M_Role::where('kode', $dataUser -> role) -> first();
+        // $dr = ['dataRole' => $dataRole];
+        // return view('app.main', $dr);
     }
     public function berandaPage()
     {

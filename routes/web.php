@@ -20,10 +20,9 @@ use App\Http\Controllers\C_Bukti_Keluar;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 
-Route::group(['middleware' => ['Cek_User']], function(){
-    Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
-    Route::get('/app', [C_Page::class, 'appPage']);
-});
+
+Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
+Route::get('/app', [C_Page::class, 'appPage']);
 
 Route::get('/auth/logout', [C_Auth::class, 'logout']);
 // Route::post('')
