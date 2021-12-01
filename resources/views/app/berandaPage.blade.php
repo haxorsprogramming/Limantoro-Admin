@@ -15,7 +15,7 @@
         <div class="card stats-card">
             <div class="card-content">
                 <span class="card-title">Permintaan Pembelian</span>
-                <span class="stats-counter"><span class="counter">23,230</span><small>Total</small></span>
+                <span class="stats-counter"><span class="counter">{{ $totalPermintaanPembelian }}</span><small>Total</small></span>
                 <div class="percent-info green-text">8% <i class="material-icons">trending_up</i></div>
             </div>
             <div class="progress stats-card-progress">
@@ -42,7 +42,7 @@
         <div class="card stats-card">
             <div class="card-content">
                 <span class="card-title">Penerimaan Barang</span>
-                <span class="stats-counter"><span class="counter">{{$totalProject}}</span><small>Project</small></span>
+                <span class="stats-counter"><span class="counter">{{$totalPenerimaanBarang}}</span><small>Total</small></span>
                 <div class="percent-info green-text">8% <i class="material-icons">trending_up</i></div>
             </div>
             <div class="progress stats-card-progress">

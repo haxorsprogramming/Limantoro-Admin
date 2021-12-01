@@ -6,7 +6,7 @@
             </div>
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">
-                    <p>{{ $username }} - ({{ $role }})</p>
+                    <p>{{ $username }} - ({{ $caps }})</p>
                 </a>
             </div>
         </div>

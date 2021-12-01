@@ -9,8 +9,11 @@ use Firebase\JWT\Key;
 use App\Models\M_Project;
 use App\Models\M_User;
 use App\Models\M_Role;
+use App\Models\M_Penerimaan_Barang;
 
 use App\Http\Controllers\C_Helper;
+use App\Models\M_Pengembalian_Barang;
+use App\Models\M_Permintaan_Pembelian;
 
 class C_Page extends Controller
 {
@@ -32,14 +35,24 @@ class C_Page extends Controller
         $userData = $this -> helperCtr -> getUserData();
         $username = $userData -> username;
         $role = $userData -> role;
-        $dr = ['role' => $role, 'username' => $username];
+        $capsRole = $this -> helperCtr -> convertRole($role);
+        $dr = ['role' => $role, 'username' => $username, 'caps' => $capsRole];
         return view('app.main', $dr);
     }
     public function berandaPage()
     {
         $dataProject = M_Project::take(7) -> get();
         $totalProject = M_Project::count();
-        $dr = ['dataProject' => $dataProject, 'totalProject' => $totalProject];
+        $totalPenerimaanBarang = M_Penerimaan_Barang::count();
+        $totalPermintaanPembelian = M_Permintaan_Pembelian::count();
+        $totalPengembalianBarang = M_Pengembalian_Barang::count();
+        $dr = [
+            'dataProject' => $dataProject,
+            'totalProject' => $totalProject,
+            'totalPenerimaanBarang' => $totalPenerimaanBarang,
+            'totalPermintaanPembelian' => $totalPermintaanPembelian,
+            'pengembalianBarang' => $totalPengembalianBarang
+        ];
         return view('app.berandaPage', $dr);
     }
     public function tesJwt()
