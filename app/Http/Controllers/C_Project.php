@@ -9,8 +9,17 @@ use App\Models\M_Project;
 use App\Models\M_Profile_Karyawan;
 use App\Models\M_Data_Unit;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Project extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function projectPage()
     {
         $dataProject = M_Project::all();
@@ -20,8 +29,9 @@ class C_Project extends Controller
     }
     public function prosesTambahProject(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         $project = new M_Project();
-        $project -> user = session('userLogin');
+        $project -> user = $dataUser -> username;
         $project -> kode = $request -> kdProject;
         $project -> nama = $request -> namaProject;
         $project -> deksripsi = "-";
@@ -47,7 +57,7 @@ class C_Project extends Controller
             $unit -> harga_jual = $sellingPrice;
             $unit -> marketing_fee = $dataUnit[$orUnit]['marketingFee'];
             $unit -> kode_project = $request -> kdProject;
-            $unit -> user = session('userLogin');
+            $unit -> user = $dataUser -> username;
             $unit -> active = "1";
             $unit -> save();
             $ordinal++;

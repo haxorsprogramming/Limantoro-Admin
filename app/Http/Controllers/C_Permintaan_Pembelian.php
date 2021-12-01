@@ -12,8 +12,17 @@ use App\Models\M_Item_Permintaan_Pembelian;
 
 use PDF;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Permintaan_Pembelian extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function permintaanPembelianPage()
     {
         $dataProject                = M_Project::all();
@@ -39,6 +48,7 @@ class C_Permintaan_Pembelian extends Controller
     }
     public function prosesPermintaanPembelian(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'dataMaterial':appPermintaan.materialData, 'kdProject':kdProject, 'tanggal':tanggal}
         $totalPermintaanPembelian = M_Permintaan_Pembelian::count();
         if($totalPermintaanPembelian == 0){
@@ -61,7 +71,7 @@ class C_Permintaan_Pembelian extends Controller
         $pb -> tanggal      = $request -> tanggal;
         $pb -> no_pr        = $noPr;
         $pb -> kode_project = $request -> kdProject;
-        $pb -> user_request = session('userLogin');
+        $pb -> user_request = $dataUser -> username;
         $pb -> user_approve = "-";
         $pb -> status       = "not_approve";
         $pb -> active       = "1";

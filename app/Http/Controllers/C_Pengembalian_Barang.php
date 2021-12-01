@@ -9,8 +9,17 @@ use App\Models\M_Supplier;
 use App\Models\M_Item_Pemesanan_Pembelian;
 use App\Models\M_Item_Pengembalian_Barang;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Pengembalian_Barang extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function pengembalianBarangPage()
     {
         $noGrn = $this -> getNoGrn();
@@ -27,11 +36,12 @@ class C_Pengembalian_Barang extends Controller
     }
     public function prosesPengembalianBarang(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'noGr':noGr, 'kdSupplier':kdSupplier, 'tanggal':tanggal, 'noPo':noPo, 'qtMasuk':dBantuan.qtMasuk}
         $noGrn = $this -> getNoGrn();
         // save pengembalian barang 
         $pb = new M_Pengembalian_Barang();
-        $pb -> user_request = session('userLogin');
+        $pb -> user_request = $dataUser -> username;
         $pb -> no_grn = $noGrn;
         $pb -> tanggal = $request -> tanggal;
         $pb -> kode_supplier = $request -> kdSupplier;
@@ -43,7 +53,7 @@ class C_Pengembalian_Barang extends Controller
         $or = 0;
         foreach($itemMaterial as $im){
             $ipb = new M_Item_Pengembalian_Barang();
-            $ipb -> user_request = session('userLogin');
+            $ipb -> user_request = $dataUser -> username;
             $ipb -> no_grn = $noGrn;
             $ipb -> kode_material = $itemMaterial[$or]['kode'];
             $ipb -> qt = $itemMaterial[$or]['qt'];

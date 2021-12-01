@@ -6,16 +6,16 @@
             </div>
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">
-                    <p>{{ session('userLogin' )}} - ({{ $dataRole -> nama }})</p>
+                    <p>{{ $username }} - ({{ $role }})</p>
                 </a>
             </div>
         </div>
        
-        @if($dataRole -> kode == '1')
+        @if($role == '1')
             @include('layout.roleAccess.owner')
-        @elseif($dataRole -> kode == '2')
+        @elseif($role == '2')
             @include('layout.roleAccess.manager')
-        @elseif($dataRole -> kode === '3')
+        @elseif($role === '3')
             @include('layout.roleAccess.managerLapangan')
         @else
             @include('layout.roleAccess.purchasing')

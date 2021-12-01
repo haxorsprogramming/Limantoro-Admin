@@ -10,8 +10,17 @@ use App\Models\M_Pemesanan_Pembelian;
 use App\Models\M_Item_Pemesanan_Pembelian;
 use App\Models\M_Item_Penerimaan_Barang;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Penerimaan_Barang extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function penerimaanBarangPage()
     {
         $noGr = $this -> getNoGr();
@@ -34,12 +43,13 @@ class C_Penerimaan_Barang extends Controller
     }
     public function prosesPenerimaanBarang(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'noGr':noGr, 'kdSupplier':kdSupplier, 'tanggal':tanggal, 'noSurat':noSurat, 'noPo':noPo, 'qtMasuk':dBantuan.qtMasuk}
         $kdSupplier = $request -> kdSupplier;
         $noGr = $this -> getNoGr();
         // save penerimaan barang
         $pm = new M_Penerimaan_Barang();
-        $pm -> user_request = session('userLogin');
+        $pm -> user_request = $dataUser -> username;
         $pm -> no_gr = $noGr;
         $pm -> tanggal = $request -> tanggal;
         $pm -> no_surat = $request -> noSurat;
@@ -53,7 +63,7 @@ class C_Penerimaan_Barang extends Controller
         $or = 0;
         foreach($qtMasuk as $qt){
             $ipb = new M_Item_Penerimaan_Barang();
-            $ipb -> user_request = session('userLogin');
+            $ipb -> user_request =  $dataUser -> username;
             $ipb -> no_gr =  $noGr;
             $ipb -> kode_material = $qtMasuk[$or]['kode'];
             $ipb -> qt = $qtMasuk[$or]['qt'];

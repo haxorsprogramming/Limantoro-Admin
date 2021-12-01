@@ -29,13 +29,11 @@ class C_Page extends Controller
     public function appPage()
     {
         
-        $getDataUser = $this -> helperCtr -> getUserData();
-        dd($getDataUser);
-        // $userLogin = session('userLogin');
-        // $dataUser = M_User::where('username', $userLogin) -> first();
-        // $dataRole = M_Role::where('kode', $dataUser -> role) -> first();
-        // $dr = ['dataRole' => $dataRole];
-        // return view('app.main', $dr);
+        $userData = $this -> helperCtr -> getUserData();
+        $username = $userData -> username;
+        $role = $userData -> role;
+        $dr = ['role' => $role, 'username' => $username];
+        return view('app.main', $dr);
     }
     public function berandaPage()
     {

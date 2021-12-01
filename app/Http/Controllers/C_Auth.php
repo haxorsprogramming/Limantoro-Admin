@@ -64,6 +64,7 @@ class C_Auth extends Controller
 
     public function logout(Request $request)
     {
+        unset($_COOKIE['K_TOKEN']); 
         $request -> session() -> flush();
         return redirect('/');
     }

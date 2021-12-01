@@ -8,8 +8,17 @@ use PDF;
 
 use App\Models\M_Supplier;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Supplier extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function supplierPage()
     {
         $dataSupplier = M_Supplier::all();
@@ -22,6 +31,7 @@ class C_Supplier extends Controller
     }
     public function prosesTambahSupplier(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'kdToko':kdToko, 'namaToko':namaToko, 'phoneNumber':phoneNumber, 'contactPerson':contactPerson, 'npwp':npwp, 'alamat':alamat}
         $supplier = new M_Supplier();
         $supplier -> kode = $request -> kdToko;
@@ -31,7 +41,7 @@ class C_Supplier extends Controller
         $supplier -> contact_person = $request -> contactPerson;
         $supplier -> npwp = $request -> npwp;
         $supplier -> phone_number = $request -> phoneNumber;
-        $supplier -> user = session('userLogin');
+        $supplier -> user = $dataUser -> username;
         $supplier -> active = '1';
         $supplier -> save();
         $dr = ['status' => 'sukses'];

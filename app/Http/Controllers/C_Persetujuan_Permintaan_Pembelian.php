@@ -11,8 +11,17 @@ use App\Models\M_Project;
 
 use PDF;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Persetujuan_Permintaan_Pembelian extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function persetujuanPermintaanPembelianPage()
     {
         $dataPermintaan = M_Permintaan_Pembelian::all();
@@ -34,11 +43,12 @@ class C_Persetujuan_Permintaan_Pembelian extends Controller
     }
     public function prosesPersetujuan(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'noPr':noPr, 'dataQt':dBantuan.dataQt} 
         // update status permintaan pembelian
         M_Permintaan_Pembelian::where('no_pr', $request -> noPr) -> update([
             'status' => 'approved',
-            'user_approve' => session('userLogin')
+            'user_approve' => $dataUser -> username
         ]);
         // update item permintaan pembelian 
         $j = 0;
