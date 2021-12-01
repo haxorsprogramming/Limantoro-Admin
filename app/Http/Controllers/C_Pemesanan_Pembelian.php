@@ -11,8 +11,17 @@ use App\Models\M_Pemesanan_Pembelian;
 use App\Models\M_Item_Permintaan_Pembelian;
 use App\Models\M_Item_Pemesanan_Pembelian;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Pemesanan_Pembelian extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function pemesananPembelianPage()
     {
         $dataSupplier = M_Supplier::all();
@@ -60,6 +69,7 @@ class C_Pemesanan_Pembelian extends Controller
     }
     public function prosesPemesananPembelian(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'tanggal':tanggal, 'noPr':noPr, 'kdSupplier':kdSupplier, 'material':material}
         $totalPesananPembelian = M_Pemesanan_Pembelian::count();
         if($totalPesananPembelian == 0){
@@ -84,9 +94,9 @@ class C_Pemesanan_Pembelian extends Controller
         $pemesanan -> no_pr = $request -> noPr;
         $pemesanan -> kode_supplier = $request -> kdSupplier;
         $pemesanan -> no_poy = "-";
-        $pemesanan -> user_request = session('userLogin');
+        $pemesanan -> user_request = $dataUser -> username;
         $pemesanan -> user_lock = "-";
-        $pemesanan -> user_approve = session('userLogin');
+        $pemesanan -> user_approve = $dataUser -> username;
         $pemesanan -> no_poe = "-";
         $pemesanan -> active = "1";
         $pemesanan -> save();

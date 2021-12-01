@@ -8,8 +8,17 @@ use Illuminate\Support\Str;
 use App\Models\M_Pemesanan_Pembelian;
 use App\Models\M_Bukti_Keluar;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Bukti_Keluar extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function buktiKeluarPage()
     {
         $dataBk = M_Bukti_Keluar::all();
@@ -26,10 +35,11 @@ class C_Bukti_Keluar extends Controller
     }
     public function generateProses(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         $noPoe = $this -> getNoPoe();
         $bk = new M_Bukti_Keluar();
         $bk -> token = Str::uuid();
-        $bk -> user_request = session('userLogin');
+        $bk -> user_request = $dataUser -> username;
         $bk -> no_poe = $noPoe;
         $bk -> tanggal = $request -> tanggal;
         $bk -> is_paid = $request -> dibayar;

@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Models\M_Material;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Material extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function materialPage()
     {
         $dataMaterial = M_Material::all();
@@ -16,13 +25,14 @@ class C_Material extends Controller
     }
     public function prosesTambahMaterial(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'kdMaterial':kdMaterial, 'namaMaterial':namaMaterial, 'satuan':satuan}
         $material = new M_Material();
         $material -> kode = $request -> kdMaterial;
         $material -> nama = $request -> namaMaterial;
         $material -> satuan = $request -> satuan;
         $material -> jumlah = 0;
-        $material -> user = session('userLogin');
+        $material -> user = $dataUser -> username;
         $material -> active = "1";
         $material -> save();
         $dr = ['status' => 'sukses'];

@@ -8,8 +8,17 @@ use Illuminate\Support\Str;
 use App\Models\M_Profile_Karyawan;
 use App\Models\M_User;
 
+use App\Http\Controllers\C_Helper;
+
 class C_Karyawan extends Controller
 {
+    protected $helperCtr;
+
+    public function __construct(C_Helper $helperCtr)
+    {
+        $this -> helperCtr = $helperCtr;
+    }
+
     public function karyawanPage()
     {
         $dataKaryawan = M_Profile_Karyawan::where('active', 1) -> get();
@@ -18,6 +27,7 @@ class C_Karyawan extends Controller
     }
     public function prosesTambahKaryawan(Request $request)
     {
+        $dataUser = $this -> helperCtr -> getUserData();
         // {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 
             // 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
         // save user data 
@@ -26,7 +36,7 @@ class C_Karyawan extends Controller
         $user -> role = $request -> jabatan;
         $user -> password = password_hash($request -> password, PASSWORD_DEFAULT);
         $user -> api_token = "-";
-        $user -> username_parent = session('userLogin');
+        $user -> username_parent = $dataUser -> username;
         $user -> active = "1";
         $user -> save();
         // save profile user data 
