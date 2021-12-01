@@ -12,6 +12,7 @@ use App\Models\M_Role;
 use App\Models\M_Penerimaan_Barang;
 
 use App\Http\Controllers\C_Helper;
+use App\Models\M_Pemesanan_Pembelian;
 use App\Models\M_Pengembalian_Barang;
 use App\Models\M_Permintaan_Pembelian;
 
@@ -46,12 +47,14 @@ class C_Page extends Controller
         $totalPenerimaanBarang = M_Penerimaan_Barang::count();
         $totalPermintaanPembelian = M_Permintaan_Pembelian::count();
         $totalPengembalianBarang = M_Pengembalian_Barang::count();
+        $totalPemesananPembelian = M_Pemesanan_Pembelian::count();
         $dr = [
             'dataProject' => $dataProject,
             'totalProject' => $totalProject,
             'totalPenerimaanBarang' => $totalPenerimaanBarang,
             'totalPermintaanPembelian' => $totalPermintaanPembelian,
-            'pengembalianBarang' => $totalPengembalianBarang
+            'pengembalianBarang' => $totalPengembalianBarang,
+            'pemesananPembelian' => $totalPemesananPembelian
         ];
         return view('app.berandaPage', $dr);
     }

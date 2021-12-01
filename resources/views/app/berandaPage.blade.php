@@ -27,7 +27,7 @@
         <div class="card stats-card">
             <div class="card-content">
                 <span class="card-title">Pemesanan Pembelian</span>
-                <span class="stats-counter"><span class="counter">23,230</span><small>Total</small></span>
+                <span class="stats-counter"><span class="counter">{{ $pemesananPembelian }}</span><small>Total</small></span>
                 <div class="percent-info green-text">8% <i class="material-icons">trending_up</i></div>
             </div>
             <div class="progress stats-card-progress">
@@ -54,7 +54,7 @@
         <div class="card stats-card">
             <div class="card-content">
                 <span class="card-title">Pengembalian Barang</span>
-                <span class="stats-counter"><span class="counter">23,230</span><small>Total</small></span>
+                <span class="stats-counter"><span class="counter">{{$pengembalianBarang}}</span><small>Total</small></span>
                 <div class="percent-info green-text">8% <i class="material-icons">trending_up</i></div>
             </div>
             <div class="progress stats-card-progress">
@@ -66,7 +66,7 @@
         <div class="card stats-card">
             <div class="card-content">
                 <span class="card-title">Pengembalian Pembelian</span>
-                <span class="stats-counter"><span class="counter">23,230</span><small>Total</small></span>
+                <span class="stats-counter"><span class="counter">-</span><small>Total</small></span>
                 <div class="percent-info green-text">8% <i class="material-icons">trending_up</i></div>
             </div>
             <div class="progress stats-card-progress">

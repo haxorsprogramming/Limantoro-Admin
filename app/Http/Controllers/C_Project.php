@@ -87,4 +87,11 @@ class C_Project extends Controller
     {
         echo "material tersisa ".$kdProject;
     }
+    public function prosesHapusProject(Request $request)
+    {
+        $kdProject = $request -> kdProject;
+        M_Project::where('kode', $kdProject) -> delete();
+        $dr = ['status' => $kdProject];
+        return \Response::json($dr);
+    }
 }

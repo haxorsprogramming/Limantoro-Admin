@@ -1,6 +1,7 @@
 // route 
 var namaUnitData = [];
 var rProsesProject = server + "app/project/tambah/proses";
+var rProsesHapus = server + "app/project/hapus/proses";
 
 // vue object 
 var appProject = new Vue({
@@ -25,9 +26,26 @@ var appProject = new Vue({
             var rDetailProject = server + "app/project/"+kdProject+"/detail";
             load_page(rDetailProject, 'Detail Project');
         },
-        deleteAtc : function()
+        deleteAtc : function(kdProject)
         {
-
+            Swal.fire({
+                title: "Hapus project?",
+                text: "Yakin menghapus project ... ?",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak",
+              }).then((result) => {
+                if (result.value) {
+                    let ds = {'kdProject':kdProject}
+                    axios.post(rProsesHapus, ds).then(function(res){
+                        pesan_toast("Project berhasil di hapus ...");
+                        load_page(rProject, 'Project');
+                    });
+                }
+              });
         },
         prosesTambahProjectAtc : function()
         {

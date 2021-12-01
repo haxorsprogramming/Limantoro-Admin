@@ -52,6 +52,7 @@ Route::get('/app/project/{kdProject}/detail', [C_Project::class, 'detailProject'
 Route::get('/app/project/{kdProject}/detail/sec/dataunit', [C_Project::class, 'dataUnitSection']);
 Route::get('/app/project/{kdProject}/detail/sec/materialdaristock', [C_Project::class, 'materialDariStock']);
 Route::get('/app/project/{kdProject}/detail/sec/materialtersisa', [C_Project::class, 'materialTersisa']);
+Route::post('/app/project/hapus/proses', [C_Project::class, 'prosesHapusProject']);
 // permintaan pembelian 
 Route::get('/app/permintaan-pembelian', [C_Permintaan_Pembelian::class, 'permintaanPembelianPage']);
 Route::post('/app/permintaan-pembelian/tambah/proses', [C_Permintaan_Pembelian::class, 'prosesPermintaanPembelian']);
