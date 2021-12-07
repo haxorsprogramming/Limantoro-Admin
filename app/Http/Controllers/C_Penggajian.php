@@ -7,6 +7,11 @@ use Steevenz\IndonesiaPayrollCalculator\PayrollCalculator;
 
 class C_Penggajian extends Controller
 {
+    public function penggajianPage()
+    {
+        
+    }
+
     public function test()
     {
         // Inisiasi class PayrollCalculator

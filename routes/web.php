@@ -20,7 +20,6 @@ use App\Http\Controllers\C_Bukti_Keluar;
 
 Route::get('/', [C_Page::class, 'loginPage']);
 
-
 Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
 Route::get('/app', [C_Page::class, 'appPage']);
 
@@ -84,7 +83,7 @@ Route::get('/app/bukti-keluar', [C_Bukti_Keluar::class, 'buktiKeluarPage']);
 Route::get('/app/bukti-keluar/{noPo}/generate', [C_Bukti_Keluar::class, 'generateBuktiKeluar']);
 Route::post('/app/bukti-keluar/generate/proses', [C_Bukti_Keluar::class, 'generateProses']);
 // penggajian 
-Route::get('/penggajian', [C_Penggajian::class, 'test']);
+Route::get('/penggajian', [C_Penggajian::class, 'penggajianPage']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
 
