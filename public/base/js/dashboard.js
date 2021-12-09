@@ -13,6 +13,7 @@ var rPenerimaanBarang = server + "app/penerimaan-barang";
 var rPengembalianBarang = server + "app/pengembalian-barang";
 var rPengembalianPembelian = server + "app/pengembalian-pembelian";
 var rBuktiKeluar = server + "app/bukti-keluar";
+var rDataKaryawanPenggajian = server + "app/penggajian/dataKaryawan";
 // vue object 
 var div_menu = new Vue({
     el : '#slide-out',
@@ -71,6 +72,10 @@ var div_menu = new Vue({
         buktiKeluarAtc : function()
         {
             load_page(rBuktiKeluar, 'Bukti Keluar');
+        },
+        dataKaryawanPenggajianAtc : function()
+        {
+            load_page(rDataKaryawanPenggajian, 'Penggajian - Data Karyawan');
         }
     }
 });
