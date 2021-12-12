@@ -115,5 +115,23 @@ class DatabaseSeeder extends Seeder
         DB::table('tbl_role') -> insert(['kode' => '2','nama' => 'Manager']);
         DB::table('tbl_role') -> insert(['kode' => '3','nama' => 'Manager Lapangan']);
         DB::table('tbl_role') -> insert(['kode' => '4','nama' => 'Purchasing']);
+        // insert default setting 
+        $this -> setSetting('NAMA_PERUSAHAAN', 'Nama perusahaan', '-', 'PT. LIMANTORO AGUNG PROPERTY');
+        $this -> setSetting('ALAMAT', 'Alamat lengkap perusahaan', '-', 'Jln. Cemara asri, No 22');
+        $this -> setSetting('TELEPON', 'Nomor telepon', '-', '061 4123 421');
+        $this -> setSetting('PIMPINAN', 'Nama pimpinan', '-', 'ADMIN');
+    }
+
+    function setSetting($idSetting, $nama, $deks, $nilai)
+    {
+        DB::table('tbl_setting') -> insert([
+            'id_setting' => $idSetting,
+            'nama' => $nama,
+            'deksripsi' => $deks,
+            'nilai' => $nilai,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'active' => '1'
+        ]);
     }
 }
