@@ -120,6 +120,7 @@ class DatabaseSeeder extends Seeder
         $this -> setSetting('ALAMAT', 'Alamat lengkap perusahaan', '-', 'Jln. Cemara asri, No 22');
         $this -> setSetting('TELEPON', 'Nomor telepon', '-', '061 4123 421');
         $this -> setSetting('PIMPINAN', 'Nama pimpinan', '-', 'ADMIN');
+        $this -> setSetting('EMAIL', 'Email perusahaan', '-', 'halo@limantoroagungproperty.com');
     }
 
     function setSetting($idSetting, $nama, $deks, $nilai)
