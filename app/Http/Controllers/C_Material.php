@@ -55,4 +55,11 @@ class C_Material extends Controller
         $dr = ['dataMaterial' => 'halo'];
         return \Response::json($dr);
     }
+    public function prosesHapusMaterial(Request $request)
+    {
+        $kdMaterial = $request -> kdMaterial;
+        M_Material::where('kode', $kdMaterial) -> delete();
+        $dr = ['status' => 'sukses'];
+        return \Response::json($dr);
+    }
 }

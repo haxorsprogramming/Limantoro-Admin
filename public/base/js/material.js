@@ -1,6 +1,7 @@
 // route 
 var rProsesTambahMaterial = server + "app/material/tambah/proses";
 var rProsesUpdateMaterial = server + "app/material/edit/proses";
+var rProsesHapusMaterial = server + "app/material/hapus/proses";
 // vue object 
 var appMaterial = new Vue({
     el : '#appMaterial',
@@ -69,6 +70,27 @@ var appMaterial = new Vue({
                 pesan_toast("Data material berhasil di update ...");
                 load_page(rMaterial, 'Material');
             });
+        },
+        deleteAtc : function(kdMaterial)
+        {
+            Swal.fire({
+                title: "Hapus Material?",
+                text: "Yakin hapus ... ?",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak",
+              }).then((result) => {
+                if (result.value) {
+                   let ds = {'kdMaterial':kdMaterial}
+                   axios.post(rProsesHapusMaterial, ds).then(function(res){
+                    pesan_toast("Material berhasil di hapus ...");
+                    load_page(rMaterial, 'Material');
+                   });
+                }
+              });
         }
     }
 });
