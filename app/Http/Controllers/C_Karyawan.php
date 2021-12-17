@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 use App\Models\M_Profile_Karyawan;
 use App\Models\M_User;
+use App\Models\M_Penggajian_Data_Set;
 
 use App\Http\Controllers\C_Helper;
 
@@ -52,7 +53,12 @@ class C_Karyawan extends Controller
         $karyawan -> bisa_login = "1";
         $karyawan -> active = "1";
         $karyawan -> save();
-
+        // create data penggajian 
+        $pg = new M_Penggajian_Data_Set();
+        $pg -> username = $request -> username;
+        $pg -> total_gaji = "0";
+        $pg -> active = "1";
+        $pg -> save();
         $dr = ['status' => 'sukes'];
         return \Response::json($dr);
     }

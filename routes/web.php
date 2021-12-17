@@ -84,6 +84,7 @@ Route::post('/app/bukti-keluar/generate/proses', [C_Bukti_Keluar::class, 'genera
 // penggajian 
 Route::get('/app/penggajian/dataKaryawan', [C_Penggajian::class, 'datakaryawan']);
 Route::get('/app/penggajian/tes-gaji', [C_Penggajian::class, 'tesPenggajian']);
+Route::get('/app/penggajian/set-data-penggajian/{username}', [C_Penggajian::class,'setDataPenggajian']);
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);
 

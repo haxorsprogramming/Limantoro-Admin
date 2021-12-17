@@ -1,3 +1,5 @@
+// route 
+
 // vue object 
 var appKaryawan = new Vue({
     el : "#appDataKaryawan",
@@ -5,12 +7,19 @@ var appKaryawan = new Vue({
 
     },
     methods : {
-        tambahKaryawanModalAtc : function()
+        editSetAtc : function(username)
         {
-            $("#modalKaryawan").openModal();
+            var r_set_data_penggajian = server + "app/penggajian/set-data-penggajian/"+username;
+            load_page(r_set_data_penggajian, 'Set data penggajian karyawan');
+        },
+        btnProsesUpdate : function()
+        {
+            
         }
     }
 });
 // inisialisasi 
+tip('.btnEdit', 'Edit data set penggajian');
+tip('.btnPayrollSet', 'Payroll set');
 $("#tblDataKaryawan").dataTable();
 $("#tblModalKaryawan").dataTable();
