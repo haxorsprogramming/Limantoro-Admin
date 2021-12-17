@@ -98,3 +98,6 @@ Route::post('/login/proses', [C_Auth::class, 'loginProses']);
 // jwt 
 
 Route::get('/tes-jwt', [C_Page::class, 'tesJwt']);
+
+// mail 
+Route::get('/tes-mail', [C_Page::class, 'tesMail']);

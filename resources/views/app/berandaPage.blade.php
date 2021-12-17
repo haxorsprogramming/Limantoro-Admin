@@ -83,7 +83,7 @@
                 <span class="card-title">Recent Project</span>
                 <div class="card-options">
                     <ul>
-                        <li class="red-text"><span class="badge blue-grey lighten-3">7 records</span></li>
+                        
                     </ul>
                 </div>
                 <div>
@@ -122,9 +122,7 @@
         <div class="card server-card">
             <div class="card-content">
                 <div class="card-options">
-                    <ul>
-                        <li class="red-text"><span class="badge blue-grey lighten-3">optimal</span></li>
-                    </ul>
+                    
                 </div>
                 <span class="card-title">Project Load</span>
                 <div class="server-load row">

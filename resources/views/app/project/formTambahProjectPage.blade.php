@@ -84,9 +84,6 @@
                             <td>@{{ unit.hargaJual }}</td>
                             <td>@{{ unit.marketingFee }}</td>
                             <td>
-                                <a class="btn" href="javascript:void(0)" @click="editUnitAtc(unit.namaUnit)">
-                                    <i class="material-icons">edit_note</i>
-                                </a>
                                 <a class="btn deep-orange lighten-1" href="javascript:void(0)" @click="deleteUnitAtc(unit.namaUnit)">
                                     <i class="material-icons">delete</i>
                                 </a>

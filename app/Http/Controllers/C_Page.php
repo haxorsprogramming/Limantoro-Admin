@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\LimantoroMail;
+
 use App\Models\M_Project;
 use App\Models\M_User;
 use App\Models\M_Role;
@@ -71,5 +75,11 @@ class C_Page extends Controller
         // $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
 
         // return \Response::json($decoded);
+    }
+    public function tesMail()
+    {
+        Mail::to("alditha.forum@gmail.com")->send(new LimantoroMail());
+
+		return "Email telah dikirim";
     }
 }
