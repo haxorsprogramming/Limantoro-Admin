@@ -88,6 +88,7 @@ Route::get('/app/penggajian/set-data-penggajian/{username}', [C_Penggajian::clas
 Route::post('/app/penggajian/data-penggajian/edit/proses', [C_Penggajian::class, 'prosesDataPenggajian']);
 Route::get('/app/penggajian/set-payroll/{username}', [C_Penggajian::class, 'payrollSet']);
 Route::post('/app/penggajian/proses-payroll', [C_Penggajian::class, 'prosesPayroll']);
+Route::get('/app/penggajian/cetak/{token}', [C_Penggajian::class, 'cetakSlipGaji']);
 
 // API 
 Route::post('/login/proses', [C_Auth::class, 'loginProses']);

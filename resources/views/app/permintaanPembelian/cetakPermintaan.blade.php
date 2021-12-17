@@ -45,6 +45,4 @@
         <p style="text-align: center;">{{ $userProfile -> nama_lengkap }}</p>
     </div>
 
-</body>
-
-</html>
+    @include('layout.footerCetak')

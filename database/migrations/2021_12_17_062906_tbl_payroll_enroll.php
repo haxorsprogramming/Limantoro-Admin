@@ -15,6 +15,7 @@ class TblPayrollEnroll extends Migration
     {
         Schema::create('tbl_payroll_enroll', function (Blueprint $table) {
             $table -> id();
+            $table -> char('token', 50);
             $table -> char('username', 100);
             $table -> char('status_karyawan', 20) -> nullable();
             $table -> char('status_menikah', 20) -> nullable();

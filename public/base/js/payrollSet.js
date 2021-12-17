@@ -23,7 +23,10 @@ var appPayroll = new Vue({
                     let username = document.querySelector("#txtUsername").value;
                     let ds = {'username':username}
                     axios.post(rProsesPayroll, ds).then(function(res){
-                        console.log(res.data);
+                        let obj = res.data;
+                        let token = obj.token;
+                        let rCetakGaji = server + "app/penggajian/cetak/"+token;
+                        window.open(rCetakGaji);
                     });
                 }
               });

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Steevenz\IndonesiaPayrollCalculator\PayrollCalculator;
+use Illuminate\Support\Str;
+use PDF;
 
 use App\Models\M_Profile_Karyawan;
 use App\Models\M_Penggajian_Data_Set;
+use App\Models\M_Payroll_Enroll;
 
 class C_Penggajian extends Controller
 {
@@ -126,7 +129,44 @@ class C_Penggajian extends Controller
     {
         $username = $request -> username;
         $dataKaryawan = M_Penggajian_Data_Set::where('username', $username) -> first();
+        $token = Str::uuid();
+        $fToken = Str::replace('-', '', $token);
+        $pe = new M_Payroll_Enroll();
+        $pe -> token = $fToken;
+        $pe -> username = $username;
+        $pe -> status_karyawan = $dataKaryawan -> status_karyawan;
+        $pe -> status_menikah = $dataKaryawan -> status_menikah;
+        $pe -> jumlah_tanggungan = $dataKaryawan -> jumlah_tanggungan;
+        $pe -> gaji_pokok = $dataKaryawan -> gaji_pokok;
+        $pe -> tunjangan_tetap = $dataKaryawan -> tunjangan_tetap;
+        $pe -> hari_kerja = $dataKaryawan -> hari_kerja;
+        $pe -> lembur = $dataKaryawan -> lembur;
+        $pe -> absent = $dataKaryawan -> absent;
+        $pe -> split_shift = $dataKaryawan -> split_shift;
+        $pe -> tunjangan_makan = $dataKaryawan -> tunjangan_makan;
+        $pe -> kasbon = $dataKaryawan -> kasbon;
+        $pe -> service_charge = $dataKaryawan -> service_charge;
+        $pe -> ump = $dataKaryawan -> ump;
+        $pe -> total_gaji = "0";
+        $pe -> active = "1";
+        $pe -> save();
+        $dr = ['token' => $fToken];
         return \Response::json($dr);  
+    }
+
+    public function cetakSlipGaji(Request $request, $token)
+    {
+        $dataEnroll = M_Payroll_Enroll::where('token', $token) -> first();
+        $username = $dataEnroll -> username;
+        $dataKaryawan = M_Profile_Karyawan::where('username', $username) -> first();
+        $dr = [
+            'judul' => 'Slip Gaji',
+            'dataPenggajian' => $dataEnroll,
+            'dataKaryawan' => $dataKaryawan
+        ];
+        $pdf = PDF::loadview('app.penggajian.cetakSlipGaji', $dr);
+        $pdf -> setPaper('A4', 'landscape');
+        return $pdf -> stream();
     }
 
     public function tesPenggajian()
