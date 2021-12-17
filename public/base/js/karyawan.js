@@ -1,5 +1,6 @@
 // route 
 var rProsesTambah = server + "app/karyawan/tambah/proses";
+var rProsesHapus = server + "app/karyawan/hapus/proses";
 // vue object 
 var appKaryawan = new Vue({
     el : '#appKaryawan',
@@ -20,7 +21,24 @@ var appKaryawan = new Vue({
         },
         deleteAtc : function(kdKaryawan)
         {
-            console.log(kdKaryawan);
+            Swal.fire({
+                title: "Hapus karyawan?",
+                text: "Yakin menghapus karyawan ... ?",
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak",
+              }).then((result) => {
+                if (result.value) {
+                    let ds = {'username':kdKaryawan}
+                    axios.post(rProsesHapus, ds).then(function(res){
+                        pesan_toast("Karyawan berhasil di hapus ...");
+                        load_page(rKaryawan, 'Karyawan');
+                    });                  
+                }
+              });
         },
         kembaliAtc : function()
         {

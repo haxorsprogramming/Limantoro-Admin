@@ -71,4 +71,14 @@ class C_Karyawan extends Controller
         $dr = ['status' => 'sukes'];
         return \Response::json($dr);
     }
+
+    public function prosesHapusKaryawan(Request $request)
+    {
+        $username = $request -> username;
+        M_Profile_Karyawan::where('username', $username) -> delete();
+        M_User::where('username', $username) -> delete();
+        $dr = ['status' => 'sukes'];
+        return \Response::json($dr);
+    }
+
 }
