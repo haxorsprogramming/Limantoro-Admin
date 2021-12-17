@@ -32,8 +32,22 @@
                     </select>
                     <label class="active">Jenis Kelamin</label>
                 </div>
+                <div class="input-field col s12">
+                    <input placeholder="Email" id="txtEmail" type="text" class="validate">
+                    <label for="txtEmail" class="active">Email</label>
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="No Handphone" id="txtHp" type="text" class="validate">
+                    <label for="txtHp" class="active">No Handphone</label>
+                </div>
             </div>
             <div class="col s6">
+                <div class="input-field col s12" style="text-align:center;">
+                    <img src="https://nadhamedia.s3.ap-southeast-1.amazonaws.com/limantoro/asset/img/default-user.png" style="width:30%;" id="txtPreviewUpload">
+                    <br/>
+                    <div class="text-muted">Foto profil</div>
+                    <input type="file" id="txtFoto" onchange="setImg()">
+                </div>
                 <div class="input-field col s12">
                     <textarea class="materialize-textarea" id="txtAlamat"></textarea>
                     <label for="txtAlamat" class="active">Alamat</label>

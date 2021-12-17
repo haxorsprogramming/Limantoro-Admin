@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Cetak Permintaan</title>
+    <title>{{ $judul }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 

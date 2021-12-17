@@ -2,7 +2,7 @@
     <div class="side-nav-wrapper">
         <div class="sidebar-profile">
             <div class="sidebar-profile-image">
-                <img src="https://i.pravatar.cc/300" class="circle" alt="">
+                <img src="{{ asset('file/user_pic/'.$username.'.png') }}" class="circle" alt="">
             </div>
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">

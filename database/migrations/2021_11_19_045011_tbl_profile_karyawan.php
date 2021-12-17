@@ -20,6 +20,8 @@ class TblProfileKaryawan extends Migration
             $table -> char('nama_lengkap', 100);
             $table -> char('nik', 30);
             $table -> date('tanggal_lahir') -> nullable();
+            $table -> char('email', 200);
+            $table -> char('no_hp', 30);
             $table -> text('alamat');
             $table -> char('jenis_kelamin', 1);
             $table -> char('tipe', 30);

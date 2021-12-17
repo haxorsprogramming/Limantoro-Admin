@@ -31,6 +31,7 @@ class C_Karyawan extends Controller
         $dataUser = $this -> helperCtr -> getUserData();
         // {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 
             // 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
+            // 'email':email, 'hp':hp,'foto':foto
         // save user data 
         $user = new M_User();
         $user -> username = $request -> username;
@@ -51,6 +52,8 @@ class C_Karyawan extends Controller
         $karyawan -> jenis_kelamin = $request -> jk;
         $karyawan -> tipe = $request -> jenis;
         $karyawan -> bisa_login = "1";
+        $karyawan -> email = $request -> email;
+        $karyawan -> no_hp = $request -> hp;
         $karyawan -> active = "1";
         $karyawan -> save();
         // create data penggajian 
@@ -59,6 +62,12 @@ class C_Karyawan extends Controller
         $pg -> total_gaji = "0";
         $pg -> active = "1";
         $pg -> save();
+        // upload foto profile 
+        $imgVaArr1 = explode(";", $request -> foto);
+        $imgData1 = explode(",", $imgVaArr1[1]);
+        $data_var1 = base64_decode($imgData1[1]);
+        $namaVariantPic1 = $request -> username.".png";
+        file_put_contents('file/user_pic/'.$namaVariantPic1, $data_var1);
         $dr = ['status' => 'sukes'];
         return \Response::json($dr);
     }

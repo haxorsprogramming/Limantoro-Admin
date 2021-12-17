@@ -15,6 +15,8 @@ class M_Profile_Karyawan extends Model
         'nik',
         'tanggal_lahir',
         'alamat',
+        'no_hp',
+        'email',
         'jenis_kelamin',
         'tipe',
         'bisa_login',

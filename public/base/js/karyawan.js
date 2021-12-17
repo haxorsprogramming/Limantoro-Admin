@@ -28,6 +28,7 @@ var appKaryawan = new Vue({
         },
         prosesAtc : async function()
         {
+            
             if(appKaryawan.stateProses === false){
                 console.log("cutt");
                 appKaryawan.stateProses = true;
@@ -41,7 +42,13 @@ var appKaryawan = new Vue({
                 let jenis = document.querySelector("#txtJenis").value;
                 let bisaLogin = document.querySelector("#txtBisaLogin").value;
                 let password = document.querySelector("#txtPassword").value;
-                let ds = {'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 'alamat':alamat, 'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password}
+                let email = document.querySelector("#txtEmail").value;
+                let hp = document.querySelector("#txtHp").value;
+                let foto = document.querySelector("#txtPreviewUpload").getAttribute("src");
+                let ds = {
+                    'username':username, 'nama':nama, 'nik':nik, 'tanggalLahir':tanggalLahir, 'jk':jk, 'alamat':alamat, 
+                    'jabatan':jabatan, 'jenis':jenis, 'bisaLogin':bisaLogin, 'password':password, 'email':email, 'hp':hp,'foto':foto
+                }
                 let itemDim = ["#btnProses","#txtUsername", "#txtNamaKaryawan", "#txtNik", "#txtTanggalLahir", "#txtJk", "#txtAlamat", "#txtJabatan", "#txtJenis", "#txtBisaLogin", "#txtPassword"];
                 dimField(itemDim);
                 appKaryawan.prosesBtnText = "Memproses ...";
@@ -78,4 +85,17 @@ function bisaLoginSelect()
     }else{
         $("#dPasswordUser").hide();
     }
+}
+
+function setImg()
+{
+    var citraInput = document.querySelector('#txtFoto');
+    var preview = document.querySelector('#txtPreviewUpload');
+    var fileGambar = new FileReader();
+    fileGambar.readAsDataURL(citraInput.files[0]);
+    fileGambar.onload = function(e){
+        let hasil = e.target.result;
+        preview.src = hasil;
+    }
+    console.log("image ready to upload");
 }
