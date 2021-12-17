@@ -18,14 +18,17 @@
                     <td>{{ $loop -> iteration }}</td>
                     <td>{{ $kar -> karyawanData -> nama_lengkap }}<br/>({{ $kar -> username }})</td>
                     <td></td>
-                    <td>{{ $kar -> karyawanData -> tipe }}</td>
+                    <td>{{ ucwords($kar -> karyawanData -> tipe) }}</td>
                     <td>Rp. {{ number_format($kar -> total_gaji) }}</td>
                     <td>
                         <a class="btn-floating waves-effect waves-light btnEdit" href="javascript:void(0)" @click="editSetAtc('{{ $kar -> username }}')">
                             <i class="material-icons">edit_note</i>
                         </a>
-                        <a class="btn-floating waves-effect waves-light btnPayrollSet" href="javascript:void(0)">
+                        <a class="btn-floating waves-effect waves-light btnPayrollSet" href="javascript:void(0)" @click="payrollSet('{{ $kar -> username }}')">
                             <i class="material-icons">account_box</i>
+                        </a>
+                        <a class="btn-floating waves-effect waves-light btnHistoryPayroll" href="javascript:void(0)">
+                            <i class="material-icons">history</i>
                         </a>
                     </td>
                 </tr>

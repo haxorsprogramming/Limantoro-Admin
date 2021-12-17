@@ -12,9 +12,10 @@ var appKaryawan = new Vue({
             var r_set_data_penggajian = server + "app/penggajian/set-data-penggajian/"+username;
             load_page(r_set_data_penggajian, 'Set data penggajian karyawan');
         },
-        btnProsesUpdate : function()
+        payrollSet : function(username)
         {
-            
+            var r_set_data_penggajian = server + "app/penggajian/set-payroll/"+username;
+            load_page(r_set_data_penggajian, 'Payroll Set');
         }
     }
 });
