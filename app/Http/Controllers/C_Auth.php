@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 use App\Models\M_User;
+use App\Models\M_Profile_Karyawan;
+use App\Models\M_Reset_Password;
+
+use App\Mail\LimantoroMail;
 
 class C_Auth extends Controller
 {
@@ -68,4 +73,27 @@ class C_Auth extends Controller
         $request -> session() -> flush();
         return redirect('/');
     }
+
+    public function forgotPasswordProses(Request $request)
+    {
+        $email = $request -> email;
+        $jlhKaryawan = M_Profile_Karyawan::where('email', $email) -> count();
+        if($jlhKaryawan < 1){
+            $status = 'no_email';
+        }else{
+            $token = Str::uuid();
+            $fToken = Str::replace('-', '', $token);
+            $rp = new M_Reset_Password();
+            $rp -> token = $fToken;
+            $rp -> email = $email;
+            $rp -> status = "NOT_RESSETED";
+            $rp -> save();
+            $dre = ['email' => $email, 'token' => $fToken];
+            Mail::to($email) -> send(new LimantoroMail($dre));
+            $status = 'sukses';
+        }
+        $dr = ['status' => $status];
+        return \Response::json($dr);
+    }
+
 }

@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class LimantoroMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $dre;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($dre)
     {
-        //
+        $this -> dre = $dre;
     }
 
     /**
@@ -28,6 +28,9 @@ class LimantoroMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail');
+        $email = $this -> dre['email'];
+        $token = $this -> dre['token'];
+        $drw = ['email' => $email, 'token' => $token];
+        return $this -> from ('noreply@limantoroagungproperty.com', 'Limantoro Email System') -> view('login.emailFormatResetPassword') -> subject("Password reset") -> with($drw);
     }
 }
