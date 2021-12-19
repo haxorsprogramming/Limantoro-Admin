@@ -34,6 +34,10 @@ class C_Page extends Controller
     {
         return view('login.loginPage');
     }
+    public function forgotPasswordPage()
+    {
+        return view('login.forgotPasswordPage');
+    }
     public function appPage()
     {
         

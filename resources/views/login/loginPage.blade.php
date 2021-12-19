@@ -27,18 +27,18 @@
                         </div>
                     </div>
                     <div>
-                    <div class="alert alert-success" style="display: none;">
+                        <div class="alert alert-success" style="display: none;">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </div>
                     </div>
                     <div class="footer text-center">
-                        <a href="javascript:void(0)" id="btnMasuk" v-on:click="loginAtc()" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">    
-                        Log In
+                        <a href="javascript:void(0)" id="btnMasuk" v-on:click="loginAtc()" class="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
+                            Log In
                         </a>
-                        <h6 class="m-t-20"><a href="forgot-password.html" class="link">Forgot Password?</a></h6>
+                        <h6 class="m-t-20"><a href="{{ url('/forgot-password') }}" class="link">Forgot Password?</a></h6>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-@include('layout.footerLoginPage')
+    @include('layout.footerLoginPage')

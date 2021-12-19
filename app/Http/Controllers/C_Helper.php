@@ -11,9 +11,9 @@ class C_Helper extends Controller
 {
     public function getUserData()
     {
-        $key = env('JWT_KEY');
-        $jwt = $_COOKIE['K_TOKEN'];
-        $data = JWT::decode($jwt, new Key($key, 'HS256'));
+        $key    = env('JWT_KEY');
+        $jwt    = $_COOKIE['K_TOKEN'];
+        $data   = JWT::decode($jwt, new Key($key, 'HS256'));
         return $data;
     }
     public function convertRole($role)
@@ -105,6 +105,15 @@ class C_Helper extends Controller
         // Mengambil hasil perhitungan
         $hasilPerhitungan = $payrollCalculator->getCalculation();
         return $hasilPerhitungan;
+    }
+
+    public function compareTanggal($tglCompare, $tglSekarang)
+    {
+      if(strtotime($tglCompare) < strtotime($tglSekarang)){
+        return false;
+      }else{
+        return true;
+      }
     }
 
 }

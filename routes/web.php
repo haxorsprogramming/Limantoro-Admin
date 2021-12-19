@@ -19,6 +19,7 @@ use App\Http\Controllers\C_Pengembalian_Pembelian;
 use App\Http\Controllers\C_Bukti_Keluar;
 
 Route::get('/', [C_Page::class, 'loginPage']);
+Route::get('/forgot-password', [C_Page::class, 'forgotPasswordPage']);
 
 Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
 Route::get('/app', [C_Page::class, 'appPage']);
