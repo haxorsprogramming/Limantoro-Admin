@@ -21,6 +21,8 @@ use App\Http\Controllers\C_Bukti_Keluar;
 Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/forgot-password', [C_Page::class, 'forgotPasswordPage']);
 Route::post('/auth/send-reset-password', [C_Auth::class, 'forgotPasswordProses']);
+Route::get('/auth/reset-password/token/{token}', [C_Auth::class, 'resetPasswordAction']);
+
 Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
 Route::get('/app', [C_Page::class, 'appPage']);
 

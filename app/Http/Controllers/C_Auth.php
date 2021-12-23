@@ -96,4 +96,15 @@ class C_Auth extends Controller
         return \Response::json($dr);
     }
 
+    public function resetPasswordAction(Request $request, $token)
+    {
+        $jlhToken = M_Reset_Password::where('token', $token) -> count();
+        if($jlhToken < 1){
+            echo "Token reset password tidak valid !!!";
+        }else{
+            $dr = ['token' => $token];
+            return view('app.login.resetPasswordActionPage', $dr);
+        }
+    }
+
 }
