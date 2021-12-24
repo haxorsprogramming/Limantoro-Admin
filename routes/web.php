@@ -22,6 +22,7 @@ Route::get('/', [C_Page::class, 'loginPage']);
 Route::get('/forgot-password', [C_Page::class, 'forgotPasswordPage']);
 Route::post('/auth/send-reset-password', [C_Auth::class, 'forgotPasswordProses']);
 Route::get('/auth/reset-password/token/{token}', [C_Auth::class, 'resetPasswordAction']);
+Route::post('/auth/reset-password/proses', [C_Auth::class, 'resetPasswordProses']);
 
 Route::get('/cek-jwt', [C_Page::class, 'cekJwt']);
 Route::get('/app', [C_Page::class, 'appPage']);

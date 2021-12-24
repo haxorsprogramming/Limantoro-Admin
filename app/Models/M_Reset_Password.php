@@ -13,4 +13,10 @@ class M_Reset_Password extends Model
         'email',
         'status'
     ];
+
+    public function userData()
+    {
+        return $this->belongsTo(M_Profile_Karyawan::class, 'email', 'email');
+    }
+
 }

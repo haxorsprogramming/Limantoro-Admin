@@ -98,7 +98,7 @@ class C_Auth extends Controller
 
     public function resetPasswordAction(Request $request, $token)
     {
-        $jlhToken = M_Reset_Password::where('token', $token) -> count();
+        $jlhToken = M_Reset_Password::where('token', $token) -> where('status', 'NOT_RESSETED') -> count();
         if($jlhToken < 1){
             echo "Token reset password tidak valid !!!";
         }else{
@@ -107,6 +107,27 @@ class C_Auth extends Controller
             $dr = ['token' => $token, 'dataUser' => $dataReset];
             return view('login.resetPasswordActionPage', $dr);
         }
+    }
+
+    public function resetPasswordProses(Request $request)
+    {
+        // {'token':token, 'pass':pass1}
+        $token = $request -> token;
+        $password = $request -> pass;
+        // ambil data user 
+        $dataReset = M_Reset_Password::where('token', $token) -> first();
+        $username = $dataReset -> userData -> username;
+        // update password 
+        $paswordHash = password_hash($password, PASSWORD_DEFAULT);
+        M_User::where('username', $username) -> update([
+            'password' => $paswordHash
+        ]);
+        // update status token 
+        M_Reset_Password::where('token', $token) -> update([
+            'status' => 'SUCCESS'
+        ]);
+        $dr = ['status' => 'sukses', 'username' => $username];
+        return \Response::json($dr);
     }
 
 }

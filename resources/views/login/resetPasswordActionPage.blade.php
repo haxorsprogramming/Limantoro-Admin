@@ -15,8 +15,10 @@
                         ({{ $dataUser -> email }})
                     </div>
                     <div class="content">
+                    <input type="hidden" value="{{ $token }}" id="txtToken" />
                         <div class="input-group input-lg">
-                            <input type="password" class="form-control" id="txtPassword1" placeholder="Enter New password">
+                            <input type="password" class="form-control" id="txtPassword1" placeholder="Enter New password" />
+                            
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-account-circle"></i>
                             </span>

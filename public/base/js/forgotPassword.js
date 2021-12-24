@@ -7,7 +7,7 @@ var appForget = new Vue({
 
     },
     methods : {
-        sendAtc : async function()
+        sendAtc : function()
         {
             let email = document.querySelector("#txtEmail").value;
             let ds = {'email':email}
@@ -18,8 +18,7 @@ var appForget = new Vue({
                     pesanUmumApp('warning', 'No email', 'Tidak ada email terdaftar');
                     document.querySelector("#btnKirim").innerHTML = "Log In";
                 }else{
-                    pesanUmumApp('success', 'Success', 'Email reset password telah terkirim ke email, silahkan cek inbox / folder spam anda');
-                    tidur_bentar(2000);
+                    window.alert('Email reset password telah terkirim ke email, silahkan cek inbox / folder spam anda');
                     window.location.assign(server);
                 }
             });
@@ -39,8 +38,4 @@ function pesanUmumApp(icon, title, text)
     title : title,
     text : text
   });
-}
-
-function tidur_bentar(ms){
-    return new Promise(resolve => { setTimeout(resolve, ms) });
 }
