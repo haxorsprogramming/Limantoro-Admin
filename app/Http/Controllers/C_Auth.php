@@ -102,8 +102,10 @@ class C_Auth extends Controller
         if($jlhToken < 1){
             echo "Token reset password tidak valid !!!";
         }else{
-            $dr = ['token' => $token];
-            return view('app.login.resetPasswordActionPage', $dr);
+            // cari data email 
+            $dataReset = M_Reset_Password::where('token', $token) -> first();
+            $dr = ['token' => $token, 'dataUser' => $dataReset];
+            return view('login.resetPasswordActionPage', $dr);
         }
     }
 
