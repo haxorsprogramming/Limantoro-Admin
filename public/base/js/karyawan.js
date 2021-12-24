@@ -17,7 +17,8 @@ var appKaryawan = new Vue({
         },
         editAtc : function(kdKaryawan)
         {
-            console.log(kdKaryawan);
+            var rEditKaryawan = server + "app/karyawan/edit/"+kdKaryawan;
+            load_page(rEditKaryawan, 'Edit Data Karyawan');
         },
         deleteAtc : function(kdKaryawan)
         {

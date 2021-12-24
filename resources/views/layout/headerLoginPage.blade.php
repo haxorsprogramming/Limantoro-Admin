@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>PT Limantoro Agung Property - Login</title>
+    <title>PT Limantoro Agung Property</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Custom Css -->
@@ -31,29 +31,8 @@
         <div class="navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" title="Follow us on Twitter" href="#" target="_blank">
-                        <i class="zmdi zmdi-twitter"></i>
-                        <p class="d-lg-none d-xl-none">Twitter</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" title="Like us on Facebook" href="#" target="_blank">
-                        <i class="zmdi zmdi-facebook"></i>
-                        <p class="d-lg-none d-xl-none">Facebook</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" title="Follow us on Instagram" href="#" target="_blank">                        
-                        <i class="zmdi zmdi-instagram"></i>
-                        <p class="d-lg-none d-xl-none">Instagram</p>
-                    </a>
-                </li>                
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>       
             </ul>
         </div>
     </div>

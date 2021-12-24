@@ -25,10 +25,10 @@
                     <td>{{ $karyawan -> nik }}</td>
                     <td>{{ $karyawan -> roleData -> nama }}</td>
                     <td>
-                        <a class="btn-floating waves-effect waves-light" href="#!" @click="editAtc('{{ $karyawan -> username }}')">
+                        <a class="btn-floating waves-effect waves-light" href="javascript:void(0)" @click="editAtc('{{ $karyawan -> username }}')">
                             <i class="material-icons">edit_note</i>
                         </a>
-                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="#!" @click="deleteAtc('{{ $karyawan -> username }}')">
+                        <a class="btn-floating waves-effect waves-light deep-orange lighten-1" href="javascript:void(0)" @click="deleteAtc('{{ $karyawan -> username }}')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

@@ -72,6 +72,13 @@ class C_Karyawan extends Controller
         return \Response::json($dr);
     }
 
+    public function editKaryawan(Request $request, $kdKaryawan)
+    {
+        $dataKaryawan = M_Profile_Karyawan::where('username', $kdKaryawan) -> first();
+        $dr = ['kdKaryawan' => $kdKaryawan, 'karyawan' => $dataKaryawan];
+        return view('app.karyawan.formEditKaryawanPage', $dr);
+    }
+
     public function prosesHapusKaryawan(Request $request)
     {
         $username = $request -> username;

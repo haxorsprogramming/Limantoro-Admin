@@ -49,6 +49,7 @@ Route::post('/app/material/hapus/proses', [C_Material::class, 'prosesHapusMateri
 Route::get('/app/karyawan', [C_Karyawan::class, 'karyawanPage']);
 Route::post('/app/karyawan/tambah/proses', [C_Karyawan::class, 'prosesTambahKaryawan']);
 Route::post('/app/karyawan/hapus/proses', [C_Karyawan::class, 'prosesHapusKaryawan']);
+Route::get('/app/karyawan/edit/{kdKaryawan}', [C_Karyawan::class, 'editKaryawan']);
 // project 
 Route::get('/app/project', [C_Project::class, 'projectPage']);
 Route::get('/app/project/{kdProject}/detail', [C_Project::class, 'detailProject']);
