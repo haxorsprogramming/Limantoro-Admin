@@ -11,7 +11,8 @@ var appEdit = new Vue({
         },
         prosesAtc : function()
         {
-
+            pesanUmumApp('success', 'Sukses', 'Berhasil mengupdate data karyawan');
+            load_page(rKaryawan, 'Karyawan');
         }
     }
 });

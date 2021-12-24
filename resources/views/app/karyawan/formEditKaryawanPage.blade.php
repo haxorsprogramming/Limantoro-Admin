@@ -33,11 +33,11 @@
                     <label class="active">Jenis Kelamin</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="Email" id="txtEmail" type="text" class="validate">
+                    <input placeholder="Email" id="txtEmail" type="text" class="validate" value="{{ $karyawan['email'] }}">
                     <label for="txtEmail" class="active">Email</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="No Handphone" id="txtHp" type="text" class="validate">
+                    <input placeholder="No Handphone" id="txtHp" type="text" class="validate" value="{{ $karyawan['no_hp'] }}">
                     <label for="txtHp" class="active">No Handphone</label>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="input-field col s12" style="display: none;" id="dPasswordUser">
                     <input placeholder="Password" id="txtPassword" type="password" class="validate">
-                    <label for="txtPassword" class="active">Username</label>
+                    <label for="txtPassword" class="active">Password</label>
                 </div>
             </div>
         </div>

@@ -79,7 +79,7 @@
                 </div>
                 <div class="input-field col s12" style="display: none;" id="dPasswordUser">
                     <input placeholder="Password" id="txtPassword" type="password" class="validate">
-                    <label for="txtPassword" class="active">Username</label>
+                    <label for="txtPassword" class="active">Password</label>
                 </div>
             </div>
         </div>
